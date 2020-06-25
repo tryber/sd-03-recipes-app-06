@@ -5,9 +5,9 @@ import Search from '../images/searchIcon.svg';
 import Fork from '../images/mealIcon.svg';
 import './Footer.css';
 
-const Footer = () => {
+function Footer() {
   return (
-    <div className="footer-container" data-testid="footer">
+    <footer className="footer-container" data-testid="footer">
       <Link
         className="footer-drinks"
         data-testid="drinks-bottom-btn"
@@ -29,7 +29,7 @@ const Footer = () => {
       >
         <img src={Fork} alt="Comidas" />
       </Link>
-    </div>
+    </footer>
   );
 };
 
