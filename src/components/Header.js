@@ -27,7 +27,7 @@ const Header = () => {
         </Link>
         <h1>Comidas</h1>
         <button onClick={() => setShowBar(!showBar)} >
-          <img src={searchIcon} alt="Icone de Busca"/>
+          <img src={searchIcon} alt="Icone de Busca" />
         </button>
       </div>
       {showBar && <div><p>SearchBar</p></div>}
