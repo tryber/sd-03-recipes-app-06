@@ -31,6 +31,6 @@ function Footer() {
       </Link>
     </footer>
   );
-};
+}
 
 export default Footer;
