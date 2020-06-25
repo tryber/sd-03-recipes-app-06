@@ -22,12 +22,12 @@ class LoginContainer extends React.Component {
   }
 
   async entrarApp() {
-    const { email } = this.state;
+    const { email, password } = this.state;
     const { userLoginDispatch } = this.props;
-    userLoginDispatch(email);
+    userLoginDispatch(email, password);
   }
 
-  rendeForm() {
+  renderForm() {
     return (
       <div>
         <label htmlFor="email">E-mail:</label>
@@ -44,7 +44,6 @@ class LoginContainer extends React.Component {
           onChange={(e) => this.handleChange(e)}
           name="password"
           type="password"
-          value=" "
           data-testid=" "
         />
       </div>
@@ -54,7 +53,7 @@ class LoginContainer extends React.Component {
   renderLogin() {
     const { email, password } = this.state;
     let disabled = false;
-    if ((email === '' || email === '') && (password.value < 6)) {
+    if ((email === '' || password === '')) {
       disabled = true;
     }
 
