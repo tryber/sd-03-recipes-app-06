@@ -10,6 +10,7 @@ const Header = () => {
   const history = useHistory();
   const location = useLocation();
   const { showBar, setShowBar } = useContext(RecipesContext);
+  let notProfile = true;
 
   const telaPrincipal = (title) =>
     <div className="headerClass">
@@ -18,13 +19,16 @@ const Header = () => {
           <img src={profileIcon} alt="Icone do Profile" />
         </button>
         <h1 data-testid="page-title">{title}</h1>
-        <button data-testid="search-top-btn" onClick={() => setShowBar(!showBar)} >
-          <img src={searchIcon} alt="Icone de Busca" />
-        </button>
+        {notProfile &&
+          <button data-testid="search-top-btn" onClick={() => setShowBar(!showBar)} >
+            <img src={searchIcon} alt="Icone de Busca" />
+          </button>
+        }
       </div>
       {showBar && <SearchBar />}
     </div>;
 
+/*  
   const telaPerfil = () =>
     <div className="headerClass">
       <div className="headerBar">
@@ -34,15 +38,17 @@ const Header = () => {
         <h1 data-testid="page-title">Título</h1>
       </div>
     </div>;
-
+*/
   if (location.pathname === '/comidas' || location.pathname === '/bebidas') {
+    notProfile = true;
     return telaPrincipal(location.pathname);
   }
   if (location.pathname === '/') {
-    return telaPerfil();
+    notProfile = false;
+    return telaPrincipal(location.pathname);
   }
-
-  return telaPerfil();
+  notProfile = false;
+  return telaPrincipal(location.pathname);
 };
 
 export default Header;
