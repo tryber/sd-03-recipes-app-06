@@ -1,6 +1,7 @@
 .profileContainer {
   /* Tela de perfil */
-  background: #FFFFFF;
+
+  background: #ffffff;
   height: 640px;
   position: relative;
   width: 360px;
@@ -16,7 +17,7 @@ left: 0px;
 top: 0px;
 */
 
-/* Perfil 
+/* Perfil
 
 position: absolute;
 width: 69px;
@@ -26,17 +27,17 @@ top: 12px;
 
 font-family: Roboto;
 font-style: normal;
-font-weight: normal;
+font-weight: 400;
 font-size: 30px;
 line-height: 35px;
 display: flex;
 align-items: flex-end;
 
-color: #000000;
+color: #00;
 
 */
 
-/* user 1 
+/* user 1
 
 position: absolute;
 width: 30px;
@@ -50,14 +51,14 @@ background: url(user.png); */
 .user-mail {
 
   /* email@mail.com */
-  
+
   align-items: flex-end;
-  color: #000000;
+  color: #000;
   display: flex;
   font-family: Roboto;
   font-size: 30px;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   height: 35px;
   left: 58px;
   line-height: 35px;
@@ -70,8 +71,8 @@ background: url(user.png); */
 .done-box {
 
   /* Rectangle 19 */
-  
-  background: #C4C4C4;
+
+  background: #c4c4c4;
   border-radius: 4px;
   height: 53px;
   left: 16px;
@@ -84,8 +85,8 @@ background: url(user.png); */
 .favorite-box {
 
   /* Rectangle 20 */
-  
-  background: #C4C4C4;
+
+  background: #c4c4c4;
   border-radius: 4px;
   height: 53px;
   left: 16px;
@@ -98,77 +99,75 @@ background: url(user.png); */
 .logout-box {
 
   /* Rectangle 22 */
-  
-  background: #C4C4C4;
+
+  background: #c4c4c4;
   border-radius: 4px;
   height: 53px;
   left: 16px;
   position: absolute;
   top: 328px;
   width: 329px;
-  
-
-}  
+}
 
 .btn-done {
 
   /* Receitas Feitas */
-  
+
   align-items: flex-end;
-  color: #000000;
+  color: #000;
   display: flex;
   font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
   font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
   height: 29px;
   left: 89px;
   line-height: 29px;
   position: absolute;
   top: 196px;
   width: 170px;
-}  
+}
 
 .btn-favorite {
 
   /* Receitas Favoritas */
-  
+
   align-items: flex-end;
-  color: #000000;
+  color: #000;
   display: flex;
   font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
   font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
   height: 29px;
   left: 77px;
   line-height: 29px;
   position: absolute;
   top: 268px;
   width: 205px;
-}  
+}
 
 .btn-logout {
 
   /* Sair */
-  
+
   align-items: flex-end;
-  color: #000000;
+  color: #000;
   display: flex;
   font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
   font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
   height: 29px;
   left: 159px;
   line-height: 29px;
   position: absolute;
   top: 340px;
   width: 43px;
-}  
+}
 
 
-/* Group 29 
+/* Group 29
 
 position: absolute;
 width: 360px;
