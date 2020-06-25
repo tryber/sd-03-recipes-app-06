@@ -4,20 +4,19 @@ import { getMealByLetter } from '../services/MealDBApi';
 
 const GetMealsContext = createContext();
 
-const Provider = ({children}) => {
-
+const Provider = ({ children }) => {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
   const handleFetchMealSuccess = (json) => {
-    const meals = json.meals;
-    setMeals([...meals]);
+    const dataMeals = json.meals;
+    setMeals([...dataMeals]);
     setLoading(false);
   };
 
-  const handleFetchMealError = (error) => {
-    setError(error);
+  const handleFetchMealError = (err) => {
+    setError(err);
     setLoading(false);
   };
 
@@ -32,9 +31,9 @@ const Provider = ({children}) => {
 
   return (
      <GetMealsContext.Provider value={context}>
-       {children}
+      {children}
      </GetMealsContext.Provider>
-   );
+  );
 };
 
 Provider.propTypes = {
