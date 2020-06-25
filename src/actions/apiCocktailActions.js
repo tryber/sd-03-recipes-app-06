@@ -1,4 +1,4 @@
-import apiCocktails from '../services/apiCockTails';
+import apiCocktails from '../services/apiDrinks';
 
 export const REQUEST_COCKTAIL = 'REQUEST_API_COCKTAIL';
 export const RECEIVED_COCKTAIL = 'RECEIVED_API_COCKTAIL';
