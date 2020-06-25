@@ -12,12 +12,14 @@ function Meals() {
   return (
     <div id="meals">
       {
-        meals.map((meal) => ({
-            <li key={meal.idMeal}>
-              <img src={meal.strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
-              {meal.strMeal} - {meal.strCategory}
-            </li>
-        }))
+        meals.map((meal) => {
+          return(
+              <li key={meal.idMeal}>
+                <img src={meal.strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
+                {meal.strMeal} - {meal.strCategory}
+              </li>
+          );
+        })
       }
     </div>
   );

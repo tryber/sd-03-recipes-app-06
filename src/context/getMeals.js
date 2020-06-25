@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getMealByLetter } from '../services/MealDBApi';
+import getMealByLetter from '../services/MealDBApi';
 
 const GetMealsContext = createContext();
 
@@ -30,9 +30,9 @@ const Provider = ({ children }) => {
   const context = { meals, loading, error, fetchMeals };
 
   return (
-     <GetMealsContext.Provider value={context}>
+    <GetMealsContext.Provider value={context}>
       {children}
-     </GetMealsContext.Provider>
+    </GetMealsContext.Provider>
   );
 };
 
