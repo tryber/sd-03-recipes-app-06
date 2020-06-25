@@ -28,7 +28,7 @@ const Header = () => {
       {showBar && <SearchBar />}
     </div>;
 
-/*  
+/*
   const telaPerfil = () =>
     <div className="headerClass">
       <div className="headerBar">
