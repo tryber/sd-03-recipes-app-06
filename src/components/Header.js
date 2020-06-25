@@ -5,24 +5,31 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import './Header.css';
 
+const telaPerfil = () =>
+  <div className="headerClass">
+    <div className="headerBar">
+      <Link to="/perfil">
+        <img src={profileIcon} alt="Icone do Profile" />
+      </Link>
+      <h1>Título</h1>
+    </div>
+  </div>;
+
 const Header = () => {
-  let location = useLocation();
+  const location = useLocation();
   const { showBar, setShowBar } = useContext(RecipesContext);
 
-  const telaPrincipal = () => {
-    return (
-      <div className="headerClass">
-        <div className="headerBar">
-          <Link to="/perfil">
-            <img src={profileIcon} alt="Icone do Profile" />
-          </Link>
-          <h1>Comidas</h1>
-          <img src={searchIcon} alt="Icone de Busca" onClick={() => setShowBar(!showBar)} />
-        </div>
-        {showBar && <div><p>SearchBar</p></div>}
+  const telaPrincipal = () =>
+    <div className="headerClass">
+      <div className="headerBar">
+        <Link to="/perfil">
+          <img src={profileIcon} alt="Icone do Profile" />
+        </Link>
+        <h1>Comidas</h1>
+        <button onClick={() => setShowBar(!showBar)}><img src={searchIcon} alt="Icone de Busca"/></button>
       </div>
-    );
-  };
+      {showBar && <div><p>SearchBar</p></div>}
+    </div>;
 
   if (location.pathname === '/comidas') {
     return telaPrincipal();
@@ -30,6 +37,8 @@ const Header = () => {
   if (location.pathname === '/') {
     return telaPrincipal();
   }
+
+  return telaPerfil();
 };
 
 export default Header;
