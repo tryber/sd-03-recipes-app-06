@@ -17,7 +17,7 @@ const Header = () => {
         <button data-testid="profile-top-btn" onClick={() => history.push('/perfil')} >
           <img src={profileIcon} alt="Icone do Profile" />
         </button>
-          <h1 data-testid="page-title">{title}</h1>
+        <h1 data-testid="page-title">{title}</h1>
         <button data-testid="search-top-btn" onClick={() => setShowBar(!showBar)} >
           <img src={searchIcon} alt="Icone de Busca" />
         </button>
@@ -25,15 +25,15 @@ const Header = () => {
       {showBar && <SearchBar />}
     </div>;
 
-const telaPerfil = () =>
-  <div className="headerClass">
-    <div className="headerBar">
-      <button data-testid="profile-top-btn" onClick={() => history.push('/perfil')} >
-        <img src={profileIcon} alt="Icone do Profile" />
-      </button>
-      <h1 data-testid="page-title">Título</h1>
-    </div>
-  </div>;
+  const telaPerfil = () =>
+    <div className="headerClass">
+      <div className="headerBar">
+        <button data-testid="profile-top-btn" onClick={() => history.push('/perfil')} >
+          <img src={profileIcon} alt="Icone do Profile" />
+        </button>
+        <h1 data-testid="page-title">Título</h1>
+      </div>
+    </div>;
 
   if (location.pathname === '/comidas' || location.pathname === '/bebidas') {
     return telaPrincipal(location.pathname);
