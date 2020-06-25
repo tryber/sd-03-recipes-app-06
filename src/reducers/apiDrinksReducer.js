@@ -1,6 +1,6 @@
 import {
-  RECEIVED_COCKTAIL, REQUEST_COCKTAIL, FAILED_COCKTAIL,
-} from '../actions/apiCocktailActions';
+  RECEIVED_DRINKS, REQUEST_DRINKS, FAILED_DRINKS,
+} from '../actions/apiDrinksActions';
 
 const INITIAL_STATE = {
   cocktails: [],
@@ -8,20 +8,20 @@ const INITIAL_STATE = {
   error: '',
 };
 
-const apiCocktailReducer = (state = INITIAL_STATE, action) => {
+const apiDrinksReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case REQUEST_COCKTAIL:
+    case REQUEST_DRINKS:
       return {
         ...state,
         isLoading: true,
       };
-    case RECEIVED_COCKTAIL:
+    case RECEIVED_DRINKS:
       return {
         ...state,
         cocktails: [...action.cocktails],
         isLoading: false,
       };
-    case FAILED_COCKTAIL:
+    case FAILED_DRINKS:
       return {
         ...state,
         error: action.error,
@@ -31,4 +31,4 @@ const apiCocktailReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default apiCocktailReducer;
+export default apiDrinksReducer;

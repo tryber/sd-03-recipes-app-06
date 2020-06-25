@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import apiCocktailReducer from './apiCocktailReducer';
+import apiDrinksReducer from './apiDrinksReducer';
 import userInfoReducer from './userInfoReducer';
 
 
 const rootReducer = combineReducers({
-  apiCocktailReducer,
+  apiDrinksReducer,
   userInfoReducer,
 });
 
