@@ -13,11 +13,12 @@ function Meals() {
     <div id="meals">
       {
         meals.map((meal) => {
-          return(
-              <li key={meal.idMeal}>
-                <img src={meal.strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
-                {meal.strMeal} - {meal.strCategory}
-              </li>
+          const { idMeal, strMealThumb, strMeal, strCategory } = meal;
+          return (
+            <li key={idMeal}>
+              <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
+              {strMeal} - {strCategory}
+            </li>
           );
         })
       }
