@@ -1,34 +1,34 @@
 .footer-container {
+  background: #c4c4c4;
   display: flex;
-  justify-content: space-around;
-  position: absolute;
-  width: 360px;
   height: 58px;
-  left: 0px;
+  justify-content: space-around;
+  left: 0;
+  position: absolute;
   top: 582px;
-  background: #C4C4C4;
+  width: 360px;
 }
 
 .footer-drinks {
-  position: absolute;
-  width: 40px;
   height: 40px;
   left: 16px;
+  position: absolute;
   top: 591px;
+  width: 40px;
 }
 
 .footer-explore {
-  position: absolute;
-  width: 40px;
   height: 40px;
   left: 160px;
+  position: absolute;
   top: 593px;
+  width: 40px;
 }
 
 .footer-fork {
-  position: absolute;
-  width: 40px;
   height: 40px;
   left: 302px;
+  position: absolute;
   top: 593px;
+  width: 40px;
 }
