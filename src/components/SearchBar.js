@@ -9,7 +9,7 @@ const SearchBar = () =>
       <span>Ingrediente</span>
       <input data-testid="name-search-radio" key="Nome" type="radio" name="filter" />
       <span>Nome</span>
-      <input data-testid="first-letter-search-radio" key="PrimeiraLetra" type="radio" name="filter" />
+      <input data-testid="first-letter-search-radio" key="PrimLetra" type="radio" name="filter" />
       <span>Primeira Letra</span>
     </div>
     <div>
