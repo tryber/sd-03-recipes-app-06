@@ -19,7 +19,6 @@ import './App.css';
 function App() {
   return (
     <ProviderSearch>
-      <Router>
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/bebidas" component={Bebidas} />
@@ -34,7 +33,6 @@ function App() {
           <Route path="/receitas-feitas" component={ReceitasFeitas} />
           <Route path="/receitas-favoritas" component={ReceitasFavoritas} />
         </Switch>
-      </Router>
     </ProviderSearch>
   );
 }
