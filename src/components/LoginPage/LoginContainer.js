@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { userLoginAction } from '../../actions/userLoginAction';
 
 
 class LoginContainer extends React.Component {
@@ -88,7 +87,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  userLoginDispatch: (email) => dispatch(userLoginAction(email)),
+  userLoginDispatch: (email) => dispatch((email)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
