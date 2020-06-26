@@ -1,9 +1,13 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  getCokctailsByName,
+  getCocktailsByLetter,
+  // getCokctailsByName,
   // getCocktailsList,
   // filterCocktailsByCategorie,
+  // getCocktailsByIngredient,
+  // getCocktailsByID,
+  // getCocktailsIngredientImage,
 } from '../services/CocktailsApi';
 
 const GetCocktailsContext = createContext();
@@ -27,7 +31,7 @@ const Provider = ({ children }) => {
   const fetchCocktails = () => {
     if (loading) return;
     setLoading(true);
-    getCokctailsByName().then(
+    getCocktailsByLetter().then(
       handleFetchCocktailsSuccess,
       handleFetchCocktailsError,
     );
