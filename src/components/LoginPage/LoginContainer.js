@@ -82,15 +82,15 @@ class LoginContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  email: state.userInfoReducer.email,
-});
+// const mapStateToProps = (state) => ({
+//   email: state.userInfoReducer.email,
+// });
 
 const mapDispatchToProps = (dispatch) => ({
   userLoginDispatch: (email) => dispatch((email)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+export default connect(mapDispatchToProps)(LoginContainer);
 
 LoginContainer.propTypes = {
   userLoginDispatch: PropTypes.func.isRequired,

@@ -3,8 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import LoginPage from './components/LoginPage/LoginContainer';
 import Meals from './components/Meals';
-import './App.css';
 import Cocktails from './components/Cocktails';
+import './App.css';
 
 export default function App() {
   return (
@@ -13,8 +13,11 @@ export default function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={LoginPage} />
+            <div id="meals">
+              <Route exact path="/Meals" component={Meals} />
+            </div>
             <div id="cocktails">
-              <Route exact path="/cocktails" component={Cocktails} />
+              <Route exact path="/Cocktails" component={Cocktails} />
             </div>
           </Switch>
         </BrowserRouter>
