@@ -55,23 +55,10 @@ const Header = () => {
     notProfile = true;
     return telaPrincipal(capitalize(location.pathname));
   }
-  /*
-  if (location.pathname === '/perfil'
-    || location.pathname === '/explorar'
-    || location.pathname === '/explorar/comidas'
-    || location.pathname === '/explorar/bebidas'
-    || location.pathname === '/explorar/comidas/ingredientes'
-    || location.pathname === '/explorar/bebidas/ingredientes'
-    || location.pathname === '/receitas-feitas'
-    || location.pathname === '/receitas-favoritas'
-  ) {
-    notProfile = false;
-    return telaPrincipal(capitalize(location.pathname));
-  }
-  */
+
   if (location.pathname.match(/perfil/g)
     || location.pathname.match(/explorar/g)
-    || location.pathname.match(/receitas/g) 
+    || location.pathname.match(/receitas/g)
   ) {
     notProfile = false;
     return telaPrincipal(capitalize(location.pathname));
