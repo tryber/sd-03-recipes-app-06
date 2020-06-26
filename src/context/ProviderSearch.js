@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import RecipesContext from './RecipesContext';
+import SearchContext from './SearchContext';
 
-const Provider = ({ children }) => {
+const ProviderSearch = ({ children }) => {
   const [showBar, setShowBar] = useState(false);
 
   const contextValue = {
@@ -11,14 +11,14 @@ const Provider = ({ children }) => {
   };
 
   return (
-    <RecipesContext.Provider value={contextValue}>
+    <SearchContext.Provider value={contextValue}>
       {children}
-    </RecipesContext.Provider>
+    </SearchContext.Provider>
   );
 };
 
-Provider.propTypes = {
+ProviderSearch.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Provider;
+export default ProviderSearch;

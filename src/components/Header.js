@@ -1,10 +1,30 @@
 import React, { useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import RecipesContext from '../context/RecipesContext';
+import RecipesContext from '../context/SearchContext';
 import SearchBar from './SearchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import './Header.css';
+
+const titlePlacer = {
+  zbebidas: 'Bebidas',
+  zcomidas: 'Comidas',
+  zexplorarzcomidas: 'Explorar Comidas',
+  zexplorarzbebidas: 'Explorar Bebidas',
+  zexplorarzcomidaszingredientes: 'Explorar Ingredientes',
+  zexplorarzbebidaszingredientes: 'Explorar Ingredientes',
+  zexplorarzcomidaszarea: 'Explorar Origem',
+  zexplorar: 'Explorar',
+  zperfil: 'Perfil',
+  zreceitasxfeitas: 'Receitas Feitas',
+  zreceitasxfavoritas: 'Receitas Favoritas',
+};
+
+const capitalize = (s) => {
+  if (typeof s !== 'string') return '';
+  let result = s.replace(/[/]/g, 'z').replace(/[-]/g, 'x');
+  return titlePlacer[result];
+}
 
 const Header = () => {
   const history = useHistory();
@@ -15,40 +35,40 @@ const Header = () => {
   const telaPrincipal = (title) =>
     <div className="headerClass">
       <div className="headerBar">
-        <button data-testid="profile-top-btn" onClick={() => history.push('/perfil')} >
-          <img src={profileIcon} alt="Icone do Profile" />
+        <button onClick={() => history.push('/perfil')} >
+          <img data-testid="profile-top-btn" src={profileIcon} alt="Icone do Profile" />
         </button>
         <h1 data-testid="page-title">{title}</h1>
         {notProfile &&
-          <button data-testid="search-top-btn" onClick={() => setShowBar(!showBar)} >
-            <img src={searchIcon} alt="Icone de Busca" />
+          <button onClick={() => setShowBar(!showBar)} >
+            <img data-testid="search-top-btn" src={searchIcon} alt="Search" />           
           </button>
         }
       </div>
       {showBar && <SearchBar />}
     </div>;
 
-/*
-  const telaPerfil = () =>
-    <div className="headerClass">
-      <div className="headerBar">
-        <button data-testid="profile-top-btn" onClick={() => history.push('/perfil')} >
-          <img src={profileIcon} alt="Icone do Profile" />
-        </button>
-        <h1 data-testid="page-title">Título</h1>
-      </div>
-    </div>;
-*/
-  if (location.pathname === '/comidas' || location.pathname === '/bebidas') {
+  if (location.pathname === '/comidas'
+    || location.pathname === '/bebidas'
+    || location.pathname === '/explorar/comidas/area'
+  ) {
     notProfile = true;
-    return telaPrincipal(location.pathname);
+    return telaPrincipal(capitalize(location.pathname));
   }
-  if (location.pathname === '/') {
+  if (location.pathname === '/perfil'
+    || location.pathname === '/explorar'
+    || location.pathname === '/explorar/comidas'
+    || location.pathname === '/explorar/bebidas'
+    || location.pathname === '/explorar/comidas/ingredientes'
+    || location.pathname === '/explorar/bebidas/ingredientes'
+    || location.pathname === '/receitas-feitas'
+    || location.pathname === '/receitas-favoritas'
+  ) {
     notProfile = false;
-    return telaPrincipal(location.pathname);
+    return telaPrincipal(capitalize(location.pathname));
   }
   notProfile = false;
-  return telaPrincipal(location.pathname);
+  return null;
 };
 
 export default Header;

@@ -1,5 +1,7 @@
 import React from 'react';
 
-const SearchBar = () => <div><p>SearchBar</p></div>;
+const SearchBar = () => <div data-testid="search-input">
+  <p>SearchBar</p>
+</div>;
 
 export default SearchBar;
