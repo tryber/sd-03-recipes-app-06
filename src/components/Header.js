@@ -22,9 +22,9 @@ const titlePlacer = {
 
 const capitalize = (s) => {
   if (typeof s !== 'string') return '';
-  let result = s.replace(/[/]/g, 'z').replace(/[-]/g, 'x');
+  const result = s.replace(/[/]/g, 'z').replace(/[-]/g, 'x');
   return titlePlacer[result];
-}
+};
 
 const Header = () => {
   const history = useHistory();
@@ -41,7 +41,7 @@ const Header = () => {
         <h1 data-testid="page-title">{title}</h1>
         {notProfile &&
           <button onClick={() => setShowBar(!showBar)} >
-            <img data-testid="search-top-btn" src={searchIcon} alt="Search" />           
+            <img data-testid="search-top-btn" src={searchIcon} alt="Search" />
           </button>
         }
       </div>
@@ -55,6 +55,7 @@ const Header = () => {
     notProfile = true;
     return telaPrincipal(capitalize(location.pathname));
   }
+  /*
   if (location.pathname === '/perfil'
     || location.pathname === '/explorar'
     || location.pathname === '/explorar/comidas'
@@ -63,6 +64,14 @@ const Header = () => {
     || location.pathname === '/explorar/bebidas/ingredientes'
     || location.pathname === '/receitas-feitas'
     || location.pathname === '/receitas-favoritas'
+  ) {
+    notProfile = false;
+    return telaPrincipal(capitalize(location.pathname));
+  }
+  */
+  if (location.pathname.match(/perfil/g)
+    || location.pathname.match(/explorar/g)
+    || location.pathname.match(/receitas/g) 
   ) {
     notProfile = false;
     return telaPrincipal(capitalize(location.pathname));
