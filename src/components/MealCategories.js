@@ -10,11 +10,11 @@ function MealCategories() {
     <div id="mealsCategories">
       {
         mealCategories.slice(0, 5).map(({ strCategory }) => {
-          const test_id = `${strCategory}-category-filter`;
+          const testId = `${strCategory}-category-filter`;
           return (
             <div className="category">
               <li key={strCategory}>
-                <button value={strCategory} data-testid={test_id}>{strCategory}</button>
+                <button value={strCategory} data-testid={testId}>{strCategory}</button>
               </li>
             </div>
           );

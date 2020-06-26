@@ -5,8 +5,8 @@ const getMeals = () => fetch(BASE_URL).then((response) => response
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
-const getMealsCategories = () => fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list").then((response) => response
+const getMealsCategories = () => fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list').then((response) => response
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
-  export { getMeals, getMealsCategories };
+export { getMeals, getMealsCategories };

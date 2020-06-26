@@ -10,21 +10,21 @@ const Provider = ({ children }) => {
   const [error, setError] = useState();
   const [mealCategories, setMealCategories] = useState([]);
 
+  const handleFetchMealCategoriesSuccess = (json) => {
+    const categories = json.meals;
+    setMealCategories([...categories]);
+  };
+
+  const handleFetchMealError = (err) => {
+    setError(err);
+    setLoading(false);
+  };
+
   const handleFetchMealSuccess = (json) => {
     const dataMeals = json.meals;
     setMeals([...dataMeals]);
     getMealsCategories()
     .then(handleFetchMealCategoriesSuccess, handleFetchMealError);
-    setLoading(false);
-  };
-
-  const handleFetchMealCategoriesSuccess = (json) => {
-    const categories = json.meals;
-    setMealCategories([...categories]);
-  }
-
-  const handleFetchMealError = (err) => {
-    setError(err);
     setLoading(false);
   };
 
