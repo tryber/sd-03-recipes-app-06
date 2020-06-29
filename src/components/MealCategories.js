@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { GetMealsContext } from '../context/getMeals';
 
 function MealCategories() {
-  const { loading, error, mealCategories, changeCategory } = useContext(GetMealsContext);
+  const { loading, error, getCategories, changeCategory } = useContext(GetMealsContext);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
   return (
     <div id="mealsCategories">
       {
-        mealCategories.slice(0, 5).map(({ strCategory }) => {
+        getCategories.slice(0, 5).map(({ strCategory }) => {
           const testId = `${strCategory}-category-filter`;
           return (
             <div className="category" key={strCategory}>
@@ -19,7 +19,7 @@ function MealCategories() {
                   data-testid={testId}
                   onClick={(e) => changeCategory(e.target.value)}
                 >
-                {strCategory}
+                  {strCategory}
                 </button>
               </li>
             </div>

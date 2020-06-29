@@ -5,7 +5,6 @@ function useGetCategories() {
   const [mealCategories, setMealCategories] = useState([]);
 
   useEffect(() => {
-
     getMealsCategories()
     .then((json) => {
       setMealCategories([...json.meals]);
