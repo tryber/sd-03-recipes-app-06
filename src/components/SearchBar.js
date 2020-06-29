@@ -17,10 +17,10 @@ const SearchBar = () => {
       console.log(result);
     }
   };
-  
+
   return (
     <div data-testid="search-input">
-      <input type="text" name="searchBar" onChange={(e) => setSearch(e.target.value)}/>
+      <input type="text" name="searchBar" onChange={(e) => setSearch(e.target.value)} />
       <div>
         <input
           data-testid="ingredient-search-radio" key="Ingrediente" type="radio"
