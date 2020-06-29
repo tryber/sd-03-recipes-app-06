@@ -18,7 +18,7 @@ const Provider = ({ children }) => {
   const [error, setError] = useState();
 
   const handleFetchCocktailsSuccess = (json) => {
-    const dataCocktails = json.cocktails;
+    const dataCocktails = json.drinks;
     setCocktails([...dataCocktails]);
     setLoading(false);
   };
@@ -28,10 +28,10 @@ const Provider = ({ children }) => {
     setLoading(false);
   };
 
-  const fetchCocktails = () => {
+  const fetchCocktails = (a) => {
     if (loading) return;
     setLoading(true);
-    getCocktailsByLetter().then(
+    getCocktailsByLetter(a).then(
       handleFetchCocktailsSuccess,
       handleFetchCocktailsError,
     );
