@@ -11,8 +11,8 @@ function App() {
   return (
     <Switch>
       <Route exact path="/" component={LoginPage} />
-      <Route path="/meals" component={Meals} />
-      <Route path="/cocktails" component={cocktails} />
+      <Route path="/comidas" component={Meals} />
+      <Route path="/bebidas" component={cocktails} />
     </Switch>
   );
 }
