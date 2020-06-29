@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import { getMealByLetter, getMealByIngredients, getMealByName } from '../services/MealDBApi';
 
 const SearchBar = () => {
-  const [ selected, setSelected ] = useState('name');
-  const [ search, setSearch ] = useState('');
-  
+  const [selected, setSelected] = useState('name');
+  const [search, setSearch] = useState('');
+
   const handleChange = () => {
     if (selected === 'name') {
       const result = getMealByName(search);
       console.log(result);
-    }
-    if (selected === 'ingredient') {
+    }else if (selected === 'ingredient') {
       const result = getMealByIngredients(search);
       console.log(result);
-    }
-    if (selected === 'letter') {
+    } else if (selected === 'letter') {
       const result = getMealByLetter(search);
       console.log(result);
     }
