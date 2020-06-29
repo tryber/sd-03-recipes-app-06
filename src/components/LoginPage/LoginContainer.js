@@ -1,97 +1,39 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useContext } from 'react';
+//Importar de Context API
 
 
-class LoginContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.entrarApp = this.entrarApp.bind(this);
+const LoginContainer = () => {
+  const {
+    email,
+    password,
+    setEmail,
+    setPassword
   }
+  // } = useContext(Importar de Context API);
 
-  handleChange(e) {
-    const { email, value } = e.target;
-    this.setState({ [email]: value });
-  }
-
-  async entrarApp() {
-    const { email, password } = this.state;
-    const { userLoginDispatch } = this.props;
-    userLoginDispatch(email, password);
-  }
-
-  renderForm() {
-    return (
-      <div>
-        <label htmlFor="email">E-mail:</label>
-        <input
-          plasceholder="Email"
-          type="text"
-          data-testid=" "
-          onChange={(e) => this.handleChange(e)}
-          name="email"
-        />
-        <label htmlFor="password">Senha:</label>
-        <input
-          placeholder="Senha"
-          onChange={(e) => this.handleChange(e)}
-          name="password"
-          type="password"
-          data-testid=" "
-        />
-      </div>
-    );
-  }
-
-  renderLogin() {
-    const { email, password } = this.state;
-    let disabled = false;
-    if ((email === '' || password === '')) {
-      disabled = true;
-    }
-
-    return (
-      <div>
-        <Link to=" ">
-          <button
-            type="button"
-            data-testid=" "
-            disabled={disabled}
-            onClick={this.entrarApp}
-          >
-            Entrar
-          </button>
-        </Link>
-      </div>
-    );
-  }
-
-  render() {
-    return (
-      <div>
-        {this.renderForm()}
-        {this.renderLogin()}
-      </div>
-    );
-  }
-}
-
-// const mapStateToProps = (state) => ({
-//   email: state.userInfoReducer.email,
-// });
-
-const mapDispatchToProps = (dispatch) => ({
-  userLoginDispatch: (email) => dispatch((email)),
-});
-
-export default connect(mapDispatchToProps)(LoginContainer);
-
-LoginContainer.propTypes = {
-  userLoginDispatch: PropTypes.func.isRequired,
+  return (
+    <div className="login-campo">
+      <h2>Login</h2>
+      <input
+        id="email"
+        name="setEmail"
+        type="email"
+        data-testid=" "
+        placeholder=" E-mail"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
+      <input
+        id="password"
+        name="setPassword"
+        type="password"
+        data-testid=" "
+        placeholder="Senha"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
+    </div>
+  );
 };
+
+export default LoginContainer;
