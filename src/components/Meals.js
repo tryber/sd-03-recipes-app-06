@@ -4,13 +4,13 @@ import MealCategories from './MealCategories';
 
 function Meals() {
   const {
-    getMeals: { meals },
-    loading,
-    error,
+    getMeals: {
+      meals,
+      loading,
+    },
   } = useContext(GetMealsContext);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
   return (
     <div>
       <MealCategories />
