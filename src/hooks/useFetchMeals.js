@@ -8,13 +8,13 @@ function useFetchPlanets() {
   const [selectedCategory, setSelectedCategory] = useState(false);
 
   const handleFetchMealSuccess = (json) => {
-    if (loading) return;
     const dataMeals = json.meals;
     setMeals([...dataMeals]);
     setLoading(false);
   };
 
   useEffect(() => {
+    if (loading) return;
     setLoading(true);
     getMeals().then(handleFetchMealSuccess);
 
@@ -22,7 +22,6 @@ function useFetchPlanets() {
   }, []);
 
   const getByCat = (category) => {
-    setLoading(true);
     if (category !== 'all') {
       if (category === selectedCategory) {
         setSelectedCategory('');
@@ -37,7 +36,6 @@ function useFetchPlanets() {
   return {
     meals,
     getByCat,
-    loading,
   };
 }
 
