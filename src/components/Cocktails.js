@@ -5,7 +5,6 @@ function Cocktails() {
   const {
     cocktails,
     loading,
-    error,
     fetchCocktails,
   } = useContext(Context);
 
@@ -13,18 +12,21 @@ function Cocktails() {
     fetchCocktails();
   }, []);
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+
   return (
     <div id="cocktails">
       {
-        cocktails.map((drinks) => {
+        cocktails.slice(0, 12).map((drinks) => {
           const {
-            idCocktails,
-            ingredient,
+            idDrink,
+            strDrink,
+            strIngredient1,
+            strDrinkThumb,
           } = drinks;
           return (
-            <li key={idCocktails}>
-              <img src={ingredient} width="120px" height="150px" alt="Cocktails Thumb" />
+            <li key={idDrink}>
+              <img src={strDrink} width="120px" height="150px" alt="Cocktails Thumb" />
+              {strDrinkThumb} - {strIngredient1}
             </li>
           );
         })

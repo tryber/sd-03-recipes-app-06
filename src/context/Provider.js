@@ -31,10 +31,10 @@ function Provider({ children }) {
     setLoading(false);
   };
 
-  const fetchCocktails = (a) => {
+  const fetchCocktails = () => {
     if (loading) return;
     setLoading(true);
-    getCocktailsByLetter(a).then(
+    getCocktailsByLetter('a').then(
       handleFetchCocktailsSuccess,
       handleFetchCocktailsError,
     );

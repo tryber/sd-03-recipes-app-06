@@ -17,7 +17,7 @@ const LoginContainer = () => {
         id="email"
         name="setEmail"
         type="email"
-        data-testid=" "
+        data-testid="email-input"
         placeholder="E-mail"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
@@ -26,7 +26,7 @@ const LoginContainer = () => {
         id="password"
         name="setPassword"
         type="password"
-        data-testid=" "
+        data-testid="password-input"
         placeholder="Senha"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
