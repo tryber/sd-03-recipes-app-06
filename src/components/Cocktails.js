@@ -20,11 +20,11 @@ function Cocktails() {
         cocktails.map((drinks) => {
           const {
             idCocktails,
-            strIngredient,
+            ingredient,
           } = drinks;
           return (
             <li key={idCocktails}>
-              <img src={strIngredient} width="120px" height="150px" alt="Meal Thumb" />
+              <img src={ingredient} width="120px" height="150px" alt="Cocktails Thumb" />
             </li>
           );
         })
