@@ -9,7 +9,7 @@ const SearchBar = () => {
     if (selected === 'name') {
       const result = getMealByName(search);
       console.log(result);
-    }else if (selected === 'ingredient') {
+    } else if (selected === 'ingredient') {
       const result = getMealByIngredients(search);
       console.log(result);
     } else if (selected === 'letter') {
