@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import RecipesContext from '../context/SearchContext';
+import SearchContext from '../context/SearchContext';
 import SearchBar from './SearchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
@@ -29,7 +29,7 @@ const capitalize = (s) => {
 const Header = () => {
   const history = useHistory();
   const location = useLocation();
-  const { showBar, setShowBar } = useContext(RecipesContext);
+  const { showBar, setShowBar } = useContext(SearchContext);
   let notProfile = true;
 
   const telaPrincipal = (title) =>

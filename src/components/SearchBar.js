@@ -3,52 +3,55 @@ import { useLocation } from 'react-router-dom';
 import { getMealByLetter, getMealByIngredients, getMealByName } from '../services/MealDBApi';
 import { getDrinkByLetter, getDrinkByIngredients, getDrinkByName } from '../services/DrinkDBApi';
 
+const mealtSearch = (filter, arg) => {
+  if (filter === 'name') {
+    const result = getMealByName(arg);
+    console.log(result);
+  } else if (filter === 'ingredient') {
+    const result = getMealByIngredients(arg);
+    console.log(result);
+  } else if (filter === 'letter' && arg.length === 1) {
+    const result = getMealByLetter(arg);
+    console.log(result);
+  } else if (filter === 'letter' && arg.length > 1) {
+    alert('Sua busca deve conter somente 1 (um) caracter');
+  }
+};
+
+const drinkSearch = (filter, arg) => {
+  if (filter === 'name') {
+    const result = getDrinkByName(arg);
+    console.log(result);
+  } else if (filter === 'ingredient') {
+    const result = getDrinkByIngredients(arg);
+    console.log(result);
+  } else if (filter === 'letter' && arg.length === 1) {
+    const result = getDrinkByLetter(arg);
+    console.log(result);
+  } else if (filter === 'letter' && arg.length > 1) {
+    alert('Sua busca deve conter somente 1 (um) caracter');
+  }
+};
+
 const SearchBar = () => {
   const location = useLocation();
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
 
-  const mealtSearch = () => {
-    if (selected === 'name') {
-      const result = getMealByName(search);
-      console.log(result);
-    } else if (selected === 'ingredient') {
-      const result = getMealByIngredients(search);
-      console.log(result);
-    } else if (selected === 'letter' && search.length === 1) {
-      const result = getMealByLetter(search);
-      console.log(result);
-    } else if (selected === 'letter' && search.length > 1) {
-      alert('Sua busca deve conter somente 1 (um) caracter');
-    } 
-  };
-
-  const drinkSearch = () => {
-    if (selected === 'name') {
-      const result = getDrinkByName(search);
-      console.log(result);
-    } else if (selected === 'ingredient') {
-      const result = getDrinkByIngredients(search);
-      console.log(result);
-    } else if (selected === 'letter' && search.length === 1) {
-      const result = getDrinkByLetter(search);
-      console.log(result);
-    } else if (selected === 'letter' && search.length > 1) {
-      alert('Sua busca deve conter somente 1 (um) caracter');
-    } 
-  };
-
   const handleChange = () => {
     if (location.pathname.match(/comidas/g)) {
-      mealtSearch();
+      mealtSearch(selected, search);
     } else if (location.pathname.match(/bebidas/g)) {
-      drinkSearch();
+      drinkSearch(selected, search);
     }
   };
 
   return (
     <div>
-      <input type="text" data-testid="search-input" name="searchBar" onChange={(e) => setSearch(e.target.value)} />
+      <input
+        type="text" data-testid="search-input"
+        name="searchBar" onChange={(e) => setSearch(e.target.value)}
+      />
       <div>
         <input
           type="radio" data-testid="ingredient-search-radio" key="Ingrediente"
