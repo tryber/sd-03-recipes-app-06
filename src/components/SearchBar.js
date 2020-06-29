@@ -13,7 +13,7 @@ const mealtSearch = (filter, arg) => {
   } else if (filter === 'letter' && arg.length === 1) {
     const result = getMealByLetter(arg);
     console.log(result);
-  } else if (filter === 'letter' && arg.length > 1) {
+  } else if (filter === 'letter') {
     alert('Sua busca deve conter somente 1 (um) caracter');
   }
 };
@@ -28,7 +28,7 @@ const drinkSearch = (filter, arg) => {
   } else if (filter === 'letter' && arg.length === 1) {
     const result = getDrinkByLetter(arg);
     console.log(result);
-  } else if (filter === 'letter' && arg.length > 1) {
+  } else if (filter === 'letter') {
     alert('Sua busca deve conter somente 1 (um) caracter');
   }
 };
