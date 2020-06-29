@@ -38,7 +38,7 @@ const Provider = ({ children }) => {
 
   const changeCategory = (cat) => {
     if (loading) return;
-    if (selectedCategory === cat) {
+    if (cat === selectedCategory) {
       setSelectedCategory('');
       fetchMeals();
     }
