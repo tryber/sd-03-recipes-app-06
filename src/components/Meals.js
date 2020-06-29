@@ -1,13 +1,13 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { GetMealsContext } from '../context/getMeals';
 import MealCategories from './MealCategories';
 
 function Meals() {
-  const { meals, loading, error, fetchMeals } = useContext(GetMealsContext);
-
-  useEffect(() => {
-    fetchMeals();
-  }, []);
+  const {
+    getMeals: { meals }, 
+    loading,
+    error,
+  } = useContext(GetMealsContext);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;

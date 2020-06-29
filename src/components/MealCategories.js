@@ -2,7 +2,12 @@ import React, { useContext } from 'react';
 import { GetMealsContext } from '../context/getMeals';
 
 function MealCategories() {
-  const { loading, error, getCategories, changeCategory } = useContext(GetMealsContext);
+  const {
+    loading,
+    error,
+    getCategories,
+    getMeals: { getByCat },
+  } = useContext(GetMealsContext);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -17,7 +22,7 @@ function MealCategories() {
                 <button
                   value={strCategory}
                   data-testid={testId}
-                  onClick={(e) => changeCategory(e.target.value)}
+                  onClick={(e) => getByCat(e.target.value)}
                 >
                   {strCategory}
                 </button>

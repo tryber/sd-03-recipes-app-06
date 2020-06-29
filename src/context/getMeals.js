@@ -1,57 +1,17 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
-import { getMeals, getMealsByCategory } from '../services/MealDBApi';
-import useGetCategories from './useGetCategories';
+import useGetCategories from '../hooks/useGetCategories';
+import useFetchPlanets from '../hooks/useFetchPlanets';
 
 const GetMealsContext = createContext();
 
 const Provider = ({ children }) => {
-  const [meals, setMeals] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
-  const [selectedCategory, setSelectedCategory] = useState();
-
   const getCategories = useGetCategories();
-
-  const handleFetchMealError = (err) => {
-    setError(err);
-    setLoading(false);
-  };
-
-  const handleFetchMealSuccess = (json) => {
-    const dataMeals = json.meals;
-    setMeals([...dataMeals]);
-
-    setLoading(false);
-  };
-
-  const fetchMeals = () => {
-    if (loading) return;
-    setLoading(true);
-    getMeals()
-    .then(handleFetchMealSuccess, handleFetchMealError);
-  };
-
-  const changeCategory = (cat) => {
-    if (loading) return;
-    if (cat === selectedCategory) {
-      setSelectedCategory('');
-      fetchMeals();
-    }
-    setLoading(true);
-    getMealsByCategory(cat)
-    .then(handleFetchMealSuccess);
-    setSelectedCategory(cat);
-  };
+  const getMeals = useFetchPlanets();
 
   const context = {
-    meals,
-    loading,
-    error,
-    fetchMeals,
+    getMeals,
     getCategories,
-    selectedCategory,
-    changeCategory,
   };
 
   return (
