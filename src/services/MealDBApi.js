@@ -1,6 +1,6 @@
 const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 
-const getMealByLetter = (letter) => fetch(`${BASE_URL}${letter}`).then((response) => response
+export const getMealByLetter = (letter) => fetch(`${BASE_URL}${letter}`).then((response) => response
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
@@ -14,6 +14,6 @@ export const getMealByIngredients = (ingredient) =>
 const NAME_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 export const getMealByName = (name) =>
-  fetch(`${ING_URL}${name}`).then((response) => response
+  fetch(`${NAME_URL}${name}`).then((response) => response
     .json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
