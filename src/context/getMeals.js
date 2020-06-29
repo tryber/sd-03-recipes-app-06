@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getMeals, getMealsCategories } from '../services/MealDBApi';
+import { getMeals, getMealsCategories, getMealsByCategory } from '../services/MealDBApi';
 
 const GetMealsContext = createContext();
 
@@ -9,6 +9,7 @@ const Provider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [mealCategories, setMealCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState();
 
   const handleFetchMealCategoriesSuccess = (json) => {
     const categories = json.meals;
@@ -35,7 +36,27 @@ const Provider = ({ children }) => {
     .then(handleFetchMealSuccess, handleFetchMealError);
   };
 
-  const context = { meals, loading, error, fetchMeals, mealCategories };
+  const changeCategory = (cat) => {
+    if (loading) return;
+    if (selectedCategory === cat) {
+      setSelectedCategory('');
+      fetchMeals();
+    }
+    setLoading(true);
+    getMealsByCategory(cat)
+    .then(handleFetchMealSuccess);
+    setSelectedCategory(cat);
+  };
+
+  const context = {
+    meals,
+    loading,
+    error,
+    fetchMeals,
+    mealCategories,
+    selectedCategory,
+    changeCategory,
+  };
 
   return (
     <GetMealsContext.Provider value={context}>

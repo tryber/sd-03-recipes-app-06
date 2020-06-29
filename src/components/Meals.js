@@ -18,8 +18,8 @@ function Meals() {
           meals.slice(0, 12).map((meal) => {
             const { idMeal, strMealThumb, strMeal, strCategory } = meal;
             return (
-              <div className="card">
-                <li key={idMeal}>
+              <div className="card" key={idMeal}>
+                <li>
                   <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
                   {strMeal} - {strCategory}
                 </li>
