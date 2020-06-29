@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { GetCocktailsContext } from '../context/getCocktails';
+import Context from '../context/Context';
 
 function Cocktails() {
   const {
@@ -7,7 +7,7 @@ function Cocktails() {
     loading,
     error,
     fetchCocktails,
-  } = useContext(GetCocktailsContext);
+  } = useContext(Context);
 
   useEffect(() => {
     fetchCocktails();
