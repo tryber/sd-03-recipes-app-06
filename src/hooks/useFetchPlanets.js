@@ -11,10 +11,10 @@ function useFetchPlanets() {
     const dataMeals = json.meals;
     setMeals([...dataMeals]);
     setLoading(false);
-  }
+  };
 
   useEffect(() => {
-  	if (loading) return;
+    if (loading) return;
     setLoading(true);
     getMeals().then(handleFetchMealSuccess);
 
@@ -31,7 +31,7 @@ function useFetchPlanets() {
       .then(handleFetchMealSuccess);
       setSelectedCategory(category);
     }
-  }
+  };
 
   return {
     meals,

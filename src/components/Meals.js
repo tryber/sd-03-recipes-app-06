@@ -4,7 +4,7 @@ import MealCategories from './MealCategories';
 
 function Meals() {
   const {
-    getMeals: { meals }, 
+    getMeals: { meals },
     loading,
     error,
   } = useContext(GetMealsContext);
