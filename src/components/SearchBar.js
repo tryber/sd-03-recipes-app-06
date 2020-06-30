@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { getMealByLetter, getMealByIngredients, getMealByName } from '../services/MealDBApi';
 import { getDrinkByLetter, getDrinkByIngredients, getDrinkByName } from '../services/DrinkDBApi';
 
@@ -36,6 +36,7 @@ const drinkSearch = async (filter, arg) => {
 };
 
 const SearchBar = () => {
+  const history = useHistory();
   const location = useLocation();
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
@@ -45,6 +46,9 @@ const SearchBar = () => {
     if (location.pathname.match(/comidas/g)) { received = await mealtSearch(selected, search); }
     if (location.pathname.match(/bebidas/g)) { received = await drinkSearch(selected, search); }
     console.log(received);
+    if (received.length === 1) {
+      history.push(`${location.pathname}/${received[0].idMeal}`);
+    }
   };
 
   return (
