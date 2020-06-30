@@ -40,12 +40,11 @@ const SearchBar = () => {
   const location = useLocation();
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
-
   const verifyReceived = (obj) => {
     if (location.pathname.match(/comidas/g)) {
       history.push(`${location.pathname}/${obj[0].idMeal}`);
     }
-    else history.push(`${location.pathname}/${obj[0].idMeal}`);
+    // else history.push(`${location.pathname}/${obj[0].idMeal}`);
   };
 
   const handleChange = async () => {
