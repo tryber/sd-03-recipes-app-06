@@ -43,7 +43,11 @@ const SearchBar = () => {
 
   const verifyReceived = (obj) => {
     if (obj.length === 1) {
-      history.push(`${location.pathname}/${obj[0].idMeal}`);
+      if (location.pathname.match(/comidas/g)) {
+        history.push(`${location.pathname}/${obj[0].idMeal}`);
+      } else {
+        history.push(`${location.pathname}/${obj[0].idDrink}`);
+      }
     }
   };
 
