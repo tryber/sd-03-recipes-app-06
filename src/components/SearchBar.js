@@ -3,7 +3,17 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { getMealByLetter, getMealByIngredients, getMealByName } from '../services/MealDBApi';
 import { getDrinkByLetter, getDrinkByIngredients, getDrinkByName } from '../services/DrinkDBApi';
 
+const fetches = {
+  name: getMealByName,
+  ingredient: getMealByIngredients,
+  letter: getMealByLetter,
+};
+
 const mealtSearch = async (filter, arg) => {
+  const getMeal = fetches[filter];
+  const result = await getMeal(arg).then((response) => response.meals);
+  return result;
+/*
   if (filter === 'name') {
     const result = await getMealByName(arg).then((response) => response.meals);
     return result;
@@ -17,6 +27,7 @@ const mealtSearch = async (filter, arg) => {
     alert('Sua busca deve conter somente 1 (um) caracter');
   }
   return null;
+*/
 };
 
 const drinkSearch = async (filter, arg) => {
