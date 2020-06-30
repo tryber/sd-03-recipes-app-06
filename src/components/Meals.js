@@ -6,11 +6,9 @@ function Meals() {
   const {
     getMeals: {
       meals,
-      loading,
     },
   } = useContext(GetMealsContext);
 
-  if (loading) return <div>Loading...</div>;
   return (
     <div>
       <MealCategories />

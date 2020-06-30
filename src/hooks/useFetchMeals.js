@@ -4,17 +4,14 @@ import { getMeals, getMealsByCategory } from '../services/MealDBApi';
 
 function useFetchMeals() {
   const [meals, setMeals] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(false);
 
   const handleFetchMealSuccess = (json) => {
     const dataMeals = json.meals;
     setMeals([...dataMeals]);
-    setLoading(false);
   };
 
   useEffect(() => {
-    setLoading(true);
     getMeals().then(handleFetchMealSuccess);
 
     return () => meals;

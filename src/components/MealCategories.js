@@ -3,14 +3,10 @@ import { GetMealsContext } from '../context/getMeals';
 
 function MealCategories() {
   const {
-    loading,
-    error,
     getCategories,
     getMeals: { getByCat },
   } = useContext(GetMealsContext);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
   return (
     <div id="mealsCategories">
       {
