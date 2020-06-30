@@ -7,13 +7,16 @@ const mealtSearch = async (filter, arg) => {
   if (filter === 'name') {
     const result = await getMealByName(arg).then((response) => response.meals);
     return result;
-  } else if (filter === 'ingredient') {
+  }
+  if (filter === 'ingredient') {
     const result = await getMealByIngredients(arg).then((response) => response.meals);
     return result;
-  } else if (filter === 'letter' && arg.length === 1) {
+  }
+  if (filter === 'letter' && arg.length === 1) {
     const result = await getMealByLetter(arg).then((response) => response.meals);
     return result;
-  } else if (filter === 'letter') {
+  }
+  if (filter === 'letter') {
     alert('Sua busca deve conter somente 1 (um) caracter');
   }
   return null;
@@ -46,14 +49,14 @@ const SearchBar = () => {
       if (location.pathname.match(/comidas/g))
         history.push(`${location.pathname}/${obj[0].idMeal}`);
       else history.push(`${location.pathname}/${obj[0].idMeal}`);
-    }    
+    }
   };
 
   const handleChange = async () => {
     let received;
-    if (location.pathname.match(/comidas/g)) { 
+    if (location.pathname.match(/comidas/g)) {
       received = await mealtSearch(selected, search);
-    } else { 
+    } else {
       received = await drinkSearch(selected, search);
     }
     verifyReceived(received);
