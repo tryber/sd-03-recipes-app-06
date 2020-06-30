@@ -45,9 +45,12 @@ const SearchBar = () => {
     let received;
     if (location.pathname.match(/comidas/g)) { received = await mealtSearch(selected, search); }
     if (location.pathname.match(/bebidas/g)) { received = await drinkSearch(selected, search); }
-    console.log(received);
-    if (received.length === 1) {
-      history.push(`${location.pathname}/${received[0].idMeal}`);
+    verifyReceived(received);
+  };
+
+  const verifyReceived = (obj) => {
+    if (obj.length === 1) {
+      history.push(`${location.pathname}/${obj[0].idMeal}`);
     }
   };
 
