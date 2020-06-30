@@ -49,8 +49,11 @@ const SearchBar = () => {
 
   const handleChange = async () => {
     let received;
-    if (location.pathname.match(/comidas/g)) { received = await mealtSearch(selected, search); }
-    else { received = await drinkSearch(selected, search); }
+    if (location.pathname.match(/comidas/g)) {
+      received = await mealtSearch(selected, search);
+    } else { 
+      received = await drinkSearch(selected, search);
+    }
     verifyReceived(received);
   };
 
