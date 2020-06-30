@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 import useGetCategories from '../hooks/useGetCategories';
 import useFetchMeals from '../hooks/useFetchMeals';
