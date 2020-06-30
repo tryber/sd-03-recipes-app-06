@@ -51,7 +51,7 @@ const SearchBar = () => {
     let received;
     if (location.pathname.match(/comidas/g)) {
       received = await mealtSearch(selected, search);
-    } else { 
+    } else {
       received = await drinkSearch(selected, search);
     }
     verifyReceived(received);
