@@ -17,7 +17,7 @@ function Meals() {
   return (
     <div id="meals">
       {
-        meals.map((meal) => {
+        meals.slice(0, 12).map((meal) => {
           const {
             idMeal,
             strMealThumb,
