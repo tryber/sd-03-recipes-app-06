@@ -1,8 +1,13 @@
 import React, { useEffect, useContext } from 'react';
-import { GetMealsContext } from '../context/getMeals';
+import Context from '../context/Context';
 
 function Meals() {
-  const { meals, loading, error, fetchMeals } = useContext(GetMealsContext);
+  const {
+    meals,
+    loading,
+    error,
+    fetchMeals,
+  } = useContext(Context);
 
   useEffect(() => {
     fetchMeals();
@@ -13,7 +18,12 @@ function Meals() {
     <div id="meals">
       {
         meals.map((meal) => {
-          const { idMeal, strMealThumb, strMeal, strCategory } = meal;
+          const {
+            idMeal,
+            strMealThumb,
+            strMeal,
+            strCategory,
+          } = meal;
           return (
             <li key={idMeal}>
               <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
