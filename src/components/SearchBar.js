@@ -19,22 +19,22 @@ const mealtSearch = async (filter, arg) => {
   const getMeal = fetchesMeals[filter];
   if (filter === 'letter' && arg.length > 1) {
     alert('Sua busca deve conter somente 1 (um) caracter');
-  }
-  else {
+  } else {
     const result = await getMeal(arg).then((response) => response.meals);
     return result;
   }
+  return null;
 };
 
 const drinkSearch = async (filter, arg) => {
   const getDrink = fetchesDrinks[filter];
   if (filter === 'letter' && arg.length > 1) {
     alert('Sua busca deve conter somente 1 (um) caracter');
-  }
-  else {
+  } else {
     const result = await getDrink(arg).then((response) => response.drinks);
     return result;
   }
+  return null;
 };
 
 const SearchBar = () => {
