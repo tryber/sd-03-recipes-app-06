@@ -1,0 +1,15 @@
+.headerClass {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.headerBar {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  height: 128px;
+  justify-content: space-between;
+  width: 360px;
+}
