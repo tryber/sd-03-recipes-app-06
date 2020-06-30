@@ -23,7 +23,7 @@ const mealtSearch = async (filter, arg) => {
     const result = await getMeal(arg).then((response) => response.meals);
     return result;
   }
-  return null;
+  return [];
 };
 
 const drinkSearch = async (filter, arg) => {
@@ -34,7 +34,7 @@ const drinkSearch = async (filter, arg) => {
     const result = await getDrink(arg).then((response) => response.drinks);
     return result;
   }
-  return null;
+  return [];
 };
 
 const SearchBar = () => {
@@ -42,7 +42,6 @@ const SearchBar = () => {
   const location = useLocation();
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
-
   const verifyReceived = (obj, type) => {
     history.push(`${location.pathname}/${obj[0][type]}`);
   };
@@ -55,11 +54,12 @@ const SearchBar = () => {
       received = await drinkSearch(selected, search);
       type = 'idDrink';
     }
-    if (received.length === 1) {
+    if (!received) {
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    } else if (received.length === 1) {
       verifyReceived(received, type);
     }
   };
-
   return (
     <div>
       <input
