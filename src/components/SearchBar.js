@@ -43,19 +43,20 @@ const SearchBar = () => {
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
 
-  const verifyReceived = (obj) => {
-    history.push(`${location.pathname}/${obj[0].idMeal}`);
+  const verifyReceived = (obj, type) => {
+    history.push(`${location.pathname}/${obj[0][type]}`);
   };
 
   const handleChange = async () => {
-    let received;
+    let received; let type = 'idMeal';
     if (location.pathname.match(/comidas/g)) {
       received = await mealtSearch(selected, search);
     } else {
       received = await drinkSearch(selected, search);
+      type = 'idDrink';
     }
     if (received.length === 1) {
-      verifyReceived(received);
+      verifyReceived(received, type);
     }
   };
 
