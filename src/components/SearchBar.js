@@ -17,14 +17,24 @@ const fetchesDrinks = {
 
 const mealtSearch = async (filter, arg) => {
   const getMeal = fetchesMeals[filter];
-  const result = await getMeal(arg).then((response) => response.meals);
-  return result;
+  if (filter === 'letter' && arg.length > 1) {
+    alert('Sua busca deve conter somente 1 (um) caracter');
+  }
+  else {
+    const result = await getMeal(arg).then((response) => response.meals);
+    return result;
+  }
 };
 
 const drinkSearch = async (filter, arg) => {
   const getDrink = fetchesDrinks[filter];
-  const result = await getDrink(arg).then((response) => response.drinks);
-  return result;
+  if (filter === 'letter' && arg.length > 1) {
+    alert('Sua busca deve conter somente 1 (um) caracter');
+  }
+  else {
+    const result = await getDrink(arg).then((response) => response.drinks);
+    return result;
+  }
 };
 
 const SearchBar = () => {
@@ -32,11 +42,14 @@ const SearchBar = () => {
   const location = useLocation();
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
+
   const verifyReceived = (obj) => {
+  /*
     if (location.pathname.match(/comidas/g)) {
       history.push(`${location.pathname}/${obj[0].idMeal}`);
     }
-    // else history.push(`${location.pathname}/${obj[0].idMeal}`);
+    else history.push(`${location.pathname}/${obj[0].idDrink}`);
+  */
   };
 
   const handleChange = async () => {
@@ -46,9 +59,7 @@ const SearchBar = () => {
     } else {
       received = await drinkSearch(selected, search);
     }
-    if (received.length === 1) {
-      verifyReceived(received);
-    }
+    verifyReceived(received);
   };
 
   return (
