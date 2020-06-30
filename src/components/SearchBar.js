@@ -13,9 +13,10 @@ const mealtSearch = async (filter, arg) => {
   } else if (filter === 'letter' && arg.length === 1) {
     const result = await getMealByLetter(arg).then((response) => response.meals);
     return result;
-  } else {
+  } else if (filter === 'letter') {
     alert('Sua busca deve conter somente 1 (um) caracter');
   }
+  return null;
 };
 
 const drinkSearch = async (filter, arg) => {
@@ -31,6 +32,7 @@ const drinkSearch = async (filter, arg) => {
   } else if (filter === 'letter') {
     alert('Sua busca deve conter somente 1 (um) caracter');
   }
+  return null;
 };
 
 const SearchBar = () => {
