@@ -8,7 +8,7 @@ const SearchBar = () => {
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
 
-  const mealtSearch = async (filter, arg) => {
+  const mealtSearch = async (filter, arg) => { 
     if (filter === 'name') {
       const result = await getMealByName(arg).then((response) => response.meals);
       console.log(result);
@@ -18,7 +18,7 @@ const SearchBar = () => {
     } else if (filter === 'letter' && arg.length === 1) {
       const result = await getMealByLetter(arg).then((response) => response.meals);
       console.log(result);
-    } else if (filter === 'letter') {
+    } else {
       alert('Sua busca deve conter somente 1 (um) caracter');
     }
   };
@@ -37,7 +37,7 @@ const SearchBar = () => {
       alert('Sua busca deve conter somente 1 (um) caracter');
     }
   };
-*/  
+*/
   const handleChange = () => {
     if (location.pathname.match(/comidas/g)) { mealtSearch(selected, search); }
     // if (location.pathname.match(/bebidas/g)) { drinkSearch(selected, search); }
