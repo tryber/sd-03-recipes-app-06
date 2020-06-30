@@ -43,9 +43,12 @@ const SearchBar = () => {
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
   const verifyReceived = (obj, type) => {
-    history.push(`${location.pathname}/${obj[0][type]}`);
+    if (!received) {
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    } else if (received.length === 1) {
+      history.push(`${location.pathname}/${obj[0][type]}`);
+    }
   };
-
   const handleChange = async () => {
     let received; let type = 'idMeal';
     if (location.pathname.match(/comidas/g)) {
@@ -54,11 +57,7 @@ const SearchBar = () => {
       received = await drinkSearch(selected, search);
       type = 'idDrink';
     }
-    if (!received) {
-      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    } else if (received.length === 1) {
-      verifyReceived(received, type);
-    }
+    verifyReceived(received, type);
   };
   return (
     <div>
