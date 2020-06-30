@@ -41,17 +41,17 @@ const SearchBar = () => {
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
 
-  const handleChange = async () => {
-    let received;
-    if (location.pathname.match(/comidas/g)) { received = await mealtSearch(selected, search); }
-    if (location.pathname.match(/bebidas/g)) { received = await drinkSearch(selected, search); }
-    verifyReceived(received);
-  };
-
   const verifyReceived = (obj) => {
     if (obj.length === 1) {
       history.push(`${location.pathname}/${obj[0].idMeal}`);
     }
+  };
+
+  const handleChange = async () => {
+    let received;
+    if (location.pathname.match(/comidas/g)) { received = await mealtSearch(selected, search); }
+    else { received = await drinkSearch(selected, search); }
+    verifyReceived(received);
   };
 
   return (
