@@ -3,47 +3,28 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { getMealByLetter, getMealByIngredients, getMealByName } from '../services/MealDBApi';
 import { getDrinkByLetter, getDrinkByIngredients, getDrinkByName } from '../services/DrinkDBApi';
 
-const fetches = {
+const fetchesMeals = {
   name: getMealByName,
   ingredient: getMealByIngredients,
   letter: getMealByLetter,
 };
 
+const fetchesDrinks = {
+  name: getDrinkByName,
+  ingredient: getDrinkByIngredients,
+  letter: getDrinkByLetter,
+};
+
 const mealtSearch = async (filter, arg) => {
-  const getMeal = fetches[filter];
+  const getMeal = fetchesMeals[filter];
   const result = await getMeal(arg).then((response) => response.meals);
   return result;
-/*
-  if (filter === 'name') {
-    const result = await getMealByName(arg).then((response) => response.meals);
-    return result;
-  } else if (filter === 'ingredient') {
-    const result = await getMealByIngredients(arg).then((response) => response.meals);
-    return result;
-  } else if (filter === 'letter' && arg.length === 1) {
-    const result = await getMealByLetter(arg).then((response) => response.meals);
-    return result;
-  } else if (filter === 'letter') {
-    alert('Sua busca deve conter somente 1 (um) caracter');
-  }
-  return null;
-*/
 };
 
 const drinkSearch = async (filter, arg) => {
-  if (filter === 'name') {
-    const result = await getDrinkByName(arg).then((response) => response.drinks);
-    return result;
-  } else if (filter === 'ingredient') {
-    const result = await getDrinkByIngredients(arg).then((response) => response.drinks);
-    return result;
-  } else if (filter === 'letter' && arg.length === 1) {
-    const result = await getDrinkByLetter(arg).then((response) => response.drinks);
-    return result;
-  } else if (filter === 'letter') {
-    alert('Sua busca deve conter somente 1 (um) caracter');
-  }
-  return null;
+  const getDrink = fetchesDrinks[filter];
+  const result = await getDrink(arg).then((response) => response.drinks);
+  return result;
 };
 
 const SearchBar = () => {
