@@ -52,6 +52,6 @@ function MealDetails(props) {
 
 export default MealDetails;
 
-MovieDetails.propTypes = {
-  props: PropTypes.any.isRequired,
+MealDetails.propTypes = {
+  match: PropTypes.any.isRequired,
 };
