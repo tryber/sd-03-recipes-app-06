@@ -1,33 +1,18 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
-import getMealByLetter from '../services/MealDBApi';
+import useGetCategories from '../hooks/useGetCategories';
+import useFetchMeals from '../hooks/useFetchMeals';
 
 const GetMealsContext = createContext();
 
 const Provider = ({ children }) => {
-  const [meals, setMeals] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const getCategories = useGetCategories();
+  const getMeals = useFetchMeals();
 
-  const handleFetchMealSuccess = (json) => {
-    const dataMeals = json.meals;
-    setMeals([...dataMeals]);
-    setLoading(false);
+  const context = {
+    getMeals,
+    getCategories,
   };
-
-  const handleFetchMealError = (err) => {
-    setError(err);
-    setLoading(false);
-  };
-
-  const fetchMeals = () => {
-    if (loading) return;
-    setLoading(true);
-    getMealByLetter()
-    .then(handleFetchMealSuccess, handleFetchMealError);
-  };
-
-  const context = { meals, loading, error, fetchMeals };
 
   return (
     <GetMealsContext.Provider value={context}>
