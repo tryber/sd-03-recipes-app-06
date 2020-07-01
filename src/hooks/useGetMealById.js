@@ -7,7 +7,7 @@ function useGetMealById() {
   const [loading, setLoading] = useState(false);
 
   const handleFetchMealSuccess = (json) => {
-    if(loading) return;
+    if (loading) return;
     setMeal([...json.meals]);
     setLoading(false);
   };
@@ -15,7 +15,7 @@ function useGetMealById() {
   const handleSetId = (id) => {
     setLoading(true);
     getMealDetailsById(id).then(handleFetchMealSuccess);
-  }
+  };
 
   return {
     meal,

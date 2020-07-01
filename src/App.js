@@ -12,7 +12,10 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/comidas" component={Meals} />
-            <Route exact path="/comidas/:id" render={({ match }) => <MealDetails match={match} />} />
+            <Route
+              exact path="/comidas/:id" 
+              render={({ match }) => <MealDetails match={match} />}
+            />
           </Switch>
         </Router>
       </div>

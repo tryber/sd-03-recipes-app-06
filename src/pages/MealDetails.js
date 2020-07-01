@@ -1,23 +1,24 @@
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { GetMealsContext } from '../context/getMeals';
 
 function MealDetails(props) {
   const { id } = props.match.params;
   const {
-    getMealById: { meal, loading,handleSetId }
+    getMealById: { meal, loading, handleSetId },
   } = useContext(GetMealsContext);
 
   useEffect(() => {
     handleSetId(id);
   }, []);
 
-  if(loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
       {
         meal.map((el) => {
-          const { idMeal,strMealThumb, strMeal, strCategory, strInstructions, strYoutube } = el;
+          const { idMeal, strMealThumb, strMeal, strCategory, strInstructions, strYoutube } = el;
           return (
             <div className="card" key={idMeal}>
               <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
@@ -32,11 +33,14 @@ function MealDetails(props) {
               </div>
               <div>
                 <h2>Vídeo do Youtube</h2>
-                <iframe id="ytplayer" type="text/html" width="640" height="360"
-                  src={strYoutube.replace('watch?v=','embed/')}
+                <iframe 
+                  id="ytplayer"
+                  type="text/html"
+                  width="640"
+                  height="360"
+                  src={strYoutube.replace('watch?v=', 'embed/')}
                   frameBorder="0"
                 />
-                
               </div>
             </div>
           );
@@ -47,3 +51,7 @@ function MealDetails(props) {
 }
 
 export default MealDetails;
+
+MovieDetails.propTypes = {
+  props: PropTypes.any.isRequired,
+};
