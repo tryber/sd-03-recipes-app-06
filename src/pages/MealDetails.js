@@ -33,7 +33,7 @@ function MealDetails(props) {
               </div>
               <div>
                 <h2>Vídeo do Youtube</h2>
-                <iframe 
+                <iframe
                   id="ytplayer"
                   type="text/html"
                   width="640"
@@ -53,5 +53,5 @@ function MealDetails(props) {
 export default MealDetails;
 
 MealDetails.propTypes = {
-  match: PropTypes.any.isRequired,
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
