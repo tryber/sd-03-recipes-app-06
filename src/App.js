@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Meals from './components/Meals';
 import cocktails from './components/Cocktails';
-import LoginPage from './components/LoginPage/LoginPage';
+import LoginPage from './pages/LoginPage';
 
 import './App.css';
 

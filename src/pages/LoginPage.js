@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginContainer from './LoginContainer';
-import ButtonLogin from './ButtonLogin';
+import LoginContainer from '../components/LoginContainer';
+import ButtonLogin from '../components/ButtonLogin';
 
 const loginApp = () => (
   <div className="App">
