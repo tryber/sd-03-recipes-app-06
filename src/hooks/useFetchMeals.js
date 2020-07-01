@@ -4,7 +4,7 @@ import { getMeals, getMealsByCategory } from '../services/MealDBApi';
 
 function useFetchMeals() {
   const [meals, setMeals] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const handleFetchMealSuccess = (json) => {
     const dataMeals = json.meals;
@@ -18,13 +18,14 @@ function useFetchMeals() {
   }, []);
 
   const getByCat = (category) => {
-    if (category === selectedCategory) {
+    if (category === selectedCategory || category === 'all') {
       setSelectedCategory('');
       getMeals().then(handleFetchMealSuccess);
+    } else {
+      getMealsByCategory(category)
+      .then(handleFetchMealSuccess);
+      setSelectedCategory(category);
     }
-    getMealsByCategory(category)
-    .then(handleFetchMealSuccess);
-    setSelectedCategory(category);
   };
 
   return {

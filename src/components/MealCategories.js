@@ -9,24 +9,35 @@ function MealCategories() {
 
   return (
     <div id="mealsCategories">
-      {
-        getCategories.slice(0, 5).map(({ strCategory }) => {
-          const testId = `${strCategory}-category-filter`;
-          return (
-            <div className="category" key={strCategory}>
-              <li>
-                <button
-                  value={strCategory}
-                  data-testid={testId}
-                  onClick={(e) => getByCat(e.target.value)}
-                >
-                  {strCategory}
-                </button>
-              </li>
-            </div>
-          );
-        })
-      }
+      <ul>
+        <li>
+          <button
+            value=""
+            data-testid="filter-by-all-btn"
+            onClick={() => getByCat('all')}
+          >
+            All
+          </button>
+        </li>
+        {
+          getCategories.slice(0, 5).map(({ strCategory }) => {
+            const testId = `${strCategory}-category-filter`;
+            return (
+              <div className="category" key={strCategory}>
+                <li>
+                  <button
+                    value={strCategory}
+                    data-testid={testId}
+                    onClick={(e) => getByCat(e.target.value)}
+                  >
+                    {strCategory}
+                  </button>
+                </li>
+              </div>
+            );
+          })
+        }
+      </ul>
     </div>
   );
 }
