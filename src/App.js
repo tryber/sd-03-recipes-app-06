@@ -21,18 +21,20 @@ function App() {
   return (
     <ProviderSearch>
       <Switch>
-        <Route exact path="/" component={LoginPage} />
-        <Route path="/comidas" component={Comidas} />
-        <Route path="/bebidas" component={Bebidas} />
-        <Route path="/explorar/comidas/ingredientes" component={ExplorarComidasIngredientes} />
-        <Route path="/explorar/bebidas/ingredientes" component={ExplorarBebidasIngredientes} />
-        <Route path="/explorar/comidas/area" component={ExplorarComidasArea} />
-        <Route path="/explorar/comidas" component={ExplorarComidas} />
-        <Route path="/explorar/bebidas" component={ExplorarBebidas} />
-        <Route path="/explorar" component={Explorar} />
-        <Route path="/perfil" component={Perfil} />
-        <Route path="/receitas-feitas" component={ReceitasFeitas} />
-        <Route path="/receitas-favoritas" component={ReceitasFavoritas} />
+        <Router>
+          <Route exact path="/" component={LoginPage} />
+          <Route path="/comidas" component={Comidas} />
+          <Route path="/bebidas" component={Bebidas} />
+          <Route path="/explorar/comidas/ingredientes" component={ExplorarComidasIngredientes} />
+          <Route path="/explorar/bebidas/ingredientes" component={ExplorarBebidasIngredientes} />
+          <Route path="/explorar/comidas/area" component={ExplorarComidasArea} />
+          <Route path="/explorar/comidas" component={ExplorarComidas} />
+          <Route path="/explorar/bebidas" component={ExplorarBebidas} />
+          <Route path="/explorar" component={Explorar} />
+          <Route path="/perfil" component={Perfil} />
+          <Route path="/receitas-feitas" component={ReceitasFeitas} />
+          <Route path="/receitas-favoritas" component={ReceitasFavoritas} />
+        </Router>
       </Switch>
     </ProviderSearch>
   );

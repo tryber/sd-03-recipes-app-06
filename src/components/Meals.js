@@ -8,7 +8,7 @@ function Meals() {
     error,
     fetchMeals,
   } = useContext(Context);
-  import React, { useContext } from 'react';
+  
   import { GetMealsContext } from '../context/getMeals';
   import MealCategories from './MealCategories';
 
