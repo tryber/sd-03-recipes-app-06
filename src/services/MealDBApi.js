@@ -1,6 +1,3 @@
-const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
-
-<<<<<<< HEAD
 const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 const getMeals = () => fetch(BASE_URL).then((response) => response
@@ -16,7 +13,6 @@ const getMealsByCategory = (cat) => fetch(`https://www.themealdb.com/api/json/v1
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
 export { getMeals, getMealsCategories, getMealsByCategory };
-=======
 export const getMealByLetter = (letter) => fetch(`${BASE_URL}${letter}`).then((response) => response
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
@@ -35,4 +31,3 @@ export const getMealByName = (name) =>
     .json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
->>>>>>> d40a1caacb6d1d2449772dc5ac02fca7a0f9d887
