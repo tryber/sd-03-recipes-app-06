@@ -35,11 +35,11 @@ const SearchBar = () => {
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
   const verifyReceived = (obj, type) => {
-    const reconf = { comidas: 'idMeal', bebidas: 'idDrink'};
+    const reconf = { comidas: 'idMeal', bebidas: 'idDrink' };
     history.push(`${location.pathname}/${obj[0][reconf[type]]}`);
   };
   const handleChange = async () => {
-    let received; let type = location.pathname.slice(1,8); const route = location.pathname;
+    const received; const type = location.pathname.slice(1, 8); const route = location.pathname;
     received = await searchMD(selected, search, route);
     if (!received) {
       alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
