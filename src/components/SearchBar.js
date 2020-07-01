@@ -27,7 +27,7 @@ const searchMD = async (filter, arg, location) => {
     const result = await getDrink(arg).then((response) => response.drinks);
     return result;
   }
-  return;
+  return null;
 };
 
 const SearchBar = () => {
