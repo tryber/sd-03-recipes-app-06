@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { GetMealsContext } from '../context/getMeals';
 import MealCategories from './MealCategories';
 
@@ -18,10 +19,12 @@ function Meals() {
             const { idMeal, strMealThumb, strMeal, strCategory } = meal;
             return (
               <div className="card" key={idMeal}>
-                <li>
-                  <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
-                  {strMeal} - {strCategory}
-                </li>
+                <Link to={`comidas/${idMeal}`}>
+                  <li>
+                    <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
+                    {strMeal} - {strCategory}
+                  </li>
+                </Link>
               </div>
             );
           })
