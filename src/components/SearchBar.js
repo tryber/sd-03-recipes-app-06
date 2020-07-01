@@ -27,7 +27,7 @@ const searchMD = async (filter, arg, location) => {
     const result = await getDrink(arg).then((response) => response.drinks);
     return result;
   }
-  return null;
+  return undefined;
 };
 
 const SearchBar = () => {
@@ -39,10 +39,10 @@ const SearchBar = () => {
     history.push(`${location.pathname}/${obj[0][reconf[type]]}`);
   };
   const handleChange = async () => {
-    const received = [];
+    let received = [];
     const type = location.pathname.slice(1, 8);
     const route = location.pathname;
-    received.push(await searchMD(selected, search, route));
+    received = await searchMD(selected, search, route);
     if (!received) {
       alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     } else if (received.length === 1) {
