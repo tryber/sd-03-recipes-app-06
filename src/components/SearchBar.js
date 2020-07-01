@@ -15,22 +15,15 @@ const fetchesDrinks = {
   letter: getDrinkByLetter,
 };
 
-const mealtSearch = async (filter, arg) => {
+const searchMD = async (filter, arg, location) => {
   const getMeal = fetchesMeals[filter];
-  if (filter === 'letter' && arg.length > 1) {
-    alert('Sua busca deve conter somente 1 (um) caracter');
-  } else {
-    const result = await getMeal(arg).then((response) => response.meals);
-    return result;
-  }
-  return [];
-};
-
-const drinkSearch = async (filter, arg) => {
   const getDrink = fetchesDrinks[filter];
   if (filter === 'letter' && arg.length > 1) {
     alert('Sua busca deve conter somente 1 (um) caracter');
-  } else {
+  } else if (location.match(/comidas/g)) {
+    const result = await getMeal(arg).then((response) => response.meals);
+    return result;
+  } else if (location.match(/bebidas/g)) {
     const result = await getDrink(arg).then((response) => response.drinks);
     return result;
   }
@@ -38,25 +31,19 @@ const drinkSearch = async (filter, arg) => {
 };
 
 const SearchBar = () => {
-  const history = useHistory();
-  const location = useLocation();
+  const history = useHistory(); const location = useLocation();
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
   const verifyReceived = (obj, type) => {
-    history.push(`${location.pathname}/${obj[0][type]}`);
+    const reconf = { comidas: 'idMeal', bebidas: 'idDrink'};
+    history.push(`${location.pathname}/${obj[0][reconf[type]]}`);
   };
   const handleChange = async () => {
-    let received; let type = 'idMeal';
-    if (location.pathname.match(/comidas/g)) {
-      received = await mealtSearch(selected, search);
-    } else {
-      received = await drinkSearch(selected, search);
-      type = 'idDrink';
-    }
+    let received; let type = location.pathname.slice(1,8); const route = location.pathname;
+    received = await searchMD(selected, search, route);
     if (!received) {
-      return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    } 
-    if (received.length === 1) {
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    } else if (received.length === 1) {
       verifyReceived(received, type);
     }
   };
