@@ -1,8 +1,13 @@
 import React, { useEffect, useContext } from 'react';
-import { GetMealsContext } from '../context/getMeals';
+import Context from '../context/Context';
 
 function Meals() {
-  const { meals, loading, error, fetchMeals } = useContext(GetMealsContext);
+  const {
+    meals,
+    loading,
+    error,
+    fetchMeals,
+  } = useContext(Context);
 
   useEffect(() => {
     fetchMeals();
@@ -12,12 +17,19 @@ function Meals() {
   return (
     <div id="meals">
       {
-        meals.map((meal) => {
-          const { idMeal, strMealThumb, strMeal, strCategory } = meal;
+        meals.slice(0, 12).map((meal) => {
+          const {
+            idMeal,
+            strMealThumb,
+            strMeal,
+            strCategory,
+          } = meal;
           return (
             <li key={idMeal}>
               <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
-              {strMeal} - {strCategory}
+              {strMeal}
+              -
+              {strCategory}
             </li>
           );
         })

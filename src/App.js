@@ -1,15 +1,19 @@
 import React from 'react';
-import { Provider } from './context/getMeals';
+import { Switch, Route } from 'react-router-dom';
+
 import Meals from './components/Meals';
+import cocktails from './components/Cocktails';
+import LoginPage from './pages/LoginPage';
+
 import './App.css';
 
 function App() {
   return (
-    <Provider>
-      <div id="meals">
-        <Meals />
-      </div>
-    </Provider>
+    <Switch>
+      <Route exact path="/" component={LoginPage} />
+      <Route path="/comidas" component={Meals} />
+      <Route path="/bebidas" component={cocktails} />
+    </Switch>
   );
 }
 
