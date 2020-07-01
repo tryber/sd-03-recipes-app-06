@@ -1,11 +1,17 @@
+#cocktails {
+  height: 640px;
+  overflow: auto;
+  width: 380px;
+}
+
 #meals {
-  height: 100vh;
-  width: 100%;
+  height: 640px;
+  width: 380px;
   background: #0fa36b;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-family: sans-serif;
   color: #464646;
 }
