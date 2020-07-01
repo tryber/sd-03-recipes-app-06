@@ -39,7 +39,7 @@ const SearchBar = () => {
     history.push(`${location.pathname}/${obj[0][reconf[type]]}`);
   };
   const handleChange = async () => {
-    const received;
+    let received;
     const type = location.pathname.slice(1, 8);
     const route = location.pathname;
     received = await searchMD(selected, search, route);
