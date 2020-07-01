@@ -14,7 +14,7 @@ const ButtonLogin = () => {
   const regex = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
   return (
     <div>
-      <Link to="/bebidas">
+      <Link to="/comidas">
         <button
           type="button"
           data-testid="login-submit-btn"

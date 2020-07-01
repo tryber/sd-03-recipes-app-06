@@ -11,21 +11,21 @@ function Footer() {
       <Link
         className="footer-drinks"
         data-testid="drinks-bottom-btn"
-        to="/bebidas/"
+        to="/bebidas"
       >
         <img src={Drink} alt="Bebidas" />
       </Link>
       <Link
         className="footer-explore"
         data-testid="explore-bottom-btn"
-        to="/explorar/"
+        to="/explorar"
       >
         <img src={Search} alt="Exploração" />
       </Link>
       <Link
         className="footer-fork"
         data-testid="food-bottom-btn"
-        to="/comidas/"
+        to="/comidas"
       >
         <img src={Fork} alt="Comidas" />
       </Link>
