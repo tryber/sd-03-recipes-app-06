@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import Context from '../context/Context';
+import { GetMealsContext } from '../context/getMeals';
+import MealCategories from './MealCategories';
 
 function Meals() {
   const {
@@ -9,11 +11,6 @@ function Meals() {
     fetchMeals,
   } = useContext(Context);
   
-  import { GetMealsContext } from '../context/getMeals';
-  import MealCategories from './MealCategories';
-
-
-
   if (loading) return <div>Loading...</div>;
   return (
     <div id="meals">

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Provider } from './context/getMeals';
 import LoginPage from './components/LoginPage/LoginPage';
 import ProviderSearch from './context/ProviderSearch';
 import Comidas from './pages/Comidas';
@@ -11,7 +10,6 @@ import ExplorarComidas from './pages/ExplorarComidas';
 import ExplorarBebidasIngredientes from './pages/ExplorarBebidasIngredientes';
 import ExplorarComidasIngredientes from './pages/ExplorarComidasIngredientes';
 import ExplorarComidasArea from './pages/ExplorarComidasArea';
-import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
