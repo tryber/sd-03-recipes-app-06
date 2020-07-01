@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Context from '../../context/Context';
+import Context from '../context/Context';
 
 const handleSubmit = (email) => {
   localStorage.setItem('mealsToken', '1');
