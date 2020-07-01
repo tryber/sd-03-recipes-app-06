@@ -14,7 +14,7 @@ function App() {
             <Route exact path="/comidas" component={Meals} />
             <Route
               exact
-              path="/comidas/:id" 
+              path="/comidas/:id"
               render={({ match }) => <MealDetails match={match} />}
             />
           </Switch>
