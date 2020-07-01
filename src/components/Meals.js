@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useContext } from 'react';
 import Context from '../context/Context';
 
@@ -8,13 +9,23 @@ function Meals() {
     error,
     fetchMeals,
   } = useContext(Context);
+=======
+import React, { useContext } from 'react';
+import { GetMealsContext } from '../context/getMeals';
+import MealCategories from './MealCategories';
 
-  useEffect(() => {
-    fetchMeals();
-  }, []);
+function Meals() {
+  const {
+    getMeals: {
+      meals,
+      loading,
+    },
+  } = useContext(GetMealsContext);
+>>>>>>> 705c86d73e70af64c8258dd6e821fda6920a9e56
+
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
   return (
+<<<<<<< HEAD
     <div id="meals">
       {
         meals.map((meal) => {
@@ -32,6 +43,25 @@ function Meals() {
           );
         })
       }
+=======
+    <div>
+      <MealCategories />
+      <ul>
+        {
+          meals.slice(0, 12).map((meal) => {
+            const { idMeal, strMealThumb, strMeal, strCategory } = meal;
+            return (
+              <div className="card" key={idMeal}>
+                <li>
+                  <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
+                  {strMeal} - {strCategory}
+                </li>
+              </div>
+            );
+          })
+        }
+      </ul>
+>>>>>>> 705c86d73e70af64c8258dd6e821fda6920a9e56
     </div>
   );
 }
