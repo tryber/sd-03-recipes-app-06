@@ -1,16 +1,10 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import Context from '../context/Context';
-import { GetMealsContext } from '../context/getMeals';
 import MealCategories from './MealCategories';
-
-
 
 function Meals() {
   const {
     meals,
-    loading,
-    error,
-    fetchMeals,
   } = useContext(Context);
   <div>
     if (loading) return <div>Loading...</div>;
@@ -51,7 +45,7 @@ function Meals() {
         }
       </ul>
     </div>
-  </div>
+  </div>;
 }
 
 export default Meals;
