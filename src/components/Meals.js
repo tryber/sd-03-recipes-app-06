@@ -6,7 +6,7 @@ function Meals() {
   const {
     meals,
     loading,
-    error,
+    // error,
     fetchMeals,
   } = useContext(Context);
 
