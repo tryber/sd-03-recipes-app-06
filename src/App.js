@@ -2,8 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from './context/getMeals';
 import LoginPage from './components/LoginPage/LoginPage';
-
-import { Switch, Route } from 'react-router-dom';
 import ProviderSearch from './context/ProviderSearch';
 import Comidas from './pages/Comidas';
 import Bebidas from './pages/Bebidas';

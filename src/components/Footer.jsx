@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Drink from '../images/drinkIcon.svg';
-import Search from '../images/searchIcon.svg';
+import Search from '../images/exploreIcon.svg';
 import Fork from '../images/mealIcon.svg';
 import './Footer.css';
 

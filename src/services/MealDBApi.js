@@ -30,4 +30,3 @@ export const getMealByName = (name) =>
   fetch(`${NAME_URL}${name}`).then((response) => response
     .json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
-
