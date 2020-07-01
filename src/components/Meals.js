@@ -3,6 +3,8 @@ import Context from '../context/Context';
 import { GetMealsContext } from '../context/getMeals';
 import MealCategories from './MealCategories';
 
+
+
 function Meals() {
   const {
     meals,
@@ -10,10 +12,10 @@ function Meals() {
     error,
     fetchMeals,
   } = useContext(Context);
-  
-  if (loading) return <div>Loading...</div>;
-  return (
-    <div id="meals">
+  <div>
+    if (loading) return <div>Loading...</div>;
+    return (
+      <div id="meals">
       {
         meals.map((meal) => {
           const {
@@ -49,6 +51,7 @@ function Meals() {
         }
       </ul>
     </div>
+  </div>
 }
 
 export default Meals;
