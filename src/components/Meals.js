@@ -14,7 +14,7 @@ function Meals() {
     fetchMeals();
   }, []);
   if (loading) return <div><Header /><div>Loading...</div></div>;
-  if (error) return <div><Header /><div>{error}</div></div>;
+  // if (error) return <div><Header /><div>{error}</div></div>;
   return (
     <div id="meals">
       <Header />
