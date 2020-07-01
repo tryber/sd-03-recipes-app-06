@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from './context/getMeals';
-import Meals from './components/Meals';
-import cocktails from './components/Cocktails';
 import LoginPage from './components/LoginPage/LoginPage';
 
+import { Switch, Route } from 'react-router-dom';
 import ProviderSearch from './context/ProviderSearch';
 import Comidas from './pages/Comidas';
 import Bebidas from './pages/Bebidas';
@@ -22,12 +21,11 @@ import './App.css';
 
 function App() {
   return (
-
     <ProviderSearch>
       <Switch>
         <Route exact path="/" component={LoginPage} />
-        <Route path="/comidas" component={Meals} />
-        <Route path="/bebidas" component={cocktails} />
+        <Route path="/comidas" component={Comidas} />
+        <Route path="/bebidas" component={Bebidas} />
         <Route path="/explorar/comidas/ingredientes" component={ExplorarComidasIngredientes} />
         <Route path="/explorar/bebidas/ingredientes" component={ExplorarBebidasIngredientes} />
         <Route path="/explorar/comidas/area" component={ExplorarComidasArea} />

@@ -4,10 +4,12 @@ import SearchContext from './SearchContext';
 
 const ProviderSearch = ({ children }) => {
   const [showBar, setShowBar] = useState(false);
-
+  const [redirect, setRedirect] = useState(false);
   const contextValue = {
     showBar,
     setShowBar,
+    redirect,
+    setRedirect,
   };
 
   return (

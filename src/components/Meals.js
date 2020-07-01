@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useContext } from 'react';
 import Context from '../context/Context';
 
@@ -9,23 +8,14 @@ function Meals() {
     error,
     fetchMeals,
   } = useContext(Context);
-=======
-import React, { useContext } from 'react';
-import { GetMealsContext } from '../context/getMeals';
-import MealCategories from './MealCategories';
+  import React, { useContext } from 'react';
+  import { GetMealsContext } from '../context/getMeals';
+  import MealCategories from './MealCategories';
 
-function Meals() {
-  const {
-    getMeals: {
-      meals,
-      loading,
-    },
-  } = useContext(GetMealsContext);
->>>>>>> 705c86d73e70af64c8258dd6e821fda6920a9e56
+
 
   if (loading) return <div>Loading...</div>;
   return (
-<<<<<<< HEAD
     <div id="meals">
       {
         meals.map((meal) => {
@@ -43,7 +33,7 @@ function Meals() {
           );
         })
       }
-=======
+    </div>
     <div>
       <MealCategories />
       <ul>
@@ -61,9 +51,7 @@ function Meals() {
           })
         }
       </ul>
->>>>>>> 705c86d73e70af64c8258dd6e821fda6920a9e56
     </div>
-  );
 }
 
 export default Meals;
