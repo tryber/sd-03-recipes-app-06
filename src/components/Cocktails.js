@@ -26,7 +26,7 @@ function Cocktails() {
             strDrinkThumb,
           } = drinks;
           return (
-            <li key={idDrink} id="list">
+            <li key={idDrink}>
               <img src={strDrinkThumb} width="120px" height="150px" alt="Cocktails Thumb" />
               {strDrink}
               -
