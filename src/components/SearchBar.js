@@ -50,7 +50,7 @@ const SearchBar = () => {
     } else if (received.length === 1) {
       verifyReceived(received, type);
     }
-    setCocktails(received); setMeals(received);
+    setCocktails(received); setMeals(received); return;
   };
   return (
     <div>
