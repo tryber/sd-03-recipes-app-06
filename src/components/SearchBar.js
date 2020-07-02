@@ -46,11 +46,12 @@ const SearchBar = () => {
     const route = location.pathname;
     received = await searchMD(selected, search, route);
     if (!received) {
-      return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      return;
     } else if (received.length === 1) {
       verifyReceived(received, type);
     }
-    setCocktails(received); setMeals(received); return;
+    setCocktails(received); setMeals(received);
   };
   return (
     <div>
