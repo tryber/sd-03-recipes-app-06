@@ -1,16 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import drinkIcon from '../images/drinkIcon.svg';
-import exploreIcon from '../images/exploreIcon.svg';
-import mealIcon from '../images/mealIcon.svg';
+import Drink from '../images/drinkIcon.svg';
+import Search from '../images/exploreIcon.svg';
+import Fork from '../images/mealIcon.svg';
+import './Footer.css';
 
-const Footer = () =>
-  <div className="footer-container" data-testid="footer">
-    <Link to="/bebidas"><img src={drinkIcon} alt="drink" data-testid="drinks-bottom-btn" /></Link>
-    <Link to="/explorar">
-      <img src={exploreIcon} alt="explore" data-testid="explore-bottom-btn" />
-    </Link>
-    <Link to="/comidas"><img src={mealIcon} alt="meal" data-testid="food-bottom-btn" /></Link>
-  </div>;
+function Footer() {
+  return (
+    <footer className="footer-container" data-testid="footer">
+      <Link
+        className="footer-drinks"
+        to="/bebidas"
+      >
+        <img data-testid="drinks-bottom-btn" src={Drink} alt="Bebidas" />
+      </Link>
+      <Link
+        className="footer-explore"
+        to="/explorar"
+      >
+        <img src={Search} alt="Exploração" data-testid="explore-bottom-btn" />
+      </Link>
+      <Link
+        className="footer-fork"
+        to="/comidas"
+      >
+        <img src={Fork} alt="Comidas" data-testid="food-bottom-btn" />
+      </Link>
+    </footer>
+  );
+}
 
 export default Footer;
