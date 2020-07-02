@@ -1,11 +1,11 @@
 #cocktails {
-  height: 640px;
+  height: 440px;
   overflow: auto;
   width: 380px;
 }
 
 #meals {
-  height: 640px;
+  height: 440px;
   width: 380px;
   background: #0fa36b;
   display: flex;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ProviderSearch from './context/ProviderSearch';
-import cocktails from './components/Cocktails';
+import Bebidas from './pages/Bebidas';
+import Comidas from './pages/Comidas';
 import Detalhes from './pages/Detalhes';
 import Explorar from './pages/Explorar';
 import ExplorarBebidas from './pages/ExplorarBebidas';
@@ -10,7 +11,6 @@ import ExplorarBebidasIngredientes from './pages/ExplorarBebidasIngredientes';
 import ExplorarComidasIngredientes from './pages/ExplorarComidasIngredientes';
 import ExplorarComidasArea from './pages/ExplorarComidasArea';
 import LoginPage from './pages/LoginPage';
-import Meals from './components/Meals';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
@@ -23,8 +23,8 @@ function App() {
         <Route exact path="/" component={LoginPage} />
         <Route path="/bebidas/:id" component={Detalhes} />
         <Route path="/comidas/:id" component={Detalhes} />
-        <Route path="/bebidas" component={cocktails} />
-        <Route path="/comidas" component={Meals} />
+        <Route path="/bebidas" component={Bebidas} />
+        <Route path="/comidas" component={Comidas} />
         <Route path="/explorar/comidas/ingredientes" component={ExplorarComidasIngredientes} />
         <Route path="/explorar/bebidas/ingredientes" component={ExplorarBebidasIngredientes} />
         <Route path="/explorar/comidas/area" component={ExplorarComidasArea} />

@@ -54,7 +54,7 @@ function Provider({ children }) {
   const fetchMeals = () => {
     if (loading) return;
     setLoading(true);
-    getMealByLetter().then(
+    getMealByLetter('a').then(
       handleFetchMealSuccess,
       handleFetchMealError,
     );

@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import Context from '../context/Context';
-import Header from './Header';
 
 function Meals() {
   const {
@@ -13,11 +12,10 @@ function Meals() {
   useEffect(() => {
     fetchMeals();
   }, []);
-  if (loading) return <div><Header /><div>Loading...</div></div>;
-  // if (error) return <div><Header /><div>{error}</div></div>;
+  if (loading) return <div>Loading...</div>;
+  // if (error) return <div>{error}</div>;
   return (
     <div id="meals">
-      <Header />
       {
         meals.slice(0, 12).map((meal) => {
           const {

@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import Context from '../context/Context';
-import Header from './Header';
 
 function Cocktails() {
   const {
@@ -12,11 +11,10 @@ function Cocktails() {
   useEffect(() => {
     fetchCocktails();
   }, []);
-  if (loading) return <div><Header /><div>Loading...</div></div>;
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div id="cocktails">
-      <Header />
       {
         cocktails.slice(0, 12).map((drinks) => {
           const {
