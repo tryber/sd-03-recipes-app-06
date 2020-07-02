@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { getMealByLetter, getMealByIngredients, getMealByName } from '../services/MealDBApi';
 import { getDrinkByLetter, getDrinkByIngredients, getDrinkByName } from '../services/DrinkDBApi';
+import Context from '../context/Context';
 
 const fetchesMeals = {
   name: getMealByName,
@@ -34,6 +35,7 @@ const SearchBar = () => {
   const history = useHistory(); const location = useLocation();
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
+  const { setCocktails, setMeals } = useContext(Context);
   const verifyReceived = (obj, type) => {
     const reconf = { comidas: 'idMeal', bebidas: 'idDrink' };
     history.push(`${location.pathname}/${obj[0][reconf[type]]}`);
@@ -44,10 +46,11 @@ const SearchBar = () => {
     const route = location.pathname;
     received = await searchMD(selected, search, route);
     if (!received) {
-      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     } else if (received.length === 1) {
       verifyReceived(received, type);
     }
+    setCocktails(received); setMeals(received);
   };
   return (
     <div>

@@ -16,7 +16,7 @@ function Cocktails() {
   return (
     <div id="cocktails">
       {
-        cocktails.slice(0, 12).map((drinks) => {
+        cocktails.slice(0, 12).map((drinks, index) => {
           const {
             idDrink,
             strDrink,
@@ -24,9 +24,12 @@ function Cocktails() {
             strDrinkThumb,
           } = drinks;
           return (
-            <li key={idDrink}>
-              <img src={strDrinkThumb} width="120px" height="150px" alt="Cocktails Thumb" />
-              {strDrink}
+            <li data-testid={`${index}-recipe-card`} key={idDrink}>
+              <img
+                data-testid={`${index}-card-img`} src={strDrinkThumb}
+                width="120px" height="150px" alt="Cocktails Thumb"
+              />
+              <div data-testid={`${index}-card-name`}>{strDrink}</div>
               -
               {strIngredient1}
             </li>
