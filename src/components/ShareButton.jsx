@@ -6,10 +6,10 @@ const ShareButton = ({ url }) => (
   <button
     className="icon-button"
     type="button" text={url}
-    onCopy=
-    {() => {
-      alert(`Você copiou a URL ${url}`);
-    }
+    onCopy={
+      () => {
+        alert(`Você copiou a URL ${url}`);
+      }
     }
   >
     <img
