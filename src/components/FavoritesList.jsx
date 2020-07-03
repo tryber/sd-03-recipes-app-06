@@ -1,6 +1,6 @@
-import React from 'react';
-import FavoriteButton from './FavoriteButton';
-import ShareButton from './ShareButton';
+// import React from 'react';
+// import FavoriteButton from './FavoriteButton';
+// import ShareButton from './ShareButton';
 
 // const mealsJSX = (idMeal, strArea, strCategory, strMeal, strMealThumb, index) => (
 //   <div className="faveText">
@@ -50,6 +50,8 @@ import ShareButton from './ShareButton';
 //   </div>
 // );
 
-const FavoritesList = () => {return null};
+// const FavoritesList = () => {
 
-export default FavoritesList;
+// }
+
+// export default FavoritesList;

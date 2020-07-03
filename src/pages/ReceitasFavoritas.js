@@ -1,5 +1,4 @@
 import React from 'react';
-import FavoritesList from '../components/FavoritesList';
 import Header from '../components/Header';
 // import './ReceitasFavoritas.css';
 
@@ -25,7 +24,6 @@ const ReceitasFavoritas = () => {
         <button data-testid="filter-by-drink-btn">{searchBtn('cocktaildb', 'Drinks', favoriteRecipes)}</button>
       </div>
       <div className="favoriteContainerPage">
-        {<FavoritesList />}
       </div>
     </article>
   );
