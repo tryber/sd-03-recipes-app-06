@@ -17,3 +17,7 @@ export const getDrinkByName = (name) =>
   fetch(`${NAME_URL}${name}`).then((response) => response
     .json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
+
+export const getDrinks = () =>
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
+    .then((resp) => resp.json());

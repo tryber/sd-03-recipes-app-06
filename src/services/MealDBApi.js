@@ -18,3 +18,9 @@ export const getMealByName = (name) =>
     .json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
+const ID_URL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+
+export const getMealDetail = (id) =>
+fetch(`${ID_URL}${id}`).then((response) => response
+  .json()
+  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));

@@ -1,6 +1,7 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import DetailsContext from '../context/DetailsContext';
+import { getMealDetail } from '../services/MealDBApi';
+import { getDrinks } from '../services/DrinkDBApi';
 import './Detalhes.css';
 
 const videoName = (url) => {
@@ -62,10 +63,32 @@ const recomendations = (obj) => {
 
 const Detalhes = () => {
   const location = useLocation();
+  const [meals, setMeals] = useState({});
+  const [mealsOk, setMealsOk] = useState(false);
+  const [drinks, setDrinks] = useState({});
+  const [drinksOk, setDrinksOk] = useState(false);
   const address = location.pathname;
   const id = address.slice(9, address.length);
-  const { fetchMeal, meals, mealsOk } = useContext(DetailsContext);
-  const { fetchDrink, drinks, drinksOk } = useContext(DetailsContext);
+
+  const fetchMeal = async (id) => {
+    let result = await getMealDetail(id)
+      .then(
+        (data) => { setMealsOk(true); return data.meals[0]; },
+        (error) => { setMealsOk(false); return error}, 
+      );
+    console.log('Resultado', result);
+    setMeals(result);
+  };
+
+  const fetchDrink = async () => {
+    let result = await getDrinks()
+      .then(
+        (data) => { setDrinksOk(true); return data.drinks;},
+        (error) => { setDrinksOk(false); return error; }, 
+      );
+    console.log('Resultado', result);
+    setDrinks(result);
+  };
 
   useEffect(() => {
     fetchMeal(id);
@@ -94,7 +117,7 @@ const Detalhes = () => {
         <p>Instructions</p>
         <p data-testid="instructions">{meals.strInstructions}</p>
         <p>Video</p>
-        <iframe data-testid="video" width="360px" height="300" title="Video"
+        <iframe data-testid="video" width="360px" height="300"
           src={`https://www.youtube.com/embed/${videoName(meals.strYoutube || 'x')}`}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         >
