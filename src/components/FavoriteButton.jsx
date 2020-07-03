@@ -35,7 +35,7 @@ const FavoriteButton = ({ recipe }) => {
               className="icons"
               src={EmptyHeartIcon}
               alt="heart icon"
-              data-testid="favorite-btn"
+              data-testid="`${index}`-horizontal-favorite-btn"
             />
           )
           : (
@@ -43,7 +43,7 @@ const FavoriteButton = ({ recipe }) => {
               className="icons"
               src={FullyHeartIcon}
               alt="heart icon"
-              data-testid="favorite-btn"
+              data-testid="`${index}`-horizontal-favorite-btn"
             />
           )
       }

@@ -16,7 +16,7 @@ const ShareButton = ({ url }) => (
       className="icons"
       src={ShareIcon}
       alt="share icon"
-      data-testid="share-btn"
+      data-testid="`${index}`-horizontal-share-btn"
     />
   </button>
 );
