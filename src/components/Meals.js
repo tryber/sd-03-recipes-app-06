@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { GetMealsContext } from '../context/getMeals';
 import MealCategories from './MealCategories';
+import './Meals.css'
 
 function Meals() {
   const {
@@ -11,7 +12,7 @@ function Meals() {
   } = useContext(GetMealsContext);
 
   return (
-    <div>
+    <div className="meals">
       <MealCategories />
       <ul>
         {

@@ -5,8 +5,10 @@ import Footer from '../components/Footer';
 
 const Bebidas = () =>
   <div className="Principal">
-    <Header />
-    <Cocktails />
+    <div>
+      <Header />
+      <Cocktails />
+    </div>
     <Footer />
   </div>;
 
