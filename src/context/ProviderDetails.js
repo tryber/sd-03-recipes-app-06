@@ -55,10 +55,18 @@ function Provider({ children }) {
   };
 
   const context = {
-    fetchMeal, meal, setMeal, mealOk, setMealOk,
-    fetchMeals, meals, setMeals, mealsOk, setMealsOk,
-    fetchDrink, drink, setDrink, drinkOk, setDrinkOk,
-    fetchDrinks, drinks, setDrinks, drinksOk, setDrinksOk,
+    fetchMeal,
+    meal,
+    mealOk,
+    fetchMeals,
+    meals,
+    mealsOk,
+    fetchDrink,
+    drink,
+    drinkOk,
+    fetchDrinks,
+    drinks,
+    drinksOk,
   };
 
   return (

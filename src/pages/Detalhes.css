@@ -1,7 +1,6 @@
 .carousel {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   overflow: scroll;
   width: 360px;
 }
@@ -9,7 +8,7 @@
 .element {
   height: 150px;
   padding-right: 30px;
-  width: 150px; 
+  width: 150px;
 }
 
 .instructions {
