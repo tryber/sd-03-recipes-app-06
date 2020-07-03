@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
+import ShareFavButtons from '../components/ShareFavButtons';
 import './Detalhes.css';
 
 const getIngredients = (obj) => {
@@ -72,10 +73,7 @@ const Detalhes = () => {
         <img data-testid="recipe-photo" src={drink.strDrinkThumb} width="360px" alt="Recipe" />
         <p data-testid="recipe-title">{drink.strDrink}</p>
         <p>{drink.strAlcoholic}</p>
-        <div>
-          <button data-testid="share-btn">Share</button>
-          <button data-testid="favorite-btn">Favorite</button>
-        </div>
+        <ShareFavButtons />
         <p data-testid="recipe-category">{drink.strCategory}</p>
         <div><span>Ingredients</span>
           {
