@@ -93,11 +93,11 @@ const Detalhes = () => {
         <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
         <p>Video</p>
         <div>
-        <iframe
-          data-testid="video" width="330" height="auto" title="Video"
-          src={`https://www.youtube.com/embed/${videoName(meal.strYoutube || 'x')}`}
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        />
+          <iframe
+            data-testid="video" width="330" height="auto" title="Video"
+            src={`https://www.youtube.com/embed/${videoName(meal.strYoutube || 'x')}`}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          />
         </div>
         <p>Recommendation</p>
         {recomendations(drinks)}
