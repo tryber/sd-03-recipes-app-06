@@ -23,8 +23,6 @@ const ReceitasFavoritas = () => {
         <button data-testid="filter-by-food-btn">{searchBtn('mealdb', 'Food', favoriteRecipes)}</button>
         <button data-testid="filter-by-drink-btn">{searchBtn('cocktaildb', 'Drinks', favoriteRecipes)}</button>
       </div>
-      <div className="favoriteContainerPage">
-      </div>
     </article>
   );
 };

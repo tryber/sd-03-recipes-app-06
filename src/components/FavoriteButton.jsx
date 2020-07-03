@@ -17,7 +17,7 @@ function handleClick(recipe) {
 
 const FavoriteButton = ({ recipe }) => {
   const [favorited, setFavorited] = useState(false);
-  //const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  // const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   return (
     <button
