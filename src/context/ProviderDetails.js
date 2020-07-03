@@ -11,20 +11,20 @@ function Provider({ children }) {
   const [drinksOk, setDrinksOk] = useState(false);
 
   const fetchMeal = async (id) => {
-    let result = await getMealDetail(id)
+    const result = await getMealDetail(id)
       .then(
         (data) => { setMealsOk(true); return data.meals[0]; },
-        (error) => { setMealsOk(false); return error}, 
+        (error) => { setMealsOk(false); return error; },
       );
     console.log('Resultado', result);
     setMeals(result);
   };
 
   const fetchDrink = async () => {
-    let result = await getDrinks()
+    const result = await getDrinks()
       .then(
-        (data) => { setDrinksOk(true); return data.drinks;},
-        (error) => { setDrinksOk(false); return error; }, 
+        (data) => { setDrinksOk(true); return data.drinks; },
+        (error) => { setDrinksOk(false); return error; },
       );
     console.log('Resultado', result);
     setDrinks(result);

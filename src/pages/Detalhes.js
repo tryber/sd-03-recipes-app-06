@@ -10,24 +10,24 @@ const videoName = (url) => {
 
 const getIngredients = (obj) => {
   let ingredientsArray = []; let measureArray = [];
-  let keysArray = []; let valuesArray = []; let outputArray = [];
-  ingredientsArray = [...Object.keys(obj).filter(e => e.match(/strIngredient/g))];
-  measureArray = [...Object.keys(obj).filter(e => e.match(/strMeasure/g))];
+  const keysArray = []; const valuesArray = []; const outputArray = [];
+  ingredientsArray = [...Object.keys(obj).filter((e) => e.match(/strIngredient/g))];
+  measureArray = [...Object.keys(obj).filter((e) => e.match(/strMeasure/g))];
 
-  ingredientsArray.forEach(e => {
-    if (typeof(obj[e]) === 'string' && obj[e] !== '') {
+  ingredientsArray.forEach((e) => {
+    if (typeof (obj[e]) === 'string' && obj[e] !== '') {
       keysArray.push(obj[e]);
     }
   });
 
-  measureArray.forEach(e => {
-    if (typeof(obj[e]) === 'string' && obj[e] !== '') {
+  measureArray.forEach((e) => {
+    if (typeof (obj[e]) === 'string' && obj[e] !== '') {
       valuesArray.push(obj[e]);
     }
   });
 
   for (let i = 0; i < keysArray.length; i += 1) {
-    outputArray.push({[keysArray[i]]: valuesArray[i]});
+    outputArray.push({ [keysArray[i]]: valuesArray[i] });
   }
 
   return outputArray;
@@ -58,6 +58,7 @@ const recomendations = (obj) => {
       </div>
     );
   }
+  return null;
 };
 
 const Detalhes = () => {
@@ -71,12 +72,12 @@ const Detalhes = () => {
     fetchMeal(id);
     fetchDrink();
   }, []);
-  
+
   return (
     <div className="Principal">
       { mealsOk && drinksOk &&
       <div>
-        <img data-testid="recipe-photo" src={meals.strMealThumb} width="360px" alt="Recipe"/>
+        <img data-testid="recipe-photo" src={meals.strMealThumb} width="360px" alt="Recipe" />
         <p data-testid="recipe-title">{meals.strMeal}</p>
         <div>
           <button data-testid="share-btn">Share</button>
@@ -84,21 +85,21 @@ const Detalhes = () => {
         </div>
         <p data-testid="recipe-category">{meals.strCategory}</p>
         <div><span>Ingredients</span>
-        {
-        getIngredients(meals).map((e, index) =>
-          <p data-testid={`${index}-ingredient-name-and-measure`} key={`${Object.keys(e)}`}>
-            {`- ${Object.keys(e)} - ${Object.values(e)}`}
-          </p>)
-        }
+          {
+          getIngredients(meals).map((e, index) =>
+            <p data-testid={`${index}-ingredient-name-and-measure`} key={`${Object.keys(e)}`}>
+              {`- ${Object.keys(e)} - ${Object.values(e)}`}
+            </p>)
+          }
         </div>
         <p>Instructions</p>
         <p data-testid="instructions">{meals.strInstructions}</p>
         <p>Video</p>
-        <iframe data-testid="video" width="360px" height="300" title="Video"
+        <iframe
+          data-testid="video" width="360px" height="300" title="Video"
           src={`https://www.youtube.com/embed/${videoName(meals.strYoutube || 'x')}`}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        >
-        </iframe>
+        />
         {recomendations(drinks)}
         <button data-testid="start-recipe-btn">Iniciar Receita</button>
       </div>
