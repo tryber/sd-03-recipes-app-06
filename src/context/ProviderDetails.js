@@ -27,7 +27,7 @@ function Provider({ children }) {
   const fetchMeals = async () => {
     const result = await getMeals()
       .then(
-        (data) => { setMealsOk(true); return data.meals[0]; },
+        (data) => { setMealsOk(true); return data.meals; },
         (error) => { setMealsOk(false); return error; },
       );
     console.log('Resultado', result);
@@ -37,7 +37,7 @@ function Provider({ children }) {
   const fetchDrink = async (id) => {
     const result = await getDrink(id)
       .then(
-        (data) => { setDrinkOk(true); return data.drinks; },
+        (data) => { setDrinkOk(true); return data.drinks[0]; },
         (error) => { setDrinkOk(false); return error; },
       );
     console.log('Resultado', result);
