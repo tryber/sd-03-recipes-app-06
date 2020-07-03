@@ -6,7 +6,7 @@ import './Detalhes.css';
 const shareUrl = (location) => {
   window.navigator.clipboard.writeText(`http://localhost:3000${location}`);
   alert('Link copiado!');
-}
+};
 
 const getIngredients = (obj) => {
   let ingredientsArray = []; let measureArray = [];
@@ -78,8 +78,8 @@ const Detalhes = () => {
         <p data-testid="recipe-title">{drink.strDrink}</p>
         <p data-testid="recipe-category">{drink.strAlcoholic}</p>
         <div>
-          <button 
-          data-testid="share-btn" onClick={() => shareUrl(location.pathname)}
+          <button
+            data-testid="share-btn" onClick={() => shareUrl(location.pathname)}
           >Share
           </button>
           <button data-testid="favorite-btn">Favorite</button>

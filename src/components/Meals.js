@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { GetMealsContext } from '../context/getMeals';
 import MealCategories from './MealCategories';
-import './Meals.css'
+import './Meals.css';
 
 function Meals() {
   const {
