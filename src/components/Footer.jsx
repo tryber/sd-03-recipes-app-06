@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Drink from '../images/drinkIcon.svg';
-import Search from '../images/searchIcon.svg';
+import Search from '../images/exploreIcon.svg';
 import Fork from '../images/mealIcon.svg';
 import './Footer.css';
 
@@ -10,24 +10,21 @@ function Footer() {
     <footer className="footer-container" data-testid="footer">
       <Link
         className="footer-drinks"
-        data-testid="drinks-bottom-btn"
-        to="/bebidas/"
+        to="/bebidas"
       >
-        <img src={Drink} alt="Bebidas" />
+        <img data-testid="drinks-bottom-btn" src={Drink} alt="Bebidas" />
       </Link>
       <Link
         className="footer-explore"
-        data-testid="explore-bottom-btn"
-        to="/explorar/"
+        to="/explorar"
       >
-        <img src={Search} alt="Exploração" />
+        <img src={Search} alt="Exploração" data-testid="explore-bottom-btn" />
       </Link>
       <Link
         className="footer-fork"
-        data-testid="food-bottom-btn"
-        to="/comidas/"
+        to="/comidas"
       >
-        <img src={Fork} alt="Comidas" />
+        <img src={Fork} alt="Comidas" data-testid="food-bottom-btn" />
       </Link>
     </footer>
   );

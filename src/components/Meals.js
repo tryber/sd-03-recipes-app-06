@@ -5,7 +5,7 @@ function Meals() {
   const {
     meals,
     loading,
-    error,
+    // error,
     fetchMeals,
   } = useContext(Context);
 
@@ -13,11 +13,11 @@ function Meals() {
     fetchMeals();
   }, []);
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  // if (error) return <div>{error}</div>;
   return (
     <div id="meals">
       {
-        meals.slice(0, 12).map((meal) => {
+        meals.slice(0, 12).map((meal, index) => {
           const {
             idMeal,
             strMealThumb,
@@ -25,9 +25,12 @@ function Meals() {
             strCategory,
           } = meal;
           return (
-            <li key={idMeal}>
-              <img src={strMealThumb} width="120px" height="150px" alt="Meal Thumb" />
-              {strMeal}
+            <li data-testid={`${index}-recipe-card`} key={idMeal}>
+              <img
+                data-testid={`${index}-card-img`} src={strMealThumb}
+                width="120px" height="150px" alt="Meal Thumb"
+              />
+              <div data-testid={`${index}-card-name`}>{strMeal}</div>
               -
               {strCategory}
             </li>
