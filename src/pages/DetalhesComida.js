@@ -92,11 +92,13 @@ const Detalhes = () => {
         <p>Instructions</p>
         <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
         <p>Video</p>
+        <div>
         <iframe
-          data-testid="video" width="360px" height="300" title="Video"
+          data-testid="video" width="330" height="auto" title="Video"
           src={`https://www.youtube.com/embed/${videoName(meal.strYoutube || 'x')}`}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         />
+        </div>
         <p>Recommendation</p>
         {recomendations(drinks)}
         <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
