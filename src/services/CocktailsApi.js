@@ -1,4 +1,3 @@
-
 export async function getCokctailsByName(name) {
   return fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
     .then((resp) => resp.json());
@@ -8,7 +7,6 @@ export async function getCocktailsList() {
   return fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
     .then((resp) => resp.json);
 }
-
 
 export async function filterCocktailsByCategorie(categorie) {
   return fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categorie}`)

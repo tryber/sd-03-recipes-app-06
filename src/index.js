@@ -5,12 +5,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Provider from './context/Provider';
+import ProviderDetails from './context/ProviderDetails';
 
 ReactDOM.render(
   <Router>
-    <Provider>
-      <App />
-    </Provider>
+    <ProviderDetails>
+      <Provider>
+        <App />
+      </Provider>
+    </ProviderDetails>
   </Router>,
   document.getElementById('root'),
 );

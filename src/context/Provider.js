@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Context from './Context';
-import getMealByLetter from '../services/MealDBApi';
+import { getMealByLetter } from '../services/MealDBApi';
 import {
   getCocktailsByLetter,
   // getCokctailsByName,
@@ -54,7 +54,7 @@ function Provider({ children }) {
   const fetchMeals = () => {
     if (loading) return;
     setLoading(true);
-    getMealByLetter().then(
+    getMealByLetter('a').then(
       handleFetchMealSuccess,
       handleFetchMealError,
     );
@@ -66,7 +66,9 @@ function Provider({ children }) {
     password,
     setPassword,
     cocktails,
+    setCocktails,
     meals,
+    setMeals,
     loading,
     error,
     fetchMeals,
