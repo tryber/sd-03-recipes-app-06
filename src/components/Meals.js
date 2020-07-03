@@ -1,42 +1,38 @@
-import React, { useEffect, useContext } from 'react';
-import Context from '../context/Context';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { GetMealsContext } from '../context/getMeals';
+import MealCategories from './MealCategories';
 
 function Meals() {
   const {
-    meals,
-    loading,
-    // error,
-    fetchMeals,
-  } = useContext(Context);
+    getMeals: {
+      meals,
+    },
+  } = useContext(GetMealsContext);
 
-  useEffect(() => {
-    fetchMeals();
-  }, []);
-  if (loading) return <div>Loading...</div>;
-  // if (error) return <div>{error}</div>;
   return (
-    <div id="meals">
-      {
-        meals.slice(0, 12).map((meal, index) => {
-          const {
-            idMeal,
-            strMealThumb,
-            strMeal,
-            strCategory,
-          } = meal;
-          return (
-            <li data-testid={`${index}-recipe-card`} key={idMeal}>
-              <img
-                data-testid={`${index}-card-img`} src={strMealThumb}
-                width="120px" height="150px" alt="Meal Thumb"
-              />
-              <div data-testid={`${index}-card-name`}>{strMeal}</div>
-              -
-              {strCategory}
-            </li>
-          );
-        })
-      }
+    <div>
+      <MealCategories />
+      <ul>
+        {
+          meals.slice(0, 12).map((meal, index) => {
+            const { idMeal, strMealThumb, strMeal, strCategory } = meal;
+            return (
+              <div data-testid={`${index}-recipe-card`} className="card" key={idMeal}>
+                <Link to={`comidas/${idMeal}`}>
+                  <li>
+                    <img
+                      data-testid={`${index}-card-img`} src={strMealThumb}
+                      width="120px" height="150px" alt="Meal Thumb"
+                    />
+                    <p data-testid={`${index}-card-name`}>{strMeal} - {strCategory}</p>
+                  </li>
+                </Link>
+              </div>
+            );
+          })
+        }
+      </ul>
     </div>
   );
 }
