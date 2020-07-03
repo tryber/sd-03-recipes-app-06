@@ -1,7 +1,7 @@
 import React from 'react';
 import FavoritesList from '../components/FavoritesList';
 import Header from '../components/Header';
-import './ReceitasFavoritas.css';
+// import './ReceitasFavoritas.css';
 
 const searchBtn = (value, btnName) => (
   <button
