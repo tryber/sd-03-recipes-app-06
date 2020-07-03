@@ -1,4 +1,29 @@
+.carousel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  width: 360px;
+}
+
+.element {
+  height: 150px;
+  padding-right: 30px;
+  width: 150px; 
+}
+
+.instructions {
+  width: 360px;
+}
+
+.footer-btn {
+  bottom: 0;
+  position: fixed;
+}
+
 .Principal {
+  display: flex;
+  flex-direction: row;
   height: 640px;
   width: 360px;
 }

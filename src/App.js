@@ -3,7 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import ProviderSearch from './context/ProviderSearch';
 import Bebidas from './pages/Bebidas';
 import Comidas from './pages/Comidas';
-import Detalhes from './pages/Detalhes';
+import DetalhesBebida from './pages/DetalhesBebida';
+import DetalhesComida from './pages/DetalhesComida';
 import Explorar from './pages/Explorar';
 import ExplorarBebidas from './pages/ExplorarBebidas';
 import ExplorarComidas from './pages/ExplorarComidas';
@@ -21,8 +22,8 @@ function App() {
     <ProviderSearch>
       <Switch>
         <Route exact path="/" component={LoginPage} />
-        <Route path="/bebidas/:id" component={Detalhes} />
-        <Route path="/comidas/:id" component={Detalhes} />
+        <Route path="/bebidas/:id" component={DetalhesBebida} />
+        <Route path="/comidas/:id" component={DetalhesComida} />
         <Route path="/bebidas" component={Bebidas} />
         <Route path="/comidas" component={Comidas} />
         <Route path="/explorar/comidas/ingredientes" component={ExplorarComidasIngredientes} />

@@ -2,14 +2,13 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .headerBar {
-  align-items: baseline;
+  align-self: center;
   display: flex;
   flex-direction: row;
-  height: 128px;
   justify-content: space-between;
+  height: 64px;
   width: 360px;
 }

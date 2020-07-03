@@ -18,6 +18,10 @@ export const getDrinkByName = (name) =>
     .json()
     .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
+export const getDrink = (id) =>
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
+    .then((resp) => resp.json());
+
 export const getDrinks = () =>
   fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
     .then((resp) => resp.json());
