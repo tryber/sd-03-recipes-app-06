@@ -38,6 +38,17 @@ function Provider({ children }) {
     image: obj.strDrinkThumb,
   });
 
+  const saveMealRecipe = (obj) =>
+  setRecipe({
+    id: obj.idMeal,
+    type: 'comida',
+    area: obj.strArea,
+    category: obj.strCategory,
+    alcoholicOrNot: '',
+    name: obj.strMeal,
+    image: obj.strMealThumb,
+  });
+
   const verifyHeart = () => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const path = location.pathname;
@@ -62,6 +73,7 @@ function Provider({ children }) {
       );
     console.log('Resultado', result);
     setMeal(result);
+    saveMealRecipe(result);
   };
 
   const fetchMeals = async () => {

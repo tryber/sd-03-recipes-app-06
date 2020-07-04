@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import ShareFavButtons from '../components/ShareFavButtons';
 import './Detalhes.css';
@@ -53,6 +54,8 @@ const recomendations = (obj) => {
   return null;
 };
 
+const startContinueRecipe = () => {}
+
 const Detalhes = () => {
   const { fetchMeals, meals, mealsOk, location } = useContext(DetailsContext);
   const { fetchDrink, drink, drinkOk, copyUrl } = useContext(DetailsContext);
@@ -86,7 +89,9 @@ const Detalhes = () => {
         <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
         <p>Recommendation</p>
         {recomendations(meals)}
-        <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
+        <Link to={`${location.pathname}/in-progress`}>
+          <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
+        </Link>
       </div>
       }
     </div>

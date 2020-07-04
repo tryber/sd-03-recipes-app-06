@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import ShareFavButtons from '../components/ShareFavButtons';
 import './Detalhes.css';
@@ -98,7 +99,9 @@ const Detalhes = () => {
         </div>
         <p>Recommendation</p>
         {recomendations(drinks)}
-        <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
+        <Link to={`${location.pathname}/in-progress`}>
+          <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
+        </Link>
       </div>
       }
     </div>
