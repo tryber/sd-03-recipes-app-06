@@ -54,8 +54,6 @@ const recomendations = (obj) => {
   return null;
 };
 
-const startContinueRecipe = () => {}
-
 const Detalhes = () => {
   const { fetchMeals, meals, mealsOk, location } = useContext(DetailsContext);
   const { fetchDrink, drink, drinkOk, copyUrl } = useContext(DetailsContext);
@@ -90,7 +88,9 @@ const Detalhes = () => {
         <p>Recommendation</p>
         {recomendations(meals)}
         <Link to={`${location.pathname}/in-progress`}>
-          <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
+          <button
+          name="bebida-btn" data-testid="start-recipe-btn" className="footer-btn"
+          >Iniciar Receita</button>
         </Link>
       </div>
       }

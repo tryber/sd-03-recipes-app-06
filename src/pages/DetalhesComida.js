@@ -100,7 +100,9 @@ const Detalhes = () => {
         <p>Recommendation</p>
         {recomendations(drinks)}
         <Link to={`${location.pathname}/in-progress`}>
-          <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
+          <button
+            name="comida-btn" data-testid="start-recipe-btn" className="footer-btn"
+          >Iniciar Receita</button>
         </Link>
       </div>
       }
