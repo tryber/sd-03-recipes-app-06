@@ -107,14 +107,19 @@ function Provider({ children }) {
     if (typeof (boolVerify) === 'number') {
       favoriteRecipes.splice([boolVerify], 1);
       setHeart('white');
-    } else if (boolVerify === '') {
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+      return null;
+    } 
+    if (boolVerify === '') {
       favoriteRecipes.push(actualRecipe);
       setHeart('black');
-    } else {
-      favoriteRecipes = [actualRecipe];
-      setHeart('black');
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+      return null;
     }
+    favoriteRecipes = [actualRecipe];
+    setHeart('black');
     localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+    return null;
   };
 
   const context = {
