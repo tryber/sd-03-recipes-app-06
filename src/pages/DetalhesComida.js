@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
+import ShareFavButtons from '../components/ShareFavButtons';
 import './Detalhes.css';
 
 const videoName = (url) => {
@@ -59,11 +59,10 @@ const recomendations = (obj) => {
 };
 
 const Detalhes = () => {
-  const location = useLocation();
+  const { fetchMeal, meal, mealOk, location } = useContext(DetailsContext);
+  const { fetchDrinks, drinks, drinksOk, copyUrl } = useContext(DetailsContext);
   const address = location.pathname;
   const id = address.slice(9, address.length);
-  const { fetchMeal, meal, mealOk } = useContext(DetailsContext);
-  const { fetchDrinks, drinks, drinksOk } = useContext(DetailsContext);
 
   useEffect(() => {
     fetchMeal(id);
@@ -76,10 +75,8 @@ const Detalhes = () => {
       <div>
         <img data-testid="recipe-photo" src={meal.strMealThumb} width="360px" alt="Recipe" />
         <p data-testid="recipe-title">{meal.strMeal}</p>
-        <div>
-          <button data-testid="share-btn">Share</button>
-          <button data-testid="favorite-btn">Favorite</button>
-        </div>
+        <ShareFavButtons />
+        {copyUrl && <span>Link copiado!</span>}
         <p data-testid="recipe-category">{meal.strCategory}</p>
         <div><span>Ingredients</span>
           {

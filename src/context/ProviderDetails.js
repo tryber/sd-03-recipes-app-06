@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DetailsContext from './DetailsContext';
 import { getMeal, getMeals } from '../services/MealDBApi';
 import { getDrink, getDrinks } from '../services/DrinkDBApi';
 
 function Provider({ children }) {
+  const location = useLocation();
   const [meal, setMeal] = useState({});
   const [mealOk, setMealOk] = useState(false);
   const [meals, setMeals] = useState({});
@@ -13,6 +15,7 @@ function Provider({ children }) {
   const [drinkOk, setDrinkOk] = useState(false);
   const [drinks, setDrinks] = useState({});
   const [drinksOk, setDrinksOk] = useState(false);
+  const [copyUrl, setCopyUrl] = useState(false);
 
   const fetchMeal = async (id) => {
     const result = await getMeal(id)
@@ -54,6 +57,11 @@ function Provider({ children }) {
     setDrinks(result);
   };
 
+  const shareUrl = (location) => {
+    window.navigator.clipboard.writeText(`http://localhost:3000${location}`);
+    setCopyUrl(true);
+  };
+
   const context = {
     fetchMeal,
     meal,
@@ -67,6 +75,10 @@ function Provider({ children }) {
     fetchDrinks,
     drinks,
     drinksOk,
+    copyUrl,
+    setCopyUrl,
+    shareUrl,
+    location,
   };
 
   return (
