@@ -9,6 +9,15 @@ const videoName = (url) => {
   return (url.slice(eqtPosition + 1, url.length));
 };
 
+const showVideo = (obj) =>
+  <div>
+    <iframe
+      data-testid="video" width="330" height="auto" title="Video"
+      src={`https://www.youtube.com/embed/${videoName(obj.strYoutube || 'x')}`}
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    />
+  </div>;
+
 const getIngredients = (obj) => {
   let ingredientsArray = []; let measureArray = [];
   const keysArray = []; const valuesArray = []; const outputArray = [];
@@ -90,13 +99,7 @@ const Detalhes = () => {
         <p>Instructions</p>
         <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
         <p>Video</p>
-        <div>
-          <iframe
-            data-testid="video" width="330" height="auto" title="Video"
-            src={`https://www.youtube.com/embed/${videoName(meal.strYoutube || 'x')}`}
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          />
-        </div>
+        {showVideo(meal)}
         <p>Recommendation</p>
         {recomendations(drinks)}
         <Link to={`${location.pathname}/in-progress`}>

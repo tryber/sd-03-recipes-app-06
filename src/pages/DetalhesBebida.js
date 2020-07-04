@@ -89,7 +89,7 @@ const Detalhes = () => {
         {recomendations(meals)}
         <Link to={`${location.pathname}/in-progress`}>
           <button
-          name="bebida-btn" data-testid="start-recipe-btn" className="footer-btn"
+            name="bebida-btn" data-testid="start-recipe-btn" className="footer-btn"
           >Iniciar Receita</button>
         </Link>
       </div>
