@@ -57,8 +57,8 @@ function Provider({ children }) {
     setDrinks(result);
   };
 
-  const shareUrl = (location) => {
-    window.navigator.clipboard.writeText(`http://localhost:3000${location}`);
+  const shareUrl = (address) => {
+    window.navigator.clipboard.writeText(`http://localhost:3000${address}`);
     setCopyUrl(true);
   };
 

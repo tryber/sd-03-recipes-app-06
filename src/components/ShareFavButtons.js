@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import DetailsContext from '../context/DetailsContext';
 
 const ShareFavButtons = () => {
