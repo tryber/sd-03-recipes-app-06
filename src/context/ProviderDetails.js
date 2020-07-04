@@ -109,8 +109,7 @@ function Provider({ children }) {
       setHeart('white');
       localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
       return null;
-    } 
-    if (boolVerify === '') {
+    } else if (boolVerify === '') {
       favoriteRecipes.push(actualRecipe);
       setHeart('black');
       localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
