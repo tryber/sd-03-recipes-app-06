@@ -16,6 +16,43 @@ function Provider({ children }) {
   const [drinks, setDrinks] = useState({});
   const [drinksOk, setDrinksOk] = useState(false);
   const [copyUrl, setCopyUrl] = useState(false);
+  const [heart, setHeart] = useState('white');
+  const [recipe, setRecipe] = useState({
+    id: 0,
+    type: '',
+    area: '',
+    category: '',
+    alcoholicOrNot: '',
+    name: '',
+    image: '',
+  });
+
+  const saveDrinkRecipe = (obj) =>
+  setRecipe({
+    id: obj.idDrink,
+    type: 'bebida',
+    area: '',
+    category: obj.strCategory,
+    alcoholicOrNot: obj.strAlcoholic,
+    name: obj.strDrink,
+    image: obj.strDrinkThumb,
+  });
+
+  const verifyHeart = () => {
+    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const path = location.pathname;
+    let i = '';
+    if (favoriteRecipes) {
+      favoriteRecipes.forEach((e, index) => {
+        if (e.id === path.slice(9,path.length) && e.type === path.slice(1,7)) {
+          setHeart('black');
+          i = index;
+        }
+      });
+      return i;
+    }
+    return false;
+  };
 
   const fetchMeal = async (id) => {
     const result = await getMeal(id)
@@ -45,6 +82,7 @@ function Provider({ children }) {
       );
     console.log('Resultado', result);
     setDrink(result);
+    saveDrinkRecipe(result);
   };
 
   const fetchDrinks = async () => {
@@ -60,6 +98,23 @@ function Provider({ children }) {
   const shareUrl = (address) => {
     window.navigator.clipboard.writeText(`http://localhost:3000${address}`);
     setCopyUrl(true);
+  };
+
+  const toFavorite = () => {
+    let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const actualRecipe = recipe;
+    const boolVerify = verifyHeart();
+    if (typeof (boolVerify) === 'number') {
+      favoriteRecipes.splice([boolVerify], 1);
+      setHeart('white');
+    } else  if (boolVerify === ''){
+      favoriteRecipes.push(actualRecipe);
+      setHeart('black');
+    } else {
+      favoriteRecipes = [actualRecipe];
+      setHeart('black');
+    }
+    localStorage.setItem("favoriteRecipes", JSON.stringify(favoriteRecipes));
   };
 
   const context = {
@@ -79,6 +134,12 @@ function Provider({ children }) {
     setCopyUrl,
     shareUrl,
     location,
+    heart,
+    setHeart,
+    verifyHeart,
+    toFavorite,
+    recipe,
+    setRecipe,
   };
 
   return (
