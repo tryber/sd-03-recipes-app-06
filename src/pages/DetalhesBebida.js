@@ -62,7 +62,7 @@ const Detalhes = () => {
   useEffect(() => {
     fetchMeals();
     fetchDrink(id);
-  },[]);
+  }, []);
 
   return (
     <div className="Principal">

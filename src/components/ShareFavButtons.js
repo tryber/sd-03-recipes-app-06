@@ -5,7 +5,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const ShareFavButtons = () => {
-  const { shareUrl, location, heart, toFavorite, verifyHeart, drinkOk } = useContext(DetailsContext);
+  const { shareUrl, location, heart, toFavorite, verifyHeart } = useContext(DetailsContext);
 
   const chooseHeart = (choose) => {
     if (choose === 'white') {
@@ -16,8 +16,7 @@ const ShareFavButtons = () => {
 
   useEffect(() => {
     verifyHeart();
-
-  },[]);
+  }, []);
 
   return (
     <div>

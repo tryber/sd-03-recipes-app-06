@@ -44,7 +44,7 @@ function Provider({ children }) {
     let i = '';
     if (favoriteRecipes) {
       favoriteRecipes.forEach((e, index) => {
-        if (e.id === path.slice(9,path.length) && e.type === path.slice(1,7)) {
+        if (e.id === path.slice(9, path.length) && e.type === path.slice(1, 7)) {
           setHeart('black');
           i = index;
         }
@@ -107,14 +107,14 @@ function Provider({ children }) {
     if (typeof (boolVerify) === 'number') {
       favoriteRecipes.splice([boolVerify], 1);
       setHeart('white');
-    } else  if (boolVerify === ''){
+    } else if (boolVerify === '') {
       favoriteRecipes.push(actualRecipe);
       setHeart('black');
     } else {
       favoriteRecipes = [actualRecipe];
       setHeart('black');
     }
-    localStorage.setItem("favoriteRecipes", JSON.stringify(favoriteRecipes));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
   };
 
   const context = {
