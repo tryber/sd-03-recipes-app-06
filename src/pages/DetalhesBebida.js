@@ -60,6 +60,7 @@ const Detalhes = () => {
   const { fetchDrink, drink, drinkOk, copyUrl } = useContext(DetailsContext);
   const address = location.pathname;
   const id = address.slice(9, address.length);
+  console.log('newpath: ', address);
 
   useEffect(() => {
     fetchMeals();
