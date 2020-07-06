@@ -44,16 +44,15 @@ const Perfil = () => {
         <Header showSearch={false} isDisable />
         <Footer />
       </div>
-    );
-
-    return (
-      <div>
-        <Header showSearch={false} isDisable />
-        {renderPage(userEmail)}
-        <Footer />
-      </div>
-    );
+    )
   }
-};
+  return (
+    <div>
+      <Header showSearch={false} isDisable />
+      {renderPage(userEmail)}
+      <Footer />
+    </div>
+  );
+}
 
 export default Perfil;
