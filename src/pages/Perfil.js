@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Perfil.css';
 
+
 function renderPage(userEmail) {
   return (
     <div className="profileContainer">
@@ -37,15 +38,22 @@ function renderPage(userEmail) {
 const Perfil = () => {
   const userEmail = JSON.parse(localStorage.getItem('user'));
 
-  if (!userEmail) return <div>Carregando...</div>;
-
-  return (
-    <div>
-      <Header showSearch={false} isDisable />
-      {renderPage(userEmail)}
-      <Footer />
-    </div>
-  );
-};
+  if (!userEmail) {
+    return (
+      <div>
+        <Header showSearch={false} isDisable />
+        <Footer />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <Header showSearch={false} isDisable />
+        {renderPage(userEmail)}
+        <Footer />
+      </div>
+    );
+  };
+}
 
 export default Perfil;
