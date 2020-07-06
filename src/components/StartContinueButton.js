@@ -10,8 +10,7 @@ const pathTranslate = {
 const recipeIsDone = (id, type) => {
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   if (doneRecipes) {
-    if (doneRecipes.find((e) => e.id === id)
-      && doneRecipes.find((e) => e.type === type)) {
+    if (doneRecipes.find((e) => e.id === id && e.type === type)) {
       return true;
     }
   }
