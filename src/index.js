@@ -12,13 +12,13 @@ ReactDOM.render(
   <Router>
     <ProviderDetails>
       <Provider>
-      	<ProviderExploreIgredientsMeal>
-        	<App />
+        <ProviderExploreIgredientsMeal>
+          <App />
         </ProviderExploreIgredientsMeal>
       </Provider>
     </ProviderDetails>
   </Router>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

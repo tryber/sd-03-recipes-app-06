@@ -10,13 +10,11 @@ const ProviderExploreIgredientsMeal = ({ children }) => {
 
   const fetchIgredMeal = () => {
     console.log('function called');
-    fetchIgredientsMeal()
-    .then((json) => {
+    fetchIgredientsMeal().then((json) => {
       setIgredientsMeal([...json.meals]);
       setLoading(false);
-    })
+    });
   };
-
 
   const contextValue = {
     fetchIgredMeal,
