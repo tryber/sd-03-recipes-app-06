@@ -12,12 +12,12 @@ function renderPage(userEmail) {
       </div>
       <Link to="/receitas-feitas">
         <button data-testid="profile-done-btn" type="button" className="done-box">
-          <p className="btn-done">Receitas Feitas</p>
+          Receitas Feitas
         </button>
       </Link>
       <Link to="/receitas-favoritas">
         <button data-testid="profile-favorite-btn" type="button" className="favorite-box">
-          <p className="btn-favorite">Receitas Favoritas</p>
+          Receitas Favoritas
         </button>
       </Link>
       <Link to="/">
@@ -27,7 +27,7 @@ function renderPage(userEmail) {
           onClick={() => localStorage.clear()}
           type="button"
         >
-          <p className="btn-logout">Sair</p>
+          Sair
         </button>
       </Link>
     </div>
