@@ -14,8 +14,8 @@ const StartContinueButton = () => {
   const verifyRecipeStatus = () => {
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
     const address = location.pathname;
-    const searchKey = address.slice(1,8);
-    const searchId = address.slice(9,address.length);
+    const searchKey = address.slice(1, 8);
+    const searchId = address.slice(9, address.length);
 
     if (inProgressRecipes) {
       const arrayKeys = Object.keys(inProgressRecipes[pathTranslate[searchKey]]);
@@ -38,6 +38,6 @@ const StartContinueButton = () => {
       >{buttonText}</button>
     </Link>
   );
-}
+};
 
 export default StartContinueButton;
