@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
-import ShareFavButtons from '../components/ShareFavButtons';
+import ShareButton from '../components/ShareButton';
+import FavButton from '../components/FavButton';
 import './Detalhes.css';
 
 const videoName = (url) => {
@@ -85,7 +86,7 @@ const Detalhes = () => {
       <div>
         <img data-testid="recipe-photo" src={meal.strMealThumb} width="360px" alt="Recipe" />
         <p data-testid="recipe-title">{meal.strMeal}</p>
-        <ShareFavButtons />
+        <div className="SFButtons"><ShareButton /><FavButton /></div>
         {copyUrl && <span>Link copiado!</span>}
         <p data-testid="recipe-category">{meal.strCategory}</p>
         <div><span>Ingredients</span>

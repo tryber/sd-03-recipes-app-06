@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
-import ShareFavButtons from '../components/ShareFavButtons';
+import ShareButton from '../components/ShareButton';
+import FavButton from '../components/FavButton';
 import './Detalhes.css';
 
 const getIngredients = (obj) => {
@@ -72,7 +73,7 @@ const Detalhes = () => {
         <img data-testid="recipe-photo" src={drink.strDrinkThumb} width="360px" alt="Recipe" />
         <p data-testid="recipe-title">{drink.strDrink}</p>
         <p data-testid="recipe-category">{drink.strAlcoholic}</p>
-        <ShareFavButtons />
+        <div className="SFButtons"><ShareButton /><FavButton /></div>
         {copyUrl && <span>Link copiado!</span>}
         <p>{drink.strCategory}</p>
         <div><span>Ingredients</span>

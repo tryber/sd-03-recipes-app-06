@@ -26,3 +26,8 @@
   height: 640px;
   width: 360px;
 }
+
+.SFButtons {
+  display: flex;
+  justify-content: space-between;
+}
