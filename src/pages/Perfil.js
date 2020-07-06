@@ -44,7 +44,7 @@ const Perfil = () => {
         <Header showSearch={false} isDisable />
         <Footer />
       </div>
-    )
+    );
   }
   return (
     <div>
@@ -53,6 +53,6 @@ const Perfil = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default Perfil;
