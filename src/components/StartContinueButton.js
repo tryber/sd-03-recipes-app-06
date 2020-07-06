@@ -7,7 +7,7 @@ const pathTranslate = {
   bebida: 'cocktails',
 };
 
-const recipeIsDone = (id, type) => {
+const isRecipeDone = (id, type) => {
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   if (doneRecipes) {
     if (doneRecipes.find((e) => e.id === id && e.type === type)) {
@@ -15,6 +15,13 @@ const recipeIsDone = (id, type) => {
     }
   }
   return false;
+};
+
+const isRecipeInProgress = (array, id) => {
+  if (array.find((e) => e === id)) {
+    return 'Continuar Receita'
+  }
+  return 'Iniciar Receita';
 };
 
 const StartContinueButton = () => {
@@ -30,11 +37,9 @@ const StartContinueButton = () => {
 
     if (inProgressRecipes) {
       const arrayKeys = Object.keys(inProgressRecipes[pathTranslate[searchKey]]);
-      if (arrayKeys.find((e) => e === searchId)) {
-        setButtonText('Continuar Receita');
-      }
+      setButtonText(isRecipeInProgress(arrayKeys, searchId));
     }
-    setRecipeDone(recipeIsDone(searchId, searchKey));
+    setRecipeDone(isRecipeDone(searchId, searchKey));
   };
 
   useEffect(() => {
