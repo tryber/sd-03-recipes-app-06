@@ -17,12 +17,11 @@ function ExplorarComidasIngredientes() {
       <div>
         <ul>
           {igredientsMeal.slice(0, 12).map((igredient, index) => {
-            const { idIngredient, strDescription, strIngredient } = igredient;
+            const { idIngredient, strIngredient } = igredient;
             return (
               <li data-testid={`${index}-ingredient-card`} key={idIngredient}>
                 <img src={`https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png`} alt="" data-testid={`${index}-card-img`} />
                 <div data-testid={`${index}-card-name`}>{strIngredient}</div>-
-                {strDescription}
               </li>
             );
           })}
