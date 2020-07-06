@@ -14,7 +14,7 @@ const ExplorarComidas = () =>
       <button data-testid="explore-by-area">Por Local de origem</button>
     </Link>
     <Link to="/explorar/comidas/area">
-      <button data-testid="explore-surprise">Me surpreenda!</button>
+      <button data-testid="explore-surprise">Me surpreenda aaaaaaaaaaaaaaa!</button>
     </Link>
     <Footer />
   </div>;
