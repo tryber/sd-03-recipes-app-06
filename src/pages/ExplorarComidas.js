@@ -11,17 +11,17 @@ function ExplorarComidas() {
         <p>Explorar Comidas</p>
         <Link to="/explorar/comidas/ingredientes">
           <button data-testid="explore-by-ingredient" type="button">
-            Por ingredientes
+            Por Ingredientes
           </button>
         </Link>
         <Link to="/explorar/comidas/area">
           <button data-testid="explore-by-area" type="button">
-            Por Local de origem
+            Por Local de Origem
           </button>
         </Link>
         <Link to="/explorar/comidas/area">
           <button data-testid="explore-surprise" type="button">
-            Me surpreenda!
+            Me Surpreenda!
           </button>
         </Link>
       </div>

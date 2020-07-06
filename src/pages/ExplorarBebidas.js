@@ -16,7 +16,7 @@ function ExplorarBebidas() {
         </Link>
         <Link to="/explorar/bebidas/area">
           <button data-testid="explore-surprise" type="button">
-            Me surpreenda!
+            Me Surpreenda!
           </button>
         </Link>
       </div>
