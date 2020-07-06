@@ -8,15 +8,15 @@ const ExplorarComidas = () =>
     <Header />
     <p>Esta é a página de Explorar Comidas</p>
     <Link to="/explorar/comidas/ingredientes">
-    <button data-testid="explore-by-ingredient">Por ingredientes</button>
+      <button data-testid="explore-by-ingredient">Por ingredientes</button>
     </Link>
     <Link to="/explorar/comidas/area">
-    <button data-testid="explore-by-area">Por Local de origem</button>
+      <button data-testid="explore-by-area">Por Local de origem</button>
     </Link>
     <Link to="/explorar/comidas/area">
-    <button data-testid="explore-surprise">Me surpreenda!</button>
+      <button data-testid="explore-surprise">Me surpreenda!</button>
     </Link>
     <Footer />
-  </div>
+  </div>;
 
 export default ExplorarComidas;
