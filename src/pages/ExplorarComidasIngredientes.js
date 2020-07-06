@@ -4,9 +4,7 @@ import Footer from '../components/Footer';
 import { ExploreIgredientsMealContext } from '../context/ExploreIgredientsMeal';
 
 function ExplorarComidasIngredientes() {
-  const { fetchIgredMeal, igredientsMeal, loading } = useContext(
-    ExploreIgredientsMealContext
-  );
+  const { fetchIgredMeal, igredientsMeal, loading } = useContext(ExploreIgredientsMealContext);
 
   useEffect(() => {
     fetchIgredMeal();
