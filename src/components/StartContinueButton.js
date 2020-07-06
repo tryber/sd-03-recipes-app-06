@@ -7,6 +7,17 @@ const pathTranslate = {
   bebida: 'cocktails',
 };
 
+const recipeIsDone = (id, type) => {
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+  if (doneRecipes) {
+    if (doneRecipes.find((e) => e.id === id)
+      && doneRecipes.find((e) => e.type === type)) {
+      return true;
+    }
+  }
+  return false;
+};
+
 const StartContinueButton = () => {
   const { location } = useContext(DetailsContext);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
@@ -14,7 +25,6 @@ const StartContinueButton = () => {
 
   const verifyRecipeStatus = () => {
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     const address = location.pathname;
     const searchKey = address.slice(1, 7);
     const searchId = address.slice(9, address.length);
@@ -25,12 +35,7 @@ const StartContinueButton = () => {
         setButtonText('Continuar Receita');
       }
     }
-    if (doneRecipes) {
-      if (doneRecipes.find((e) => e.id === searchId)
-        && doneRecipes.find((e) => e.type === searchKey)) {
-        setRecipeDone(true);
-      }
-    }
+    setRecipeDone(recipeIsDone(searchId, searchKey));
   };
 
   useEffect(() => {
@@ -44,7 +49,7 @@ const StartContinueButton = () => {
         <button
           name="bebida-btn" data-testid="start-recipe-btn"
           className="footer-btn"
-      >{buttonText}</button>
+        >{buttonText}</button>
       </Link>
       }
     </div>
