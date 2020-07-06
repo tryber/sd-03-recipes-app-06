@@ -19,7 +19,7 @@ const isRecipeDone = (id, type) => {
 
 const isRecipeInProgress = (array, id) => {
   if (array.find((e) => e === id)) {
-    return 'Continuar Receita'
+    return 'Continuar Receita';
   }
   return 'Iniciar Receita';
 };
