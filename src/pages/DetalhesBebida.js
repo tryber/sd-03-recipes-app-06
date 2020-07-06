@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import ShareButton from '../components/ShareButton';
 import FavButton from '../components/FavButton';
+import StartContinueButton from '../components/StartContinueButton';
 import './Detalhes.css';
 
 const getIngredients = (obj) => {
@@ -60,7 +60,6 @@ const Detalhes = () => {
   const { fetchDrink, drink, drinkOk, copyUrl } = useContext(DetailsContext);
   const address = location.pathname;
   const id = address.slice(9, address.length);
-  console.log('newpath: ', address);
 
   useEffect(() => {
     fetchMeals();
@@ -89,11 +88,7 @@ const Detalhes = () => {
         <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
         <p>Recommendation</p>
         {recomendations(meals)}
-        <Link to={`${location.pathname}/in-progress`}>
-          <button
-            name="bebida-btn" data-testid="start-recipe-btn" className="footer-btn"
-          >Iniciar Receita</button>
-        </Link>
+        <StartContinueButton />
       </div>
       }
     </div>

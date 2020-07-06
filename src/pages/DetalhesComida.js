@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import ShareButton from '../components/ShareButton';
 import FavButton from '../components/FavButton';
+import StartContinueButton from '../components/StartContinueButton';
 import './Detalhes.css';
 
 const videoName = (url) => {
@@ -103,11 +103,7 @@ const Detalhes = () => {
         {showVideo(meal)}
         <p>Recommendation</p>
         {recomendations(drinks)}
-        <Link to={`${location.pathname}/in-progress`}>
-          <button
-            name="comida-btn" data-testid="start-recipe-btn" className="footer-btn"
-          >Iniciar Receita</button>
-        </Link>
+        <StartContinueButton />
       </div>
       }
     </div>
