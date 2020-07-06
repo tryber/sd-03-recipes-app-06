@@ -19,7 +19,8 @@ function ExplorarComidasIngredientes() {
           {igredientsMeal.slice(0, 12).map((igredient, index) => {
             const { idIngredient, strDescription, strIngredient } = igredient;
             return (
-              <li data-testid={`${index}-recipe-card`} key={idIngredient}>
+              <li data-testid={`${index}-ingredient-card`} key={idIngredient}>
+                <img src={`https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png`} alt="" data-testid={`${index}-card-img`} />
                 <div data-testid={`${index}-card-name`}>{strIngredient}</div>-
                 {strDescription}
               </li>
