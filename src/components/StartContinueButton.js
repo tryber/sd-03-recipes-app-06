@@ -3,18 +3,20 @@ import { Link } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 
 const pathTranslate = {
-  comidas: 'meals',
-  bebidas: 'cocktails',
+  comida: 'meals',
+  bebida: 'cocktails',
 };
 
 const StartContinueButton = () => {
   const { location } = useContext(DetailsContext);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
+  const [recipeDone, setRecipeDone] = useState(false);
 
   const verifyRecipeStatus = () => {
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     const address = location.pathname;
-    const searchKey = address.slice(1, 8);
+    const searchKey = address.slice(1, 7);
     const searchId = address.slice(9, address.length);
 
     if (inProgressRecipes) {
@@ -23,7 +25,12 @@ const StartContinueButton = () => {
         setButtonText('Continuar Receita');
       }
     }
-    return buttonText;
+    if (doneRecipes) {
+      if (doneRecipes.find((e) => e.id === searchId)
+        && doneRecipes.find((e) => e.type === searchKey)) {
+        setRecipeDone(true);
+      }
+    }
   };
 
   useEffect(() => {
@@ -31,12 +38,16 @@ const StartContinueButton = () => {
   }, []);
 
   return (
-    <Link to={`${location.pathname}/in-progress`}>
-      <button
-        name="bebida-btn" data-testid="start-recipe-btn"
-        className="footer-btn"
+    <div>
+      { !recipeDone &&
+      <Link to={`${location.pathname}/in-progress`}>
+        <button
+          name="bebida-btn" data-testid="start-recipe-btn"
+          className="footer-btn"
       >{buttonText}</button>
-    </Link>
+      </Link>
+      }
+    </div>
   );
 };
 
