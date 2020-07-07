@@ -17,7 +17,7 @@ function FilterDrinks(props) {
       <Header />
       <div>
         <ul>
-          {filteredData.map((drinks, index) => {
+          {filteredData.slice(0, 12).map((drinks, index) => {
             const {
               idDrink,
               strDrink,

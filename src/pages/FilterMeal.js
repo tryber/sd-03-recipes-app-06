@@ -11,16 +11,13 @@ function FilterMeal(props) {
     getMealByIngredients(ing)
     .then((json) => setMealFiltered([...json.meals]));
   }, []);
-  console.log(ing);
-  console.log(mealFiltered);
-  console.log('eap');
   return (
     <div>
       <Header />
       <div>
         <ul>
           {
-            mealFiltered.map((meal, index) => {
+            mealFiltered.slice(0, 12).map((meal, index) => {
               const {
                 idMeal,
                 strMealThumb,
