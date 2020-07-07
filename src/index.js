@@ -9,7 +9,7 @@ import ProviderDetails from './context/ProviderDetails';
 import ProviderDrinkCategories from './context/ProviderDrinkCategories';
 
 ReactDOM.render(
-  <Router> 
+  <Router>
     <ProviderDetails>
       <Provider>
         <ProviderDrinkCategories>
