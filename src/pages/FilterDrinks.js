@@ -43,3 +43,7 @@ function FilterDrinks(props) {
 }
 
 export default FilterDrinks;
+
+FilterDrinks.propTypes = {
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
+};

@@ -47,3 +47,7 @@ function FilterMeal(props) {
 }
 
 export default FilterMeal;
+
+FilterMeal.propTypes = {
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
+};
