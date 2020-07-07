@@ -1,12 +1,23 @@
 import React, { useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
+import ShareButton from '../components/ShareButton';
+import FavButton from '../components/FavButton';
+import StartContinueButton from '../components/StartContinueButton';
 import './Detalhes.css';
 
 const videoName = (url) => {
   const eqtPosition = url.indexOf('=');
   return (url.slice(eqtPosition + 1, url.length));
 };
+
+const showVideo = (obj) =>
+  <div>
+    <iframe
+      data-testid="video" width="330" height="auto" title="Video"
+      src={`https://www.youtube.com/embed/${videoName(obj.strYoutube || 'x')}`}
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    />
+  </div>;
 
 const getIngredients = (obj) => {
   let ingredientsArray = []; let measureArray = [];
@@ -59,11 +70,10 @@ const recomendations = (obj) => {
 };
 
 const Detalhes = () => {
-  const location = useLocation();
+  const { fetchMeal, meal, mealOk, location } = useContext(DetailsContext);
+  const { fetchDrinks, drinks, drinksOk, copyUrl } = useContext(DetailsContext);
   const address = location.pathname;
   const id = address.slice(9, address.length);
-  const { fetchMeal, meal, mealOk } = useContext(DetailsContext);
-  const { fetchDrinks, drinks, drinksOk } = useContext(DetailsContext);
 
   useEffect(() => {
     fetchMeal(id);
@@ -76,10 +86,8 @@ const Detalhes = () => {
       <div>
         <img data-testid="recipe-photo" src={meal.strMealThumb} width="360px" alt="Recipe" />
         <p data-testid="recipe-title">{meal.strMeal}</p>
-        <div>
-          <button data-testid="share-btn">Share</button>
-          <button data-testid="favorite-btn">Favorite</button>
-        </div>
+        <div className="SFButtons"><ShareButton /><FavButton /></div>
+        {copyUrl && <span>Link copiado!</span>}
         <p data-testid="recipe-category">{meal.strCategory}</p>
         <div><span>Ingredients</span>
           {
@@ -92,14 +100,10 @@ const Detalhes = () => {
         <p>Instructions</p>
         <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
         <p>Video</p>
-        <iframe
-          data-testid="video" width="360px" height="300" title="Video"
-          src={`https://www.youtube.com/embed/${videoName(meal.strYoutube || 'x')}`}
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        />
+        {showVideo(meal)}
         <p>Recommendation</p>
         {recomendations(drinks)}
-        <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
+        <StartContinueButton />
       </div>
       }
     </div>
