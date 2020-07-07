@@ -29,13 +29,10 @@ function App() {
           <Route exact path="/" component={LoginPage} />
           <Route path="/bebidas/:id" component={DetalhesBebida} />
           <Route path="/comidas/:id" component={DetalhesComida} />
-          <Route path="/bebidas" component={Bebidas} />
-          <Route path="/comidas" component={Comidas} />
           <Route path="/explorar/comidas/area" component={ExplorarComidasArea} />
           <Route path="/explorar/bebidas/area" component={NotFound} />
           <Route path="/explorar/comidas" component={ExplorarComidas} />
           <Route path="/explorar/bebidas" component={ExplorarBebidas} />
-          <Route path="/explorar" component={Explorar} />
           <Route exact path="/bebidas/:id" component={DetalhesBebida} />
           <Route
             exact
@@ -61,8 +58,6 @@ function App() {
             component={ExplorarBebidasIngredientes}
           />
           <Route exact path="/explorar/comidas/area" component={ExplorarComidasArea} />
-          <Route exact path="/explorar/comidas" component={ExplorarComidas} />
-          <Route exact path="/explorar/bebidas" component={ExplorarBebidas} />
           <Route exact path="/explorar" component={Explorar} />
           <Route path="/perfil" component={Perfil} />
           <Route path="/receitas-feitas" component={ReceitasFeitas} />
