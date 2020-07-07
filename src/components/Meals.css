@@ -1,0 +1,8 @@
+.meals {
+  align-self: auto;
+  flex: 0 1 auto;
+  height: 518px;
+  order: 0;
+  overflow: scroll;
+  width: 360px;
+}
