@@ -28,18 +28,17 @@ const thumb1 = (
   strMeal, strDrink, history, index = 0,
 ) => (
   <button
-      data-testid={`${index}-horizontal-top-text`}
-
-      className="favoriteButtonImg"
-      type="button"
-      onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
-    >
-      <img
-        data-testid={`${index}-horizontal-image`}
-        className="favoriteImg"
-        src={strMealThumb || strDrinkThumb}
-        alt={strMeal || strDrink}
-      />
+    data-testid={`${index}-horizontal-top-text`}
+    className="favoriteButtonImg"
+    type="button"
+    onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
+  >
+    <img
+      data-testid={`${index}-horizontal-image`}
+      className="favoriteImg"
+      src={strMealThumb || strDrinkThumb}
+      alt={strMeal || strDrink}
+    />
   </button>
 );
 
@@ -122,7 +121,7 @@ const FavoritesList = () => {
       );
     }));
   };
-  return null
-};
+  return null;
+}
 
 export default FavoritesList;
