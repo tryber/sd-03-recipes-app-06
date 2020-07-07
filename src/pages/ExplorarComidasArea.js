@@ -6,7 +6,7 @@ function ExplorarComidasArea() {
   return (
     <div>
       <Header />
-      <p>Esta é a página de Explorar Comidas por Area</p>
+      <p>Explorar Comidas por Area / Origem</p>
       <Footer />
     </div>
   );
