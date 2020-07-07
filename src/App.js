@@ -31,8 +31,6 @@ function App() {
           <Route path="/comidas/:id" component={DetalhesComida} />
           <Route path="/bebidas" component={Bebidas} />
           <Route path="/comidas" component={Comidas} />
-          <Route path="/explorar/comidas/ingredientes" component={ExplorarComidasIngredientes} />
-          <Route path="/explorar/bebidas/ingredientes" component={ExplorarBebidasIngredientes} />
           <Route path="/explorar/comidas/area" component={ExplorarComidasArea} />
           <Route path="/explorar/bebidas/area" component={NotFound} />
           <Route path="/explorar/comidas" component={ExplorarComidas} />
