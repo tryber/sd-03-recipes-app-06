@@ -120,8 +120,8 @@ const FavoritesList = () => {
         </div>
       );
     }));
-  };
+  }
   return null;
-}
+};
 
 export default FavoritesList;
