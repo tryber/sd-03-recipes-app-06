@@ -16,6 +16,7 @@ import LoginPage from './pages/LoginPage';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/explorar/comidas/ingredientes" component={ExplorarComidasIngredientes} />
           <Route path="/explorar/bebidas/ingredientes" component={ExplorarBebidasIngredientes} />
           <Route path="/explorar/comidas/area" component={ExplorarComidasArea} />
+          <Route path="/explorar/bebidas/area" component={NotFound} />
           <Route path="/explorar/comidas" component={ExplorarComidas} />
           <Route path="/explorar/bebidas" component={ExplorarBebidas} />
           <Route path="/explorar" component={Explorar} />
