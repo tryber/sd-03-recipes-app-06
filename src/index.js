@@ -7,14 +7,17 @@ import * as serviceWorker from './serviceWorker';
 import Provider from './context/Provider';
 import ProviderDetails from './context/ProviderDetails';
 import ProviderDrinkCategories from './context/ProviderDrinkCategories';
+import { ProviderExploreIgredientsMeal } from './context/ExploreIgredientsMeal';
 
 ReactDOM.render(
   <Router>
     <ProviderDetails>
       <Provider>
         <ProviderDrinkCategories>
-          <App />
+          <ProviderExploreIgredientsMeal>      
+            <App />
         </ProviderDrinkCategories>
+       </ProviderExploreIgredientsMeal>
       </Provider>
     </ProviderDetails>
   </Router>,
