@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ExploreIgredientsMealContext } from '../context/ExploreIgredientsMeal';
@@ -19,10 +20,12 @@ function ExplorarBedidasIngredientes() {
           {igredientsDrink.slice(0, 12).map((igredient, index) => {
             const { strIngredient1 } = igredient;
             return (
-              <li data-testid={`${index}-ingredient-card`} key={strIngredient1}>
-                <img src={`https://www.thecocktaildb.com/images/ingredients/${strIngredient1}-Small.png`} alt="" data-testid={`${index}-card-img`} />
-                <div data-testid={`${index}-card-name`}>{strIngredient1}</div>-
-              </li>
+              <Link to={`/bebidas/filter/${strIngredient1}`}>
+                <li data-testid={`${index}-ingredient-card`} key={strIngredient1}>
+                  <img src={`https://www.thecocktaildb.com/images/ingredients/${strIngredient1}-Small.png`} alt="" data-testid={`${index}-card-img`} />
+                  <div data-testid={`${index}-card-name`}>{strIngredient1}</div>-
+                </li>
+              </Link>
             );
           })}
         </ul>
