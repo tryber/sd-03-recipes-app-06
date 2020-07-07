@@ -27,7 +27,7 @@ const thumb1 = (
   id, type, fetchResult, setFetchResult, strMealThumb, strDrinkThumb,
   strMeal, strDrink, history, index = 0,
 ) => (
-    <button
+  <button
       data-testid={`${index}-horizontal-top-text`}
 
       className="favoriteButtonImg"
@@ -40,13 +40,11 @@ const thumb1 = (
         src={strMealThumb || strDrinkThumb}
         alt={strMeal || strDrink}
       />
-    </button>
-  );
+  </button>
+);
 
 const meals1 = (idMeal, strArea, strCategory, strMeal, strMealThumb, index = 0) => (
   <div className="favoriteText">
-    <div className="favoriteFlexySides" data-testid={`${index}-horizontal-image`}>
-    </div>
     <p className="favoriteRecipe" data-testid={`${index}-horizontal-top-text`}>{strMeal}</p>
     <div className="buttons-bottom">
       <div data-testid={`${index}-horizontal-favorite-btn`}>
@@ -70,8 +68,6 @@ const meals1 = (idMeal, strArea, strCategory, strMeal, strMealThumb, index = 0) 
 
 const drinks1 = (idDrink, strAlcoholic, strDrink, strDrinkThumb, strArea, index = 1) => (
   <div className="favoriteText">
-    <div className="favoriteFlexySides" data-testid={`${index}-horizontal-image`}>
-    </div>
     <p className="favoriteRecipe" data-testid={`${index}-horizontal-top-text`}>{strDrink}</p>
     <div className="buttons-bottom">
       <div data-testid={`${index}-horizontal-favorite-btn`}>
@@ -93,18 +89,18 @@ const drinks1 = (idDrink, strAlcoholic, strDrink, strDrinkThumb, strArea, index 
   </div>
 );
 
-function Foo() {
-  const { location, copyUrl } = useContext(DetailsContext);
-  // caso precise reatribuir o location.pathname você deve fazer da seguinte forma:
-  // location.pathname = '/comidas/{id da comida}'; ou
-  // location.pathname = '/bebidas/{id da bebida}';
-  return (
-    <div>
-      <div className="SFButtons"><ShareButton /><FavButton /></div>
-      {copyUrl && <span>Link copiado!</span>}
-    </div>
-  );
-}
+// function Foo() {
+//   const { location, copyUrl } = useContext(DetailsContext);
+//   // caso precise reatribuir o location.pathname você deve fazer da seguinte forma:
+//   // location.pathname = '/comidas/{id da comida}'; ou
+//   // location.pathname = '/bebidas/{id da bebida}';
+//   return (
+//     <div>
+//       <div className="SFButtons"><ShareButton /><FavButton /></div>
+//       {copyUrl && <span>Link copiado!</span>}
+//     </div>
+//   );
+// }
 
 const FavoritesList = () => {
   const { fetchResult, setFetchResult } = useContext(DetailsContext);
@@ -126,7 +122,7 @@ const FavoritesList = () => {
       );
     }));
   };
-  return null;
-}
+  return null
+};
 
 export default FavoritesList;

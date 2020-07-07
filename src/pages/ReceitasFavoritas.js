@@ -31,7 +31,7 @@ const ReceitasFavoritas = () => {
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   const {
-    setFetchResult
+    setFetchResult,
   } = useContext(DetailsContext);
 
   useEffect(() => {
