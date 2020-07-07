@@ -5,8 +5,10 @@ import Footer from '../components/Footer';
 
 const Comidas = () =>
   <div className="Principal">
-    <Header />
-    <Meals />
+    <div>
+      <Header />
+      <Meals />
+    </div>
     <Footer />
   </div>;
 
