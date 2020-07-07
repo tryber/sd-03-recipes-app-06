@@ -1,0 +1,163 @@
+.profileContainer {
+
+  /* Tela de perfil */
+  background: white;
+  height: 640px;
+  position: relative;
+  width: 360px;
+}
+
+
+/* Group 29
+
+position: absolute;
+width: 360px;
+height: 58px;
+left: 0px;
+top: 0px;
+*/
+
+/* Perfil
+
+position: absolute;
+width: 69px;
+height: 35px;
+left: 123px;
+top: 12px;
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 35px;
+display: flex;
+align-items: flex-end;
+
+color: #00;
+
+*/
+
+/* user 1
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 15px;
+top: 12px;
+
+background: url(user.png); */
+
+
+.user-mail {
+
+  /* email@mail.com */
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  height: 35px;
+  left: 58px;
+  line-height: 35px;
+  position: absolute;
+  top: 111px;
+  width: 225px;
+}
+
+
+.done-box {
+
+  /* Rectangle 19 */
+  background: #c4c4c4;
+  border-radius: 4px;
+  height: 53px;
+  left: 16px;
+  position: absolute;
+  top: 184px;
+  width: 329px;
+}
+
+.favorite-box {
+
+  /* Rectangle 20 */
+  background: #c4c4c4;
+  border-radius: 4px;
+  height: 53px;
+  left: 16px;
+  position: absolute;
+  top: 257px;
+  width: 329px;
+}
+
+.logout-box {
+
+  /* Rectangle 22 */
+  background: #c4c4c4;
+  border-radius: 4px;
+  height: 53px;
+  left: 16px;
+  position: absolute;
+  top: 328px;
+  width: 329px;
+}
+
+.btn-done {
+
+  /* Receitas Feitas */
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  height: 29px;
+  left: 89px;
+  line-height: 29px;
+  position: absolute;
+  top: 196px;
+  width: 170px;
+}
+
+.btn-favorite {
+
+  /* Receitas Favoritas */
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  height: 29px;
+  left: 77px;
+  line-height: 29px;
+  position: absolute;
+  top: 268px;
+  width: 205px;
+}
+
+.btn-logout {
+
+  /* Sair */
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  height: 29px;
+  left: 159px;
+  line-height: 29px;
+  position: absolute;
+  top: 340px;
+  width: 43px;
+}
+
+
+/* Group 29
+
+position: absolute;
+width: 360px;
+height: 58px;
+left: 0px;
+top: 582px;
+
+*/
