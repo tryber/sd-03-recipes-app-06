@@ -1,0 +1,33 @@
+.carousel {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow: scroll;
+  width: 360px;
+}
+
+.element {
+  height: 155px;
+  padding-right: 30px;
+  width: 155px;
+}
+
+.instructions {
+  width: 360px;
+}
+
+.footer-btn {
+  bottom: 0;
+  position: fixed;
+}
+
+.Principal {
+  display: flex;
+  flex-direction: row;
+  height: 640px;
+  width: 360px;
+}
+
+.SFButtons {
+  display: flex;
+  justify-content: space-between;
+}
