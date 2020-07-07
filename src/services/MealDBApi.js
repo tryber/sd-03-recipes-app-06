@@ -1,3 +1,4 @@
+
 const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 
 export const getMealByLetter = (letter) => fetch(`${BASE_URL}${letter}`).then((response) => response
