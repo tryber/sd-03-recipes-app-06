@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
-import ShareFavButtons from '../components/ShareFavButtons';
+import ShareButton from '../components/ShareButton';
+import FavButton from '../components/FavButton';
+import StartContinueButton from '../components/StartContinueButton';
 import './Detalhes.css';
 
 const getIngredients = (obj) => {
@@ -55,11 +56,10 @@ const recomendations = (obj) => {
 };
 
 const Detalhes = () => {
-  const location = useLocation();
+  const { fetchMeals, meals, mealsOk, location } = useContext(DetailsContext);
+  const { fetchDrink, drink, drinkOk, copyUrl } = useContext(DetailsContext);
   const address = location.pathname;
   const id = address.slice(9, address.length);
-  const { fetchMeals, meals, mealsOk } = useContext(DetailsContext);
-  const { fetchDrink, drink, drinkOk } = useContext(DetailsContext);
 
   useEffect(() => {
     fetchMeals();
@@ -72,9 +72,10 @@ const Detalhes = () => {
       <div>
         <img data-testid="recipe-photo" src={drink.strDrinkThumb} width="360px" alt="Recipe" />
         <p data-testid="recipe-title">{drink.strDrink}</p>
-        <p>{drink.strAlcoholic}</p>
-        <ShareFavButtons />
-        <p data-testid="recipe-category">{drink.strCategory}</p>
+        <p data-testid="recipe-category">{drink.strAlcoholic}</p>
+        <div className="SFButtons"><ShareButton /><FavButton /></div>
+        {copyUrl && <span>Link copiado!</span>}
+        <p>{drink.strCategory}</p>
         <div><span>Ingredients</span>
           {
           getIngredients(drink).map((e, index) =>
@@ -87,7 +88,7 @@ const Detalhes = () => {
         <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
         <p>Recommendation</p>
         {recomendations(meals)}
-        <button data-testid="start-recipe-btn" className="footer-btn">Iniciar Receita</button>
+        <StartContinueButton />
       </div>
       }
     </div>

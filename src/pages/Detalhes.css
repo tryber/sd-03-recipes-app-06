@@ -6,9 +6,9 @@
 }
 
 .element {
-  height: 150px;
+  height: 155px;
   padding-right: 30px;
-  width: 150px;
+  width: 155px;
 }
 
 .instructions {
@@ -25,4 +25,9 @@
   flex-direction: row;
   height: 640px;
   width: 360px;
+}
+
+.SFButtons {
+  display: flex;
+  justify-content: space-between;
 }
