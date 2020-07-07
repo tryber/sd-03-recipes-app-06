@@ -6,12 +6,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Provider from './context/Provider';
 import ProviderDetails from './context/ProviderDetails';
+import { ProviderExploreIgredientsMeal } from './context/ExploreIgredientsMeal';
 
 ReactDOM.render(
   <Router>
     <ProviderDetails>
       <Provider>
-        <App />
+        <ProviderExploreIgredientsMeal>
+          <App />
+        </ProviderExploreIgredientsMeal>
       </Provider>
     </ProviderDetails>
   </Router>,
