@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Context from './Context';
 import { getMealByLetter } from '../services/MealDBApi';
-import { getDrinks, getDrinksCategories, getDrinksByCategory } from '../services/DrinkDBApi';
+import { getDrinks } from '../services/DrinkDBApi';
 
 function Provider({ children }) {
   const [email, setEmail] = useState('');
@@ -11,8 +11,6 @@ function Provider({ children }) {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const [drinkCategories, setDrinkCategories] = useState([]);
-  const [drinkCategory, setDrinkCategory] = useState('');
 
   const handleFetchCocktailsSuccess = (json) => {
     const dataCocktails = json.drinks;
@@ -54,29 +52,6 @@ function Provider({ children }) {
     );
   };
 
-  const fetchDrinkCategories = () => {
-    getDrinksCategories()
-    .then((json) => {
-      setDrinkCategories([...json.drinks]);
-    });
-  }
-
-  const getDrinksByCat = (category) => {
-    if (category === drinkCategory || category === 'all') {
-      setDrinkCategory('');
-      getDrinks().then(
-        handleFetchCocktailsSuccess,
-        handleFetchCocktailsError,
-      );
-    } else {
-      getDrinksByCategory(category).then(
-        handleFetchCocktailsSuccess,
-        handleFetchCocktailsError,
-      );
-      setDrinkCategory(category);
-    }
-  };
-
   const context = {
     email,
     setEmail,
@@ -87,13 +62,11 @@ function Provider({ children }) {
     meals,
     setMeals,
     loading,
+    setLoading,
     error,
+    setError,
     fetchMeals,
     fetchCocktails,
-    fetchDrinkCategories,
-    drinkCategories,
-    setDrinkCategories,
-    getDrinksByCat,
   };
 
   return (

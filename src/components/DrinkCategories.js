@@ -1,16 +1,16 @@
 import React, { useContext, useEffect } from 'react';
-import Context from '../context/Context';
+import DrinkCategoriesContext from '../context/DrinkCategoriesContext';
 
 function DrinkCategories() {
   const {
     fetchDrinkCategories,
     drinkCategories,
     getDrinksByCat,
-  } = useContext(Context);
+  } = useContext(DrinkCategoriesContext);
 
   useEffect(() => {
-    fetchDrinkCategories();  
-  },[]);
+    fetchDrinkCategories();
+  }, []);
 
   return (
     <div id="mealsCategories">
