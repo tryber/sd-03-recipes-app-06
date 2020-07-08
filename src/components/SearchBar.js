@@ -3,6 +3,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { getMealByLetter, getMealByIngredients, getMealByName } from '../services/MealDBApi';
 import { getDrinkByLetter, getDrinkByIngredients, getDrinkByName } from '../services/DrinkDBApi';
 import Context from '../context/Context';
+import { GetMealsContext } from '../context/getMeals';
 
 const fetchesMeals = {
   name: getMealByName,
@@ -35,7 +36,8 @@ const SearchBar = () => {
   const history = useHistory(); const location = useLocation();
   const [selected, setSelected] = useState('name');
   const [search, setSearch] = useState('');
-  const { setCocktails, setMeals } = useContext(Context);
+  const { setCocktails } = useContext(Context);
+  const { getMeals: { receiveSearchedMeals } } = useContext(GetMealsContext);
   const verifyReceived = (obj, type) => {
     const reconf = { comidas: 'idMeal', bebidas: 'idDrink' };
     history.push(`${location.pathname}/${obj[0][reconf[type]]}`);
@@ -50,7 +52,7 @@ const SearchBar = () => {
     } else if (received.length === 1) {
       verifyReceived(received, type);
     }
-    setCocktails(received); setMeals(received);
+    setCocktails(received); receiveSearchedMeals(received);
   };
   return (
     <div>
@@ -72,9 +74,7 @@ const SearchBar = () => {
           name="filter" onClick={() => setSelected('letter')}
         /><span>Primeira Letra</span>
       </div>
-      <div>
-        <button data-testid="exec-search-btn" onClick={() => handleChange()}>Buscar</button>
-      </div>
+      <button data-testid="exec-search-btn" onClick={() => handleChange()}>Buscar</button>
     </div>
   );
 };

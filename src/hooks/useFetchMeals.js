@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getMeals, getMealsByCategory } from '../services/MealDBApi';
+import { getMeals, getMealsByCategory, receivedSearch } from '../services/MealDBApi';
 
 
 function useFetchMeals() {
@@ -17,6 +17,11 @@ function useFetchMeals() {
     return () => meals;
   }, []);
 
+  const receiveSearchedMeals = (obj) => {
+    receivedSearch(obj, true)
+    .then(handleFetchMealSuccess);
+  };
+
   const getByCat = (category) => {
     if (category === selectedCategory || category === 'all') {
       setSelectedCategory('');
@@ -31,6 +36,7 @@ function useFetchMeals() {
   return {
     meals,
     getByCat,
+    receiveSearchedMeals,
   };
 }
 
