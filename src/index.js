@@ -16,8 +16,8 @@ ReactDOM.render(
         <ProviderDrinkCategories>
           <ProviderExploreIgredientsMeal>      
             <App />
+          </ProviderExploreIgredientsMeal>
         </ProviderDrinkCategories>
-       </ProviderExploreIgredientsMeal>
       </Provider>
     </ProviderDetails>
   </Router>,
