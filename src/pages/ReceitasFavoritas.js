@@ -1,35 +1,49 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import DetailsContext from '../context/DetailsContext';
 import FavoritesList from '../components/FavoritesList';
 import Header from '../components/Header';
 import './ReceitasFavoritas.css';
 
-const handleClick = (favoriteRecipes, setFetchResult, value) => {
-  if (value === 'mealdb') {
-    const filtered = favoriteRecipes.filter((item) => item.isMeal === true);
-    setFetchResult(filtered);
-  } else if (value === 'cocktaildb') {
-    const filtered = favoriteRecipes.filter((item) => item.isMeal === false);
-    setFetchResult(filtered);
-  } else {
-    setFetchResult(favoriteRecipes);
-  }
+const filterButtons = (setFilter) => {
+  const handleClick = (e) => {
+    setFilter(e.target.value);
+  };
+  return (
+    <div className="favoriteButtons">
+      <button
+        data-testid="filter-by-all-btn"
+        type="button"
+        className="btn"
+        value=""
+        onClick={(e) => handleClick(e)}
+      >
+        All
+      </button>
+      <button
+        data-testid="filter-by-food-btn"
+        type="button"
+        className="btn"
+        value="comida"
+        onClick={(e) => handleClick(e)}
+      >
+        Food
+      </button>
+      <button
+        data-testid="filter-by-drink-btn"
+        type="button"
+        className="btn"
+        value="bebida"
+        onClick={(e) => handleClick(e)}
+      >
+        Drinks
+      </button>
+    </div>
+  );
 };
-
-const searchBtn = (value, btnName, favoriteRecipes, setFetchResult) => (
-  <button
-    className="FavoriteSearchBtn"
-    type="button"
-    value={value}
-    onClick={() => handleClick(favoriteRecipes, setFetchResult, value)}
-  >
-    {btnName}
-  </button>
-);
 
 const ReceitasFavoritas = () => {
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-
+  const [filter, setFilter] = useState('');
   const {
     setFetchResult,
   } = useContext(DetailsContext);
@@ -41,11 +55,7 @@ const ReceitasFavoritas = () => {
   return (
     <div>
       <Header />
-      <div className="favoriteButtons">
-        <button data-testid="filter-by-all-btn">{searchBtn('all', 'All', favoriteRecipes, setFetchResult)}</button>
-        <button data-testid="filter-by-food-btn">{searchBtn('mealdb', 'Food', favoriteRecipes, setFetchResult)}</button>
-        <button data-testid="filter-by-drink-btn">{searchBtn('cocktaildb', 'Drinks', favoriteRecipes, setFetchResult)}</button>
-      </div>
+      {filterButtons(setFilter)}
       <div className="favoriteContainerPage">
         <FavoritesList />
       </div>

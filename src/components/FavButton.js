@@ -3,7 +3,7 @@ import DetailsContext from '../context/DetailsContext';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-const ShareFavButtons = () => {
+const FavButton = () => {
   const { heart, toFavorite, verifyHeart } = useContext(DetailsContext);
 
   const chooseHeart = (choose) => {
@@ -26,4 +26,5 @@ const ShareFavButtons = () => {
   );
 };
 
-export default ShareFavButtons;
+export default FavButton;
+// toggle
