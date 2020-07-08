@@ -34,31 +34,33 @@ const favoriteRecipes = (
   setRecipes,
   recipes,
 ) => (
-    <div>
-      {renderLink(type, id, image, index, name)}
-      {renderCategory(index, type, area, category, alcoholicOrNot)}
-      <button
-        data-testid={`${index}-horizontal-share-btn`}
-        src={shareIcon}
-        type="button"
-        onClick={() => {
-          navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
-          copyUrl = true;
-          localStorage.removeItem(favoriteRecipes(`${id}`));
-        }}
-      >
-        <ShareButton id={id} type={type} />
-        <div>
-          {copyUrl && <span>Link copiado!</span>}
-        </div>
-      </button>
-      <button
-        type="button"
-        onClick={() => setRecipes(recipes.filter((element) => element.id !== id))}
-      >
-        <FavButton data-testid={`${index}-horizontal-favorite-btn`} recipe={recipe} src={blackHeartIcon} />
-      </button>
-    </div >
+  <div>
+    {renderLink(type, id, image, index, name)}
+    {renderCategory(index, type, area, category, alcoholicOrNot)}
+    <button
+      data-testid={`${index}-horizontal-share-btn`}
+      src={shareIcon}
+      type="button"
+      onClick={() => {
+        navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
+        copyUrl = true;
+        localStorage.removeItem(favoriteRecipes(`${id}`));
+      }}
+    >
+      <ShareButton id={id} type={type} />
+      <div>
+        {copyUrl && <span>Link copiado!</span>}
+      </div>
+    </button>
+    <button
+      data-testid={`${index}-horizontal-favorite-btn`}
+      src={blackHeartIcon}
+      type="button"
+      onClick={() => setRecipes(recipes.filter((element) => element.id !== id))}
+    >
+      <FavButton recipe={recipe} />
+    </button>
+  </div >
   );
 
 const FavoritesList = ({
