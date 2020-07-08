@@ -72,7 +72,7 @@ const FavoritesList = (
     recipes,
   },
   ) => {
-  favoriteRecipes(
+  return favoriteRecipes(
     name,
     type,
     alcoholicOrNot,

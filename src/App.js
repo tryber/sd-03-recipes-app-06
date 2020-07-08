@@ -57,7 +57,7 @@ function App() {
           <Route path="/perfil" component={Perfil} />
           <Route path="/receitas-feitas" component={ReceitasFeitas} />
           <Route
-            path="/receitas-favoritas"
+            exact path="/receitas-favoritas"
             render={(props) => (
               <ReceitasFavoritas {...props} title="Receitas Favoritas" page="favoriteRecipes" />
             )}
