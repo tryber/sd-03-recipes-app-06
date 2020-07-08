@@ -30,18 +30,18 @@ const thumbX = (
   id, type, fetchResult, setFetchResult, strMealThumb, strDrinkThumb,
   strMeal, strDrink, history,
 ) => (
-    <button
-      className="favoriteButtonImg"
-      type="button"
-      onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
-    >
-      <img
-        className="favoriteImg"
-        src={strMealThumb || strDrinkThumb}
-        alt={strMeal || strDrink}
-      />
-    </button>
-  );
+  <button
+    className="favoriteButtonImg"
+    type="button"
+    onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
+  >
+    <img
+      className="favoriteImg"
+      src={strMealThumb || strDrinkThumb}
+      alt={strMeal || strDrink}
+    />
+  </button>
+);
 
 const mealsX = (idMeal, strArea, strCategory, strMeal, strMealThumb, index) => (
   <div className="favoriteText">
@@ -65,18 +65,18 @@ const drinksX = (idDrink, strDrink, strDrinkThumb, strArea, index) => (
   </div>
 );
 
-function Foo() {
-  const { location, copyUrl } = useContext(DetailsContext);
-  // caso precise reatribuir o location.pathname você deve fazer da seguinte forma:
-  // location.pathname = '/comidas/{id da comida}'; ou
-  // location.pathname = '/bebidas/{id da bebida}';
-  return (
-    <div>
-      <div className="SFButtons"><ShareButton /><FavButton /></div>
-      {copyUrl && <span>Link copiado!</span>}
-    </div>
-  );
-}
+// function Foo() {
+//   const { location, copyUrl } = useContext(DetailsContext);
+//   // caso precise reatribuir o location.pathname você deve fazer da seguinte forma:
+//   // location.pathname = '/comidas/{id da comida}'; ou
+//   // location.pathname = '/bebidas/{id da bebida}';
+//   return (
+//     <div>
+//       <div className="SFButtons"><ShareButton /><FavButton /></div>
+//       {copyUrl && <span>Link copiado!</span>}
+//     </div>
+//   );
+// }
 
 const FavoritesList = () => {
   const { fetchResult, setFetchResult, copyUrl } = useContext(DetailsContext);
@@ -86,10 +86,11 @@ const FavoritesList = () => {
       id, isMeal, category, image, area, name, strDrink,
     }, index) => {
       let type = 'bebidas';
-      if (!isMeal) { type = 'comidas' }
+      if (!isMeal) { type = 'comidas' };
       return (
-        <div key={`${name}`} className="favoriteContainerRecipe" data-testid={`${index}-horizontal-image`} src={image}
-          alt={name}>
+        <div key={`${name}`} className="favoriteContainerRecipe" data-testid={`${index}-horizontal-image`} 
+          src={image} alt={name}
+        >
           <div data-testid={`${index}-horizontal-top-text`}>
             {thumbX(id, type, fetchResult, setFetchResult,
               image, image, name, name, history)}
@@ -110,7 +111,7 @@ const FavoritesList = () => {
       );
     }));
   }
-  return null
+  return null;
 };
 
 export default FavoritesList;

@@ -43,7 +43,7 @@ const filterButtons = (setFilter) => {
 
 const ReceitasFavoritas = () => {
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const [filter, setFilter] = useState('');
+  const [setFilter] = useState('');
   const {
     setFetchResult,
   } = useContext(DetailsContext);
