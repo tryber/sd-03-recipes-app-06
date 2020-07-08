@@ -7,29 +7,25 @@ export const getMealByLetter = (letter) => fetch(`${BASE_URL}${letter}`).then((r
 
 const ING_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
 
-export const getMealByIngredients = (ingredient) =>
-  fetch(`${ING_URL}${ingredient}`).then((response) => response
-    .json()
-    .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
+export const getMealByIngredients = (ingredient) => fetch(`${ING_URL}${ingredient}`).then((response) => response
+  .json()
+  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
 const NAME_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
-export const getMealByName = (name) =>
-  fetch(`${NAME_URL}${name}`).then((response) => response
-    .json()
-    .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
+export const getMealByName = (name) => fetch(`${NAME_URL}${name}`).then((response) => response
+  .json()
+  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
 const ID_URL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 
-export const getMeal = (id) =>
-  fetch(`${ID_URL}${id}`).then((response) => response
-    .json()
-    .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
+export const getMeal = (id) => fetch(`${ID_URL}${id}`).then((response) => response
+  .json()
+  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
-export const getMeals = () =>
-  fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=').then((response) => response
-    .json()
-    .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
+export const getMeals = () => fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=').then((response) => response
+  .json()
+  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
 export const getMealsCategories = () => fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list').then((response) => response
   .json()
@@ -43,7 +39,7 @@ export const getMealDetailsById = (id) => fetch(`https://www.themealdb.com/api/j
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
-// requisição API para Page Explore por Origem e surpreenda-me:
+// requisição API para Page Explore por Origem e Surpreenda-me:
 
 const URL_ALLMEALS = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
