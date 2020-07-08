@@ -86,11 +86,11 @@ const FavoritesList = () => {
       id, isMeal, category, image, area, name, strDrink,
     }, index) => {
       let type = 'bebidas';
-      if (!isMeal) { 
-        type = 'comidas' 
+      if (!isMeal) {
+        type = 'comidas';
       }
       return (
-        <div 
+        <div
           key={`${name}`} className="favoriteContainerRecipe"
           data-testid={`${index}-horizontal-image`}
           src={image}
