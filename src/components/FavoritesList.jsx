@@ -70,9 +70,9 @@ const FavoritesList = (
     index,
     setRecipes,
     recipes,
-  }
+  },
   ) => {
-  return favoriteRecipes(
+  favoriteRecipes(
     name,
     type,
     alcoholicOrNot,
