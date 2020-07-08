@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { getRandomDrinks } from '../services/DrinkDBApi';
+import { getRandomDrinks } from '../services/ExploreRecipes';
 
 function ExplorarBebidas() {
   const [id, setId] = useState('');

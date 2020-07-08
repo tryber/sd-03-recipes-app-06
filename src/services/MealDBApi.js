@@ -38,29 +38,3 @@ export const getMealsByCategory = (cat) => fetch(`https://www.themealdb.com/api/
 export const getMealDetailsById = (id) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`).then((response) => response
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
-
-// requisição API para Page Explore por Origem e Surpreenda-me:
-
-const URL_ALLMEALS = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-
-export const getAllMeals = () => fetch(`${URL_ALLMEALS}`).then((response) => response
-  .json()
-  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
-
-const URL_RANDOM = 'https://www.themealdb.com/api/json/v1/1/random.php';
-
-export const getRandomMeals = () => fetch(`${URL_RANDOM}`).then((response) => response
-  .json()
-  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
-
-const URL_COUNTRYLIST = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
-
-export const getCountryList = () => fetch(`${URL_COUNTRYLIST}`).then((response) => response
-  .json()
-  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
-
-const URL_COUNTRYFILTER = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=';
-
-export const getCountryFilter = (country) => fetch(`${URL_COUNTRYFILTER}${country}`).then((response) => response
-  .json()
-  .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));

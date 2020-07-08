@@ -26,8 +26,11 @@ function Cocktails() {
           return (
             <li data-testid={`${index}-recipe-card`} key={idDrink}>
               <img
-                data-testid={`${index}-card-img`} src={strDrinkThumb}
-                width="120px" height="150px" alt="Cocktails Thumb"
+                data-testid={`${index}-card-img`}
+                src={strDrinkThumb}
+                width="120px"
+                height="150px"
+                alt="Cocktails Thumb"
               />
               <div data-testid={`${index}-card-name`}>{strDrink}</div>
               -

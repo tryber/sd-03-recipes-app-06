@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { getAllMeals, getCountryList, getCountryFilter } from '../services/MealDBApi';
+import { getAllMeals, getCountryList, getCountryFilter } from '../services/ExploreRecipes';
 
 const fetchAreaList = async (setAreaList) => {
   const areaList = await getCountryList();
