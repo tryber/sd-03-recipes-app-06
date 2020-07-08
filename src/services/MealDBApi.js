@@ -43,16 +43,14 @@ export const getMealDetailsById = (id) => fetch(`https://www.themealdb.com/api/j
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
-export  const receivedSearch = (obj, resolver) => {
+export const receivedSearch = (obj, resolver) => {
   const json = { meals: obj };
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (!resolver) {
-          reject("Deu erro");
-        }  
-        resolve(json);
-      }, 500);
-    }
-  );
-}
-
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!resolver) {
+        reject('Deu erro');
+      }
+      resolve(json);
+    }, 500);
+  });
+};

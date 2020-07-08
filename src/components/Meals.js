@@ -9,7 +9,6 @@ function Meals() {
     getMeals: {
       meals,
     },
-    mealsReady,
   } = useContext(GetMealsContext);
 
   return (

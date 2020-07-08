@@ -74,9 +74,7 @@ const SearchBar = () => {
           name="filter" onClick={() => setSelected('letter')}
         /><span>Primeira Letra</span>
       </div>
-      <div>
-        <button data-testid="exec-search-btn" onClick={() => handleChange()}>Buscar</button>
-      </div>
+      <button data-testid="exec-search-btn" onClick={() => handleChange()}>Buscar</button>
     </div>
   );
 };
