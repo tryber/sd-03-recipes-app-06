@@ -43,7 +43,7 @@ const favoriteRecipes = (
       type="button"
       onClick={() => {
         navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
-        copyUrl = true;
+        copyUrl = !copyUrl;
         localStorage.removeItem(favoriteRecipes(`${id}`));
       }}
     >
@@ -63,13 +63,15 @@ const favoriteRecipes = (
   </div >
   );
 
-const FavoritesList = ({
-  recipe: { name, type, alcoholicOrNot, image, area, category, id },
-  recipe,
-  index,
-  setRecipes,
-  recipes,
-}) => {
+const FavoritesList = (
+  {
+    recipe: { name, type, alcoholicOrNot, image, area, category, id },
+    recipe,
+    index,
+    setRecipes,
+    recipes,
+  }
+  ) => {
   return favoriteRecipes(
     name,
     type,
