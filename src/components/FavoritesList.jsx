@@ -28,7 +28,8 @@ const favoriteRecipes = (
   recipe,
   setRecipes,
   recipes,
-) => (
+) =>
+  (
     <div>
       {renderLink(type, id, image, index, name)}
       {renderCategory(index, type, area, category, alcoholicOrNot)}
@@ -38,12 +39,12 @@ const favoriteRecipes = (
         type="button"
         onClick={() => {
           navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
-          document.getElementsByClassName("msg").innerHTML = 'Link copiado!';
+          document.getElementsByClassName('msg').innerHTML = 'Link copiado!';
         }}
       >
-        <img src={shareIcon} id={id} type={type} />
+        <img src={shareIcon} alt="compartilhar" id={id} type={type} />
       </button>
-      <span className="msg"></span>
+      <span className="msg">Link copiado!</span>
       <button
         data-testid={`${index}-horizontal-favorite-btn`}
         src={blackHeartIcon}
@@ -53,7 +54,7 @@ const favoriteRecipes = (
           localStorage.removeItem(favoriteRecipes(`${id}`));
         }}
       >
-        <img src={blackHeartIcon} recipe={recipe} />
+        <img src={blackHeartIcon} alt="coração" recipe={recipe} />
       </button>
     </div >
   );
@@ -65,20 +66,23 @@ const FavoritesList = (
     index,
     setRecipes,
     recipes,
-  }) => {
-  return favoriteRecipes(
-    name,
-    type,
-    alcoholicOrNot,
-    image,
-    area,
-    category,
-    id,
-    index,
-    recipe,
-    setRecipes,
-    recipes,
-  );
-};
+  }) => (
+    <div>
+      {favoriteRecipes(
+        name,
+        type,
+        alcoholicOrNot,
+        image,
+        area,
+        category,
+        id,
+        index,
+        recipe,
+        setRecipes,
+        recipes,
+      )
+      }
+    </div>
+  )
 
 export default FavoritesList;
