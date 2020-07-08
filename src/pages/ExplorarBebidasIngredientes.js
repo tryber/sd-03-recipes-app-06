@@ -21,9 +21,21 @@ function ExplorarBedidasIngredientes() {
             const { strIngredient1 } = igredient;
             return (
               <Link to={`/bebidas/filter/${strIngredient1}`}>
-                <li data-testid={`${index}-ingredient-card`} key={strIngredient1}>
-                  <img src={`https://www.thecocktaildb.com/images/ingredients/${strIngredient1}-Small.png`} alt="" data-testid={`${index}-card-img`} />
-                  <div data-testid={`${index}-card-name`}>{strIngredient1}</div>-
+                <li
+                  data-testid={`${index}-ingredient-card`}
+                  key={strIngredient1}
+                >
+                  <img
+                    src={`https://www.thecocktaildb.com/images/ingredients/${strIngredient1}-Small.png`}
+                    alt=""
+                    data-testid={`${index}-card-img`}
+                  />
+                  <div
+                    data-testid={`${index}-card-name`}
+                  >
+                    {strIngredient1}
+                  </div>
+                  -
                 </li>
               </Link>
             );
