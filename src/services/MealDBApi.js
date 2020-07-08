@@ -38,3 +38,15 @@ export const getMealsByCategory = (cat) => fetch(`https://www.themealdb.com/api/
 export const getMealDetailsById = (id) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`).then((response) => response
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
+
+export const receivedSearch = (obj, resolver) => {
+  const json = { meals: obj };
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!resolver) {
+        reject('Deu erro');
+      }
+      resolve(json);
+    }, 500);
+  });
+};
