@@ -27,4 +27,3 @@ const FavButton = () => {
 };
 
 export default FavButton;
-// toggle

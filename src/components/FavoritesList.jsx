@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
@@ -83,6 +84,13 @@ const FavoritesList = (
       )
       }
     </div>
-  )
+  );
+
+FavoritesList.propTypes = {
+  recipe: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  setRecipes: PropTypes.string.isRequired,
+  recipes: PropTypes.array.isRequired,
+};
 
 export default FavoritesList;
