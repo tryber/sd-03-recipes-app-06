@@ -14,7 +14,7 @@ ReactDOM.render(
     <ProviderDetails>
       <Provider>
         <ProviderDrinkCategories>
-          <ProviderExploreIgredientsMeal>      
+          <ProviderExploreIgredientsMeal>
             <App />
           </ProviderExploreIgredientsMeal>
         </ProviderDrinkCategories>
