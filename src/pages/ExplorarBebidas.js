@@ -1,9 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { getRandomDrinks } from '../services/DrinkDBApi';
 
 function ExplorarBebidas() {
+  const [id, setId] = useState('');
+
+  const handleClick = () => {
+    getRandomDrinks()
+      .then((event) => setId(event.drinks[0].idDrink));
+  };
+
   return (
     <div>
       <Header />
@@ -14,11 +22,10 @@ function ExplorarBebidas() {
             Por Ingredientes
           </button>
         </Link>
-        <Link to="/explorar/bebidas/area">
-          <button data-testid="explore-surprise" type="button">
-            Me Surpreenda!
-          </button>
-        </Link>
+        <button data-testid="explore-surprise" type="button" onClick={handleClick}>
+          Me Surpreenda!
+        </button>
+        {id !== '' && <Redirect to={`/bebidas/${id}`} />}
       </div>
       <Footer />
     </div>

@@ -43,7 +43,7 @@ export const getMealDetailsById = (id) => fetch(`https://www.themealdb.com/api/j
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
-// requisição API para Page Explore por Origem:
+// requisição API para Page Explore por Origem e surpreenda-me:
 
 const URL_ALLMEALS = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
@@ -53,7 +53,7 @@ export const getAllMeals = () => fetch(`${URL_ALLMEALS}`).then((response) => res
 
 const URL_RANDOM = 'https://www.themealdb.com/api/json/v1/1/random.php';
 
-export const getRandom = () => fetch(`${URL_RANDOM}`).then((response) => response
+export const getRandomMeals = () => fetch(`${URL_RANDOM}`).then((response) => response
   .json()
   .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))));
 
