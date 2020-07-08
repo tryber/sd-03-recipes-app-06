@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
-import DetailsContext from '../context/DetailsContext';
-import FavoritesList from '../components/FavoritesList';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import FavoritesList from '../components/FavoritesList';
 import './ReceitasFavoritas.css';
 
 const filterButtons = (setFilter) => {
@@ -9,7 +9,7 @@ const filterButtons = (setFilter) => {
     setFilter(e.target.value);
   };
   return (
-    <div className="favoriteButtons">
+    <div className="margin-top-70p">
       <button
         data-testid="filter-by-all-btn"
         type="button"
@@ -41,27 +41,47 @@ const filterButtons = (setFilter) => {
   );
 };
 
-const ReceitasFavoritas = () => {
-  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const [setFilter] = useState('');
-  const {
-    setFetchResult,
-  } = useContext(DetailsContext);
+const displayRecipes = (filter, recipes, page, setRecipes) => (
+  <div>
+    {recipes
+      .filter((recipe) => {
+        if (filter) {
+          return recipe.type === filter;
+        }
+        return true;
+      })
+      .map((recipe, index) => (
+        <FavoritesList
+          recipes={recipes}
+          recipe={recipe}
+          page={page}
+          index={index}
+          setRecipes={setRecipes}
+        />
+      ))}
+  </div>
+);
 
+const ReceitasFavoritas = ({ title, page }) => {
+  const [filter, setFilter] = useState('');
+  const [recipes, setRecipes] = useState([]);
   useEffect(() => {
-    setFetchResult(favoriteRecipes);
-  }, []);
-
+    if (JSON.parse(localStorage.getItem(page))) {
+      setRecipes(JSON.parse(localStorage.getItem(page)));
+    }
+  }, [page]);
   return (
     <div>
-      <Header />
+      <Header title={title} searchEnabled={false} />
       {filterButtons(setFilter)}
-      <div className="favoriteContainerPage">
-        <FavoritesList />
-      </div>
+      {displayRecipes(filter, recipes, page, setRecipes)}
     </div>
   );
 };
 
-export default ReceitasFavoritas;
+ReceitasFavoritas.propTypes = {
+  title: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
+};
 
+export default ReceitasFavoritas;

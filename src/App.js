@@ -56,7 +56,13 @@ function App() {
           <Route exact path="/explorar" component={Explorar} />
           <Route path="/perfil" component={Perfil} />
           <Route path="/receitas-feitas" component={ReceitasFeitas} />
-          <Route path="/receitas-favoritas" component={ReceitasFavoritas} />
+          <Route
+            exact
+            path="/receitas-favoritas"
+            render={(props) => (
+              <ReceitasFavoritas {...props} title="Receitas Favoritas" page="favoriteRecipes" />
+            )}
+          />
         </Switch>
       </Provider>
     </ProviderSearch>

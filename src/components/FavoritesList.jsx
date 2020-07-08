@@ -1,122 +1,86 @@
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-import DetailsContext from '../context/DetailsContext';
-import FavButton from './FavButton';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import ShareButton from './ShareButton';
+import FavButton from './FavButton';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
+let copyUrl = false;
+console.log(copyUrl);
 
-const updateAPI = (title) => {
-  if (title === 'bebidas') return 'thecocktaildb';
-  return 'themealdb';
-};
+const renderLink = (type, id, image, index, name) => (
+  <Link to={`${type}s/${id}`}>
+    <img alt="recipe" src={image} data-testid={`${index}-horizontal-image`} width="80px" />
+    <span data-testid={`${index}-horizontal-name`}>{name}</span>
+  </Link>
+);
 
-const getDetailsPage = async (id, type, setFetchResult) => {
-  const url = `https://www.${updateAPI(type)}.com/api/json/v1/1/lookup.php?i=${id}`;
-  const response = await axios.get(url);
-  const value = response.data.meals || response.data.drinks;
-  setFetchResult(value);
-};
+const renderCategory = (index, type, area, category, alcoholicOrNot) => (
+  <span data-testid={`${index}-horizontal-top-text`}>
+    {type === 'comida' ? `${area || ''} - ${category}` : alcoholicOrNot}
+  </span>
+);
 
-
-const handleClick = (id, type, fetchResult, setFetchResult, history) => {
-  getDetailsPage(id, type, setFetchResult);
-  history.push(`/receitas/${type}/${id}`);
-};
-
-const thumbX = (
-  id, type, fetchResult, setFetchResult, strMealThumb, strDrinkThumb,
-  strMeal, strDrink, history,
+const favoriteRecipes = (
+  name,
+  type,
+  alcoholicOrNot,
+  image,
+  area,
+  category,
+  id,
+  index,
+  recipe,
+  setRecipes,
+  recipes,
 ) => (
-  <button
-    className="favoriteButtonImg"
-    type="button"
-    onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
-  >
-    <img
-      className="favoriteImg"
-      src={strMealThumb || strDrinkThumb}
-      alt={strMeal || strDrink}
-    />
-  </button>
-);
-
-const mealsX = (idMeal, strArea, strCategory, strMeal, strMealThumb, index) => (
-  <div className="favoriteText">
-    <div className="favoriteFlexySides">
-      <span className="favoriteCategory">{`${strArea} - ${strCategory}`}</span>
-    </div>
-    <div className="favoriteRecipe" data-testid={`${index}-horizontal-name`}>
-      <p>{strMeal}</p>
-    </div>
-  </div>
-);
-
-const drinksX = (idDrink, strDrink, strDrinkThumb, strArea, index) => (
-  <div className="favoriteText">
-    <div className="favoriteFlexySides">
-      <span className="favoriteCategory">{`${strDrink}`}</span>
-    </div>
-    <div className="favoriteRecipe" data-testid={`${index}-horizontal-name`}>
-      <p>{strDrink}</p>
-    </div>
-  </div>
-);
-
-// function Foo() {
-//   const { location, copyUrl } = useContext(DetailsContext);
-//   // caso precise reatribuir o location.pathname você deve fazer da seguinte forma:
-//   // location.pathname = '/comidas/{id da comida}'; ou
-//   // location.pathname = '/bebidas/{id da bebida}';
-//   return (
-//     <div>
-//       <div className="SFButtons"><ShareButton /><FavButton /></div>
-//       {copyUrl && <span>Link copiado!</span>}
-//     </div>
-//   );
-// }
-
-const FavoritesList = () => {
-  const { fetchResult, setFetchResult, copyUrl } = useContext(DetailsContext);
-  const history = useHistory();
-  if (fetchResult !== null) {
-    return (fetchResult.map(({
-      id, isMeal, category, image, area, name, strDrink,
-    }, index) => {
-      let type = 'bebidas';
-      if (!isMeal) {
-        type = 'comidas';
-      }
-      return (
-        <div
-          key={`${name}`} className="favoriteContainerRecipe"
-          data-testid={`${index}-horizontal-image`}
-          src={image}
-          alt={name}
-        >
-          <div data-testid={`${index}-horizontal-top-text`}>
-            {thumbX(id, type, fetchResult, setFetchResult,
-              image, image, name, name, history)}
-            <div data-testid={`${index}-horizontal-name`} />
-            {!isMeal
-              ? mealsX(id, area, category, name, image, index)
-              : drinksX(id, category, name, image, strDrink, index)
-            }
-          </div>
-          <div data-testid={`${index}-horizontal-share-btn`} src={shareIcon} >
-            <ShareButton />
-          </div>
+    <div>
+      {renderLink(type, id, image, index, name)}
+      {renderCategory(index, type, area, category, alcoholicOrNot)}
+      <button
+        data-testid={`${index}-horizontal-share-btn`}
+        src={shareIcon}
+        type="button"
+        onClick={() => {
+          navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
+          copyUrl = true;
+          localStorage.removeItem(favoriteRecipes(`${id}`));
+        }}
+      >
+        <ShareButton id={id} type={type} />
+        <div>
           {copyUrl && <span>Link copiado!</span>}
-          <div data-testid={`${index}-horizontal-favorite-btn`} src={blackHeartIcon}>
-            <FavButton />
-          </div>
         </div>
-      );
-    }));
-  }
-  return null;
+      </button>
+      <button
+        type="button"
+        onClick={() => setRecipes(recipes.filter((element) => element.id !== id))}
+      >
+        <FavButton data-testid={`${index}-horizontal-favorite-btn`} recipe={recipe} src={blackHeartIcon} />
+      </button>
+    </div >
+  );
+
+const FavoritesList = ({
+  recipe: { name, type, alcoholicOrNot, image, area, category, id },
+  recipe,
+  index,
+  setRecipes,
+  recipes,
+}) => {
+  return favoriteRecipes(
+    name,
+    type,
+    alcoholicOrNot,
+    image,
+    area,
+    category,
+    id,
+    index,
+    recipe,
+    setRecipes,
+    recipes,
+  );
 };
 
 export default FavoritesList;
