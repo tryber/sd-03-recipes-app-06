@@ -50,9 +50,9 @@ function Provider({ children }) {
     image: obj.strMealThumb,
   });
 
-  const verifyHeart = () => {
+  const verifyHeart = (loc) => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const path = location.pathname;
+    const path = loc;
     let i = '';
     if (favoriteRecipes) {
       favoriteRecipes.forEach((e, index) => {
@@ -113,10 +113,10 @@ function Provider({ children }) {
     setCopyUrl(true);
   };
 
-  const toFavorite = () => {
+  const toFavorite = (loc) => {
     let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const actualRecipe = recipe;
-    const boolVerify = verifyHeart();
+    const boolVerify = verifyHeart(loc);
     if (typeof (boolVerify) === 'number') {
       favoriteRecipes.splice([boolVerify], 1);
       setHeart('white');
