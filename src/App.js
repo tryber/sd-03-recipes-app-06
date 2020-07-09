@@ -29,14 +29,12 @@ function App() {
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/bebidas/:id" component={DetalhesBebida} />
           <Route
-            exact
-            path="/bebidas/filter/:ing"
+            exact path="/bebidas/filter/:ing"
             render={({ match }) => <FilterDrinks match={match} />}
           />
           <Route exact path="/comidas/:id" component={DetalhesComida} />
           <Route
-            exact
-            path="/comidas/filter/:ing"
+            exact path="/comidas/filter/:ing"
             render={({ match }) => <FilterMeal match={match} />}
           />
           <Route exact path="/bebidas" component={Bebidas} />
@@ -47,8 +45,7 @@ function App() {
             component={ExplorarComidasIngredientes}
           />
           <Route
-            exact
-            path="/explorar/bebidas/ingredientes"
+            exact path="/explorar/bebidas/ingredientes"
             component={ExplorarBebidasIngredientes}
           />
           <Route exact path="/explorar/comidas/area" component={ExplorarComidasArea} />
