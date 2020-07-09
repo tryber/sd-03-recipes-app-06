@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import DetailsContext from '../context/DetailsContext';
-import ShareButton from '../components/ShareButton';
+import ShareButton1 from '../components/ShareButton';
 import FavButton from '../components/FavButton';
 import StartContinueButton from '../components/StartContinueButton';
 import './Detalhes.css';
