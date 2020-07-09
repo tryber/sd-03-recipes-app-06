@@ -2,15 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Context from './Context';
 import { getMealByLetter } from '../services/MealDBApi';
-import {
-  getCocktailsByLetter,
-  // getCokctailsByName,
-  // getCocktailsList,
-  // filterCocktailsByCategorie,
-  // getCocktailsByIngredient,
-  // getCocktailsByID,
-  // getCocktailsIngredientImage,
-} from '../services/CocktailsApi';
+import { getDrinks } from '../services/DrinkDBApi';
 
 function Provider({ children }) {
   const [email, setEmail] = useState('');
@@ -34,7 +26,7 @@ function Provider({ children }) {
   const fetchCocktails = () => {
     if (loading) return;
     setLoading(true);
-    getCocktailsByLetter('a').then(
+    getDrinks().then(
       handleFetchCocktailsSuccess,
       handleFetchCocktailsError,
     );
@@ -70,7 +62,9 @@ function Provider({ children }) {
     meals,
     setMeals,
     loading,
+    setLoading,
     error,
+    setError,
     fetchMeals,
     fetchCocktails,
   };
