@@ -13,15 +13,15 @@ const pathConverter = {
 
 const finishButton = () =>
   <div className="buttonDiv">
-  {
-  <Link to="/receitas-feitas">
-    <button
-      name="bebida-btn" data-testid="finish-recipe-btn"
-      className="footer-btn"
-    ><h2 className="buttonTitle">Finalizar Receita</h2></button>
-  </Link>
-  }
-</div>;
+    {
+    <Link to="/receitas-feitas">
+      <button
+        name="bebida-btn" data-testid="finish-recipe-btn"
+        className="footer-btn"
+      ><h2 className="buttonTitle">Finalizar Receita</h2></button>
+    </Link>
+    }
+  </div>;
 
 const getIngredients = (obj) => {
   let ingredientsArray = []; let measureArray = [];
@@ -50,9 +50,9 @@ const getIngredients = (obj) => {
 
 const ComidasInProgress = () => {
   const location = useLocation();
+  const { fetchMeal, meal, mealOk, copyUrl } = useContext(DetailsContext);
   useEffect(() => {
-    const path = location.pathname;
-    const recipeId = path.slice(9, path.length - 12);
+    const path = location.pathname; const recipeId = path.slice(9, path.length - 12);
     const recipeType = pathConverter[path.slice(1, 7)];
     const saveMeal = { [recipeType]: { [recipeId]: [] } };
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -66,16 +66,9 @@ const ComidasInProgress = () => {
     }
     fetchMeal(recipeId);
   }, []);
-
-  const { fetchMeal, meal, mealOk } = useContext(DetailsContext);
-  const { copyUrl } = useContext(DetailsContext);
-  //const address = location.pathname;
-  //location.pathname = address.slice(0,address.length - 12);
-  //console.log(location.pathname);
   return (
     <div className="Principal">
-      { mealOk &&
-      <div className="content">
+      { mealOk && <div className="content">
         <div>
           <img
             data-testid="recipe-photo" src={meal.strMealThumb}
@@ -86,22 +79,18 @@ const ComidasInProgress = () => {
           {copyUrl && <span>Link copiado!</span>}
           <p data-testid="recipe-category">{meal.strCategory}</p>
           <div><span>Ingredients</span>
-            {
-            getIngredients(meal).map((e, index) =>
+            { getIngredients(meal).map((e, index) =>
               <div key={`${Object.keys(e)}`} data-testid="ingredient-step">
                 <input type="checkbox" />
-                  <span data-testid={`${index}-ingredient-name-and-measure`}>
-                    {`- ${Object.keys(e)} - ${Object.values(e)}`}
-                  </span>
-              </div>)
-            }
+                <span data-testid={`${index}-ingredient-name-and-measure`}>
+                  {`- ${Object.keys(e)} - ${Object.values(e)}`}
+                </span>
+              </div>)}
           </div>
           <p>Instructions</p>
           <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
-        </div>
-        <div>--------------</div>
-      </div>
-      }
+        </div><div>--------------</div>
+      </div> }
       { mealOk && finishButton() }
     </div>
   );
