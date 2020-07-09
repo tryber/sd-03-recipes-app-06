@@ -16,6 +16,7 @@ function Provider({ children }) {
   const [drinks, setDrinks] = useState({});
   const [drinksOk, setDrinksOk] = useState(false);
   const [copyUrl, setCopyUrl] = useState(false);
+  const [fetchResult, setFetchResult] = useState(null);
   const [heart, setHeart] = useState('white');
   const [recipe, setRecipe] = useState({
     id: 0,
@@ -156,6 +157,8 @@ function Provider({ children }) {
     toFavorite,
     recipe,
     setRecipe,
+    fetchResult,
+    setFetchResult,
   };
 
   return (

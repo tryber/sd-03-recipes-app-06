@@ -31,14 +31,12 @@ function App() {
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/bebidas/:id" component={DetalhesBebida} />
           <Route
-            exact
-            path="/bebidas/filter/:ing"
+            exact path="/bebidas/filter/:ing"
             render={({ match }) => <FilterDrinks match={match} />}
           />
           <Route exact path="/comidas/:id" component={DetalhesComida} />
           <Route
-            exact
-            path="/comidas/filter/:ing"
+            exact path="/comidas/filter/:ing"
             render={({ match }) => <FilterMeal match={match} />}
           />
           <Route exact path="/bebidas" component={Bebidas} />
@@ -52,8 +50,7 @@ function App() {
             component={ExplorarComidasIngredientes}
           />
           <Route
-            exact
-            path="/explorar/bebidas/ingredientes"
+            exact path="/explorar/bebidas/ingredientes"
             component={ExplorarBebidasIngredientes}
           />
           <Route exact path="/explorar/comidas/area" component={ExplorarComidasArea} />
@@ -63,7 +60,12 @@ function App() {
           <Route exact path="/explorar" component={Explorar} />
           <Route path="/perfil" component={Perfil} />
           <Route path="/receitas-feitas" component={ReceitasFeitas} />
-          <Route path="/receitas-favoritas" component={ReceitasFavoritas} />
+          <Route
+            exact path="/receitas-favoritas"
+            render={(props) => (
+              <ReceitasFavoritas {...props} title="Receitas Favoritas" page="favoriteRecipes" />
+            )}
+          />
         </Switch>
       </Provider>
     </ProviderSearch>
