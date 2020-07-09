@@ -6,3 +6,18 @@
   overflow: scroll;
   width: 360px;
 }
+.card {
+  margin: 5px;
+}
+.card li{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 3px;
+  text-decoration: none;
+
+}
+
+.card li img {
+  border-radius: 5px;
+}

@@ -35,12 +35,12 @@ const Header = () => {
   const telaPrincipal = (title) =>
     <div className="headerClass">
       <div className="headerBar">
-        <button onClick={() => history.push('/perfil')} >
+        <button className="testeButton" onClick={() => history.push('/perfil')} >
           <img data-testid="profile-top-btn" src={profileIcon} alt="Icone do Profile" />
         </button>
         <h1 data-testid="page-title">{title}</h1>
         {notProfile &&
-          <button onClick={() => setShowBar(!showBar)} >
+          <button className="testeButton" onClick={() => setShowBar(!showBar)} >
             <img data-testid="search-top-btn" src={searchIcon} alt="Search" />
           </button>
         }

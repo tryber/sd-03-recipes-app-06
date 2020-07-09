@@ -1,13 +1,18 @@
 import React from 'react';
 import LoginContainer from '../components/LoginContainer';
 import ButtonLogin from '../components/ButtonLogin';
+import './LoginPage.css';
 
 const loginApp = () => (
-  <div className="App">
+  <div className="Principal">
     <header>
-      <div>
-        <LoginContainer />
-        <ButtonLogin />
+      <div className="login-form">
+        <form>
+          <div className="form-group has-error">
+            <LoginContainer />
+            <ButtonLogin />
+          </div>
+        </form>
       </div>
     </header>
   </div>

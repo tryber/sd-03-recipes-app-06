@@ -1,0 +1,31 @@
+.testeButtoncat {
+  background-color:#c4c4c4;
+  border-bottom: 1px;
+  border-style: none;
+}
+
+.teste-ul {
+  list-style-type: none;
+  margin: 5px;
+  padding: 5px;
+  overflow: hidden;
+  background-color: #333333;
+  display: inline-flex;
+}
+
+.teste-ul li {
+  float: left;
+  padding: 1px;
+}
+
+.teste-ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 3px;
+  text-decoration: none;
+}
+
+.teste-ul li a:hover {
+  background-color: #111111;
+}

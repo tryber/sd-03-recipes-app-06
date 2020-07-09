@@ -14,7 +14,7 @@ function Meals() {
   return (
     <div className="meals">
       <MealCategories />
-      <ul>
+      <ul className="Meal">
         {
           meals.slice(0, 12).map((meal, index) => {
             const {
@@ -30,8 +30,8 @@ function Meals() {
                     <img
                       data-testid={`${index}-card-img`}
                       src={strMealThumb}
-                      width="120px"
-                      height="150px"
+                      width="180px"
+                      height="200px"
                       alt="Meal Thumb"
                     />
                     <p data-testid={`${index}-card-name`}>

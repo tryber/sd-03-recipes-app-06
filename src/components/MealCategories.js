@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GetMealsContext } from '../context/getMeals';
+import './MealCategories.css';
 
 function MealCategories() {
   const {
@@ -9,9 +10,11 @@ function MealCategories() {
 
   return (
     <div id="mealsCategories">
-      <ul>
+      <ul className="teste-ul">
         <li>
           <button
+            type="button"
+            className="testeButtoncat"
             value=""
             data-testid="All-category-filter"
             onClick={() => getByCat('all')}
@@ -26,6 +29,8 @@ function MealCategories() {
               <div className="category" key={strCategory}>
                 <li>
                   <button
+                    type="button"
+                    className="testeButtoncat"
                     value={strCategory}
                     data-testid={testId}
                     onClick={(e) => getByCat(e.target.value)}
