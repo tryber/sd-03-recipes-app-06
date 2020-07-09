@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import DetailsContext from '../context/DetailsContext';
 import shareIcon from '../images/shareIcon.svg';
 
-const ShareButton = () => {
+const ShareButton1 = () => {
   const { shareUrl, location } = useContext(DetailsContext);
 
   return (
@@ -15,4 +15,4 @@ const ShareButton = () => {
   );
 };
 
-export default ShareButton;
+export default ShareButton1;
