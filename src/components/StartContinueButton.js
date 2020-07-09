@@ -47,13 +47,13 @@ const StartContinueButton = () => {
   }, []);
 
   return (
-    <div>
+    <div className="buttonDiv">
       { !recipeDone &&
       <Link to={`${location.pathname}/in-progress`}>
         <button
           name="bebida-btn" data-testid="start-recipe-btn"
           className="footer-btn"
-        >{buttonText}</button>
+        ><h2 className="buttonTitle">{buttonText}</h2></button>
       </Link>
       }
     </div>

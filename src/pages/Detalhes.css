@@ -1,8 +1,31 @@
+.buttonDiv {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  height: 40px;
+  position: fixed;
+  top: 600px;
+  width: 360px;
+}
+
+.buttonTitle {
+  margin: 0;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 .carousel {
   display: flex;
   flex-flow: row nowrap;
   overflow: scroll;
   width: 360px;
+}
+
+.content {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 600px;
+  overflow: scroll;
 }
 
 .element {
@@ -16,15 +39,20 @@
 }
 
 .footer-btn {
+  align-self: center;
+  background-color: rgb(72, 243, 72);
   bottom: 0;
-  position: fixed;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 40px;
+  width: 360px;
 }
 
 .Principal {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 640px;
-  width: 360px;
+  width: 380px;
 }
 
 .SFButtons {

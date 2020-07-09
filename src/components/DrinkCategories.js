@@ -13,9 +13,9 @@ function DrinkCategories() {
   }, []);
 
   return (
-    <div id="mealsCategories">
-      <ul>
-        <li>
+    <div>
+      <div id="mealsCategories">
+        <div>
           <button
             value=""
             data-testid="All-category-filter"
@@ -23,13 +23,13 @@ function DrinkCategories() {
           >
             All
           </button>
-        </li>
+        </div>
         {
           drinkCategories.slice(0, 5).map(({ strCategory }) => {
             const testId = `${strCategory}-category-filter`;
             return (
               <div className="category" key={strCategory}>
-                <li>
+                <div>
                   <button
                     value={strCategory}
                     data-testid={testId}
@@ -37,12 +37,12 @@ function DrinkCategories() {
                   >
                     {strCategory}
                   </button>
-                </li>
+                </div>
               </div>
             );
           })
         }
-      </ul>
+      </div>
     </div>
   );
 }

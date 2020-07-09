@@ -83,29 +83,33 @@ const Detalhes = () => {
   return (
     <div className="Principal">
       { mealOk && drinksOk &&
-      <div>
-        <img data-testid="recipe-photo" src={meal.strMealThumb} width="360px" alt="Recipe" />
-        <p data-testid="recipe-title">{meal.strMeal}</p>
-        <div className="SFButtons"><ShareButton /><FavButton /></div>
-        {copyUrl && <span>Link copiado!</span>}
-        <p data-testid="recipe-category">{meal.strCategory}</p>
-        <div><span>Ingredients</span>
-          {
-          getIngredients(meal).map((e, index) =>
-            <p data-testid={`${index}-ingredient-name-and-measure`} key={`${Object.keys(e)}`}>
-              {`- ${Object.keys(e)} - ${Object.values(e)}`}
-            </p>)
-          }
+      <div className="content">
+        <div>
+          <img data-testid="recipe-photo" src={meal.strMealThumb} width="360px" height="200px" alt="Recipe" />
+          <p data-testid="recipe-title">{meal.strMeal}</p>
+          <div className="SFButtons"><ShareButton /><FavButton /></div>
+          {copyUrl && <span>Link copiado!</span>}
+          <p data-testid="recipe-category">{meal.strCategory}</p>
+          <div><span>Ingredients</span>
+            {
+            getIngredients(meal).map((e, index) =>
+              <p data-testid={`${index}-ingredient-name-and-measure`} key={`${Object.keys(e)}`}>
+                {`- ${Object.keys(e)} - ${Object.values(e)}`}
+              </p>)
+            }
+          </div>
+          <p>Instructions</p>
+          <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
+          <p>Video</p>
+          {showVideo(meal)}
         </div>
-        <p>Instructions</p>
-        <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
-        <p>Video</p>
-        {showVideo(meal)}
-        <p>Recommendation</p>
-        {recomendations(drinks)}
-        <StartContinueButton />
+        <div>
+          <p>Recommendation</p>
+          {recomendations(drinks)}
+        </div>
       </div>
       }
+      { mealOk && drinksOk && <StartContinueButton /> }
     </div>
   );
 };
