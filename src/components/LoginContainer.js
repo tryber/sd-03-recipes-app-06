@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Context from '../context/Context';
+import './LoginContainer.css';
 
 const LoginContainer = () => {
   const {
@@ -10,10 +11,11 @@ const LoginContainer = () => {
   } = useContext(Context);
 
   return (
-    <div>
+    <div className="form-group">
       <h2>Login</h2>
       <input
         id="email"
+        className="form-control"
         name="setEmail"
         type="email"
         data-testid="email-input"
@@ -23,6 +25,7 @@ const LoginContainer = () => {
       />
       <input
         id="password"
+        className="form-control"
         name="setPassword"
         type="password"
         data-testid="password-input"

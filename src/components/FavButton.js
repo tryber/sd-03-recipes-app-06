@@ -19,7 +19,10 @@ const FavButton = () => {
 
   return (
     <div>
-      <button onClick={() => toFavorite()}>
+      <button
+        type="button"
+        onClick={() => toFavorite()}
+      >
         <img data-testid="favorite-btn" src={chooseHeart(heart)} alt="Heart" width="31px" />
       </button>
     </div>
