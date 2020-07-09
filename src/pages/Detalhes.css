@@ -1,8 +1,8 @@
 .buttonDiv {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
   height: 40px;
+  justify-content: center;
   position: fixed;
   top: 600px;
   width: 360px;

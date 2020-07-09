@@ -14,7 +14,7 @@ function DrinkCategories() {
 
   return (
     <div>
-      <div id="mealsCategories">
+      <div className="mealsCategories">
         <div>
           <button
             value=""

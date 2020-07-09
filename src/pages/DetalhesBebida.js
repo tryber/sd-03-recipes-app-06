@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import DetailsContext from '../context/DetailsContext';
-import ShareButton1 from '../components/ShareButton';
+import ShareButton from '../components/ShareButton';
 import FavButton from '../components/FavButton';
 import StartContinueButton from '../components/StartContinueButton';
 import './Detalhes.css';
@@ -87,12 +87,12 @@ const Detalhes = () => {
           </div>
           <p>Instructions</p>
           <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
-          </div>
-          <div>
-            <p>Recommendation</p> 
-            {recomendations(meals)}
-          </div>
         </div>
+        <div>
+          <p>Recommendation</p>
+          {recomendations(meals)}
+        </div>
+      </div>
       }
       { mealsOk && drinkOk && <StartContinueButton /> }
     </div>

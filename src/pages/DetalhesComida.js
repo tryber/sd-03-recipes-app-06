@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import DetailsContext from '../context/DetailsContext';
-import ShareButton1 from '../components/ShareButton';
+import ShareButton from '../components/ShareButton';
 import FavButton from '../components/FavButton';
 import StartContinueButton from '../components/StartContinueButton';
 import './Detalhes.css';
@@ -85,7 +85,10 @@ const Detalhes = () => {
       { mealOk && drinksOk &&
       <div className="content">
         <div>
-          <img data-testid="recipe-photo" src={meal.strMealThumb} width="360px" height="200px" alt="Recipe" />
+          <img
+            data-testid="recipe-photo" src={meal.strMealThumb}
+            width="360px" height="200px" alt="Recipe"
+          />
           <p data-testid="recipe-title">{meal.strMeal}</p>
           <div className="SFButtons"><ShareButton /><FavButton /></div>
           {copyUrl && <span>Link copiado!</span>}

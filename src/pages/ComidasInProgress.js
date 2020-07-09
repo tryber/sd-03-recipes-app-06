@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 // const inProgress =  {
@@ -23,16 +23,16 @@ const ComidasInProgress = () => {
     console.log('recipeId: ', recipeId);
     const recipeType = pathConverter[path.slice(1, 7)];
     console.log('recipeType: ', recipeType);
-    const saveMeal = {[recipeType]:{[recipeId]: []}};
+    const saveMeal = { [recipeType]: { [recipeId]: [] } };
     console.log('saveMeal: ', saveMeal);
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (!inProgress) {
       localStorage.setItem('inProgressRecipes', JSON.stringify(saveMeal));
     } else if (inProgress[recipeType]) {
-        if (!inProgress[recipeType][recipeId]) {
-          inProgress[recipeType] = {...inProgress[recipeType], [recipeId]: []};
-          localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
-        }
+      if (!inProgress[recipeType][recipeId]) {
+        inProgress[recipeType] = { ...inProgress[recipeType], [recipeId]: [] };
+        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
+      }
     }
   }, []);
 
@@ -42,6 +42,5 @@ const ComidasInProgress = () => {
     </div>
   );
 };
-  
 
 export default ComidasInProgress;
