@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   fetchIgredientsMeal,
   fetchIgredientsDrink,
-} from '../services/ExploreMeals';
+} from '../services/ExploreRecipes';
 
 const ExploreIgredientsMealContext = createContext();
 

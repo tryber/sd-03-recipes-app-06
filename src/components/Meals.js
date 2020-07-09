@@ -17,16 +17,28 @@ function Meals() {
       <ul>
         {
           meals.slice(0, 12).map((meal, index) => {
-            const { idMeal, strMealThumb, strMeal, strCategory } = meal;
+            const {
+              idMeal,
+              strMealThumb,
+              strMeal,
+              strCategory,
+            } = meal;
             return (
               <div data-testid={`${index}-recipe-card`} className="card" key={idMeal}>
                 <Link to={`comidas/${idMeal}`}>
                   <li>
                     <img
-                      data-testid={`${index}-card-img`} src={strMealThumb}
-                      width="120px" height="150px" alt="Meal Thumb"
+                      data-testid={`${index}-card-img`}
+                      src={strMealThumb}
+                      width="120px"
+                      height="150px"
+                      alt="Meal Thumb"
                     />
-                    <p data-testid={`${index}-card-name`}>{strMeal} - {strCategory}</p>
+                    <p data-testid={`${index}-card-name`}>
+                      {strMeal}
+                      -
+                      {strCategory}
+                    </p>
                   </li>
                 </Link>
               </div>

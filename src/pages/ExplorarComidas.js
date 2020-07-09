@@ -1,9 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { getRandomMeals } from '../services/ExploreRecipes';
 
 function ExplorarComidas() {
+  const [id, setId] = useState('');
+
+  const handleClick = () => {
+    getRandomMeals()
+      .then((event) => setId(event.meals[0].idMeal));
+  };
+
   return (
     <div>
       <Header />
@@ -19,11 +27,10 @@ function ExplorarComidas() {
             Por Local de Origem
           </button>
         </Link>
-        <Link to="/explorar/comidas/area">
-          <button data-testid="explore-surprise" type="button">
-            Me Surpreenda!
-          </button>
-        </Link>
+        <button data-testid="explore-surprise" type="button" onClick={handleClick}>
+          Me Surpreenda!
+        </button>
+        {id !== '' && <Redirect to={`/comidas/${id}`} />}
       </div>
       <Footer />
     </div>

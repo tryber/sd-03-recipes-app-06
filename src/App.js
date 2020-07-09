@@ -16,6 +16,7 @@ import LoginPage from './pages/LoginPage';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
+import NotFound from './pages/NotFound';
 import FilterDrinks from './pages/FilterDrinks';
 import FilterMeal from './pages/FilterMeal';
 import './App.css';
@@ -51,6 +52,7 @@ function App() {
             component={ExplorarBebidasIngredientes}
           />
           <Route exact path="/explorar/comidas/area" component={ExplorarComidasArea} />
+          <Route exact path="/explorar/bebidas/area" component={NotFound} />
           <Route exact path="/explorar/comidas" component={ExplorarComidas} />
           <Route exact path="/explorar/bebidas" component={ExplorarBebidas} />
           <Route exact path="/explorar" component={Explorar} />
