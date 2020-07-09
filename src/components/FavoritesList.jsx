@@ -28,7 +28,8 @@ const favoriteRecipes = (
   recipe,
   setRecipes,
   recipes,
-) => (
+) =>
+  (
     <div>
       {renderLink(type, id, image, index, name)}
       {renderCategory(index, type, area, category, alcoholicOrNot)}
@@ -65,8 +66,7 @@ const FavoritesList = (
     index,
     setRecipes,
     recipes,
-  }) => 
-{
+  }) => {
   return favoriteRecipes(
     name,
     type,
