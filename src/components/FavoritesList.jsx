@@ -59,26 +59,26 @@ const favoriteRecipes = (
     </div >
   );
 
-  const FavoritesList = (
-    {
-      recipe: { name, type, alcoholicOrNot, image, area, category, id },
-      recipe,
-      index,
-      setRecipes,
-      recipes,
-    }) =>
-      favoriteRecipes(
-        name,
-        type,
-        alcoholicOrNot,
-        image,
-        area,
-        category,
-        id,
-        index,
-        recipe,
-        setRecipes,
-        recipes,
-    );
+const FavoritesList = (
+  {
+    recipe: { name, type, alcoholicOrNot, image, area, category, id },
+    recipe,
+    index,
+    setRecipes,
+    recipes,
+  }) =>
+  favoriteRecipes(
+    name,
+    type,
+    alcoholicOrNot,
+    image,
+    area,
+    category,
+    id,
+    index,
+    recipe,
+    setRecipes,
+    recipes,
+  );
 
 export default FavoritesList;
