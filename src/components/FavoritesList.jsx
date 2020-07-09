@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
@@ -29,8 +28,7 @@ const favoriteRecipes = (
   recipe,
   setRecipes,
   recipes,
-) =>
-  (
+) => (
     <div>
       {renderLink(type, id, image, index, name)}
       {renderCategory(index, type, area, category, alcoholicOrNot)}
@@ -67,30 +65,21 @@ const FavoritesList = (
     index,
     setRecipes,
     recipes,
-  }) => (
-    <div>
-      {favoriteRecipes(
-        name,
-        type,
-        alcoholicOrNot,
-        image,
-        area,
-        category,
-        id,
-        index,
-        recipe,
-        setRecipes,
-        recipes,
-      )
-      }
-    </div>
+  }) => 
+{
+  return favoriteRecipes(
+    name,
+    type,
+    alcoholicOrNot,
+    image,
+    area,
+    category,
+    id,
+    index,
+    recipe,
+    setRecipes,
+    recipes,
   );
-
-FavoritesList.propTypes = {
-  recipe: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
-  setRecipes: PropTypes.string.isRequired,
-  recipes: PropTypes.array.isRequired,
 };
 
 export default FavoritesList;
