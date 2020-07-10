@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import ShareButton from '../components/ShareButton';
@@ -37,7 +37,7 @@ const getIngredients = (obj) => {
 };
 
 const saveOnLocalStorage = (type, id, value) => {
-  let inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
   if (inProgress[type][id].find((e) => e === value)) {
     inProgress[type][id] = inProgress[type][id].filter((e) => e !== value);
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
@@ -51,7 +51,7 @@ const saveOnLocalStorage = (type, id, value) => {
 let savedIng;
 
 const getSavedIng = (type, id) => {
-  let inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
   if (inProgress) {
     savedIng = inProgress[type][id];
     console.log('Ingredientes Salvos: ', savedIng);
@@ -66,7 +66,7 @@ const isCheck = (value) => {
     return 0;
   }
   return 0;
-}
+};
 
 const ComidasInProgress = () => {
   const location = useLocation();
@@ -101,8 +101,8 @@ const ComidasInProgress = () => {
           <div><span>Ingredients</span>
             { getIngredients(meal).map((e, index) =>
               <div key={`${Object.keys(e)}`} data-testid={`${index}-ingredient-step`} >
-                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(e) => saveOnLocalStorage('meals', meal.idMeal,e.target.value)}/>
-                <span data-testid={`${index}-ingredient-name-and-measure`}>
+                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(el) => saveOnLocalStorage('meals', meal.idMeal, el.target.value)} />
+                <span data-testid={`${index}-ingredient-name-and-measure`} key="Meal">
                   {`- ${Object.keys(e)} - ${Object.values(e)}`}
                 </span>
               </div>)}
