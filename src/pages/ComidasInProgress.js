@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import ShareButton from '../components/ShareButton';
@@ -36,9 +36,41 @@ const getIngredients = (obj) => {
   return outputArray;
 };
 
+const saveOnLocalStorage = (type, id, value) => {
+  let inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (inProgress[type][id].find((e) => e === value)) {
+    inProgress[type][id] = inProgress[type][id].filter((e) => e !== value);
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
+    return null;
+  }
+  inProgress[type][id].push(value);
+  localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
+  return null;
+};
+
+let savedIng;
+
+const getSavedIng = (type, id) => {
+  let inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (inProgress) {
+    savedIng = inProgress[type][id];
+    console.log('Ingredientes Salvos: ', savedIng);
+  }
+};
+
+const isCheck = (value) => {
+  if (savedIng) {
+    if (savedIng.find((e) => e === value)) {
+      return 1;
+    }
+    return 0;
+  }
+  return 0;
+}
+
 const ComidasInProgress = () => {
   const location = useLocation();
-  const { fetchMeal, meal, mealOk, copyUrl } = useContext(DetailsContext);
+  const { fetchMeal, meal, copyUrl } = useContext(DetailsContext);
   useEffect(() => {
     const path = location.pathname; const recipeId = path.slice(9, path.length - 12);
     const recipeType = pathConverter[path.slice(1, 7)];
@@ -56,8 +88,8 @@ const ComidasInProgress = () => {
   }, []);
   return (
     <div className="Principal">
-      { mealOk && <div className="content">
-        <div>
+      { meal && <div className="content">
+        <div>{getSavedIng('meals', meal.idMeal)}
           <img
             data-testid="recipe-photo" src={meal.strMealThumb}
             width="360px" height="200px" alt="Recipe"
@@ -68,8 +100,8 @@ const ComidasInProgress = () => {
           <p data-testid="recipe-category">{meal.strCategory}</p>
           <div><span>Ingredients</span>
             { getIngredients(meal).map((e, index) =>
-              <div key={`${Object.keys(e)}`} data-testid="ingredient-step">
-                <input type="checkbox" />
+              <div key={`${Object.keys(e)}`} data-testid={`${index}-ingredient-step`} >
+                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(e) => saveOnLocalStorage('meals', meal.idMeal,e.target.value)}/>
                 <span data-testid={`${index}-ingredient-name-and-measure`}>
                   {`- ${Object.keys(e)} - ${Object.values(e)}`}
                 </span>
@@ -79,7 +111,7 @@ const ComidasInProgress = () => {
           <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
         </div><div>--------------</div>
       </div> }
-      { mealOk && <FinishButton activate={1} /> }
+      { meal && <FinishButton activate={1} /> }
     </div>
   );
 };
