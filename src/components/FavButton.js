@@ -23,12 +23,14 @@ const FavButton = () => {
 
   return (
     <div>
-      <button onClick={() => {
-        if (location.pathname.match(/in-progress/g)) {
-          toFavorite(location.pathname.slice(0, location.pathname.length - 12));
+      <button 
+        onClick={() => {
+          if (location.pathname.match(/in-progress/g)) {
+            toFavorite(location.pathname.slice(0, location.pathname.length - 12));
+            return null;
+          }
+          toFavorite(location.pathname);
           return null;
-        }
-        toFavorite(location.pathname);
         }}
       >
         <img data-testid="favorite-btn" src={chooseHeart(heart)} alt="Heart" width="31px" />

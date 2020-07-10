@@ -3,25 +3,13 @@ import { useLocation, Link } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import ShareButton from '../components/ShareButton';
 import FavButton from '../components/FavButton';
-// import StartContinueButton from '../components/StartContinueButton';
+import FinishButton from '../components/FinishButton';
 import './Detalhes.css';
 
 const pathConverter = {
   comida: 'meals',
   bebida: 'cocktails',
 };
-
-const finishButton = () =>
-  <div className="buttonDiv">
-    {
-      <Link to="/receitas-feitas">
-        <button
-          name="bebida-btn" data-testid="finish-recipe-btn"
-          className="footer-btn"
-        ><h2 className="buttonTitle">Finalizar Receita</h2></button>
-      </Link>
-    }
-  </div>;
 
 const getIngredients = (obj) => {
   let ingredientsArray = []; let measureArray = [];
@@ -91,7 +79,7 @@ const BebidasInProgress = () => {
           <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
         </div><div>--------------</div>
       </div> }
-      { drinkOk && finishButton() }
+      { drinkOk && <FinishButton activate={true} /> }
     </div>
   );
 };
