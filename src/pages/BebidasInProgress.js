@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import ShareButton from '../components/ShareButton';
 import FavButton from '../components/FavButton';
@@ -79,7 +79,7 @@ const BebidasInProgress = () => {
           <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
         </div><div>--------------</div>
       </div> }
-      { drinkOk && <FinishButton activate={true} /> }
+      { drinkOk && <FinishButton activate={1} /> }
     </div>
   );
 };

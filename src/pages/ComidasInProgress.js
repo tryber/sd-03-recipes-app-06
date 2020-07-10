@@ -79,7 +79,7 @@ const ComidasInProgress = () => {
           <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
         </div><div>--------------</div>
       </div> }
-      { mealOk && <FinishButton activate={true}/> }
+      { mealOk && <FinishButton activate={1}/> }
     </div>
   );
 };

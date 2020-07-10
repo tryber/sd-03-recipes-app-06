@@ -23,7 +23,7 @@ const FavButton = () => {
 
   return (
     <div>
-      <button 
+      <button
         onClick={() => {
           if (location.pathname.match(/in-progress/g)) {
             toFavorite(location.pathname.slice(0, location.pathname.length - 12));
