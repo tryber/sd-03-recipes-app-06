@@ -36,6 +36,38 @@ const getIngredients = (obj) => {
   return outputArray;
 };
 
+const saveOnLocalStorage = (type, id, value) => {
+  const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (inProgress[type][id].find((e) => e === value)) {
+    inProgress[type][id] = inProgress[type][id].filter((e) => e !== value);
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
+    return null;
+  }
+  inProgress[type][id].push(value);
+  localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
+  return null;
+};
+
+let savedIng;
+
+const getSavedIng = (type, id) => {
+  const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (inProgress) {
+    savedIng = inProgress[type][id];
+    console.log('Ingredientes Salvos: ', savedIng);
+  }
+};
+
+const isCheck = (value) => {
+  if (savedIng) {
+    if (savedIng.find((e) => e === value)) {
+      return 1;
+    }
+    return 0;
+  }
+  return 0;
+};
+
 const BebidasInProgress = () => {
   const location = useLocation();
   const { fetchDrink, drink, drinkOk, copyUrl } = useContext(DetailsContext);
@@ -57,7 +89,7 @@ const BebidasInProgress = () => {
   return (
     <div className="Principal">
       { drinkOk && <div className="content">
-        <div>
+        <div>{getSavedIng('cocktails', drink.idDrink)}
           <img
             data-testid="recipe-photo" src={drink.strDrinkThumb}
             width="360px" height="200px" alt="Recipe"
@@ -68,9 +100,9 @@ const BebidasInProgress = () => {
           <p data-testid="recipe-category">{drink.strCategory}</p>
           <div><span>Ingredients</span>
             { getIngredients(drink).map((e, index) =>
-              <div key={`${Object.keys(e)}`} data-testid="ingredient-step">
-                <input type="checkbox" />
-                <span data-testid={`${index}-ingredient-name-and-measure`}>
+              <div key={`${Object.keys(e)}`} data-testid={`${index}-ingredient-step`}>
+                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(el) => saveOnLocalStorage('cocktails', drink.idDrink, el.target.value)} />
+                <span data-testid={`${index}-ingredient-name-and-measure`} key="Drink">
                   {`- ${Object.keys(e)} - ${Object.values(e)}`}
                 </span>
               </div>)}
