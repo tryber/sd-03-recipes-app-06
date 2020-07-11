@@ -61,7 +61,7 @@ const BebidasInProgress = () => {
           <div><span>Ingredients</span>
             { getIngredients(drink).map((e, index) =>
               <div key={`${Object.keys(e)}`} data-testid={`${index}-ingredient-step`}>
-                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(el) => saveOnLocalStorage('cocktails', drink.idDrink, el.target.value)} onChange={() => countIng('cocktails', drink.idDrink, getIngredients(drink))} />
+                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(el) => saveOnLocalStorage('cocktails', drink.idDrink, el.target.value)} onChange={() => countIng('cocktails', drink.idDrink, ingLength)} />
                 <span data-testid={`${index}-ingredient-name-and-measure`} key="Drink">
                   {`- ${Object.keys(e)} - ${Object.values(e)}`}
                 </span>

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
 import InProgressContext from '../context/InProgressContext';
@@ -60,7 +60,7 @@ const ComidasInProgress = () => {
           <div><span>Ingredients</span>
             { getIngredients(meal).map((e, index) =>
               <div key={`${Object.keys(e)}`} data-testid={`${index}-ingredient-step`} >
-                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(el) => saveOnLocalStorage('meals', meal.idMeal, el.target.value)} onChange={() => countIng('meals', meal.idMeal, getIngredients(meal))} />
+                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(el) => saveOnLocalStorage('meals', meal.idMeal, el.target.value)} onChange={() => countIng('meals', meal.idMeal, ingLength)} />
                 <span data-testid={`${index}-ingredient-name-and-measure`} key="Meal">
                   {`- ${Object.keys(e)} - ${Object.values(e)}`}
                 </span>
