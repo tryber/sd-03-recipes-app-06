@@ -40,7 +40,7 @@ function cardReceitas(meals) {
             data-testid={`${index}-card-name`}
           >
             {`${meal.strMeal}`}
-          </p>     
+          </p>
         </div>
       </Link>
     ))
