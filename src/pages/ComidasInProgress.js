@@ -17,7 +17,7 @@ const ComidasInProgress = () => {
     fetchMeal(recipeId);
     verifyLocalStorage(location.pathname);
   }, []);
-  countIng('meals', meal.idMeal, ingLength);
+  countIng('meals', meal.idMeal, getIngredients(meal));
   return (
     <div className="Principal">
       { meal && <div className="content">

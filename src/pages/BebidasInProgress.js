@@ -17,7 +17,7 @@ const BebidasInProgress = () => {
     fetchDrink(recipeId);
     verifyLocalStorage(location.pathname);
   }, []);
-  countIng('cocktails', drink.idDrink, ingLength);
+  countIng('cocktails', drink.idDrink, getIngredients(drink));
   return (
     <div className="Principal">
       { drink && <div className="content">
