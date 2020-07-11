@@ -1,16 +1,14 @@
 import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import DetailsContext from '../context/DetailsContext';
+import InProgressContext from '../context/InProgressContext';
 import ShareButton from '../components/ShareButton';
 import FavButton from '../components/FavButton';
 import FinishButton from '../components/FinishButton';
-import { saveOnLocalStorage, getSavedIng, isCheck } from '../helper/ControlFunctions';
+import { saveOnLocalStorage, getSavedIng, isCheck, verifyLocalStorage } from '../helper/ControlFunctions';
 import './Detalhes.css';
 
-const pathConverter = {
-  comida: 'meals',
-  bebida: 'cocktails',
-};
+let ingLength = [];
 
 const getIngredients = (obj) => {
   let ingredientsArray = []; let measureArray = [];
@@ -34,30 +32,23 @@ const getIngredients = (obj) => {
     outputArray.push({ [keysArray[i]]: valuesArray[i] });
   }
 
+  ingLength = Object.keys(outputArray);
   return outputArray;
 };
 
 const BebidasInProgress = () => {
-  const location = useLocation();
-  const { fetchDrink, drink, drinkOk, copyUrl } = useContext(DetailsContext);
+  const location = useLocation(); const path = location.pathname;
+  const recipeId = path.slice(9, path.length - 12);
+  const { showButton, countIng } = useContext(InProgressContext);
+  const { fetchDrink, drink, copyUrl } = useContext(DetailsContext);
   useEffect(() => {
-    const path = location.pathname; const recipeId = path.slice(9, path.length - 12);
-    const recipeType = pathConverter[path.slice(1, 7)];
-    const saveDrink = { [recipeType]: { [recipeId]: [] } };
-    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (!inProgress) {
-      localStorage.setItem('inProgressRecipes', JSON.stringify(saveDrink));
-    } else if (inProgress[recipeType]) {
-      if (!inProgress[recipeType][recipeId]) {
-        inProgress[recipeType] = { ...inProgress[recipeType], [recipeId]: [] };
-        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
-      }
-    }
     fetchDrink(recipeId);
+    verifyLocalStorage(location.pathname);
   }, []);
+  countIng('cocktails', drink.idDrink, ingLength);
   return (
     <div className="Principal">
-      { drinkOk && <div className="content">
+      { drink && <div className="content">
         <div>{getSavedIng('cocktails', drink.idDrink)}
           <img
             data-testid="recipe-photo" src={drink.strDrinkThumb}
@@ -70,7 +61,7 @@ const BebidasInProgress = () => {
           <div><span>Ingredients</span>
             { getIngredients(drink).map((e, index) =>
               <div key={`${Object.keys(e)}`} data-testid={`${index}-ingredient-step`}>
-                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(el) => saveOnLocalStorage('cocktails', drink.idDrink, el.target.value)} />
+                <input type="checkbox" defaultChecked={isCheck(...Object.keys(e))} value={Object.keys(e)} onClick={(el) => saveOnLocalStorage('cocktails', drink.idDrink, el.target.value)} onChange={() => countIng('cocktails', drink.idDrink, getIngredients(drink))} />
                 <span data-testid={`${index}-ingredient-name-and-measure`} key="Drink">
                   {`- ${Object.keys(e)} - ${Object.values(e)}`}
                 </span>
@@ -80,7 +71,7 @@ const BebidasInProgress = () => {
           <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
         </div><div>--------------</div>
       </div> }
-      { drinkOk && <FinishButton activate={1} /> }
+      { drink && <FinishButton activate={showButton} /> }
     </div>
   );
 };

@@ -1,3 +1,8 @@
+const pathConverter = {
+  comida: 'meals',
+  bebida: 'cocktails',
+};
+
 let savedIng;
 
 export const saveOnLocalStorage = (type, id, value) => {
@@ -27,4 +32,19 @@ export const isCheck = (value) => {
     return 0;
   }
   return 0;
+};
+
+export const verifyLocalStorage = (path) => {
+  const recipeId = path.slice(9, path.length - 12);
+  const recipeType = pathConverter[path.slice(1, 7)];
+  const saveMeal = { [recipeType]: { [recipeId]: [] } };
+  const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (!inProgress) {
+    localStorage.setItem('inProgressRecipes', JSON.stringify(saveMeal));
+  } else if (inProgress[recipeType]) {
+    if (!inProgress[recipeType][recipeId]) {
+      inProgress[recipeType] = { ...inProgress[recipeType], [recipeId]: [] };
+      localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
+    }
+  }
 };
