@@ -48,3 +48,27 @@ export const verifyLocalStorage = (path) => {
     }
   }
 };
+
+export const getIngredients = (obj) => {
+  let ingredientsArray = []; let measureArray = [];
+  const keysArray = []; const valuesArray = []; const outputArray = [];
+  ingredientsArray = [...Object.keys(obj).filter((e) => e.match(/strIngredient/g))];
+  measureArray = [...Object.keys(obj).filter((e) => e.match(/strMeasure/g))];
+
+  ingredientsArray.forEach((e) => {
+    if (typeof (obj[e]) === 'string' && obj[e] !== '') {
+      keysArray.push(obj[e]);
+    }
+  });
+
+  measureArray.forEach((e) => {
+    if (typeof (obj[e]) === 'string' && obj[e] !== '') {
+      valuesArray.push(obj[e]);
+    }
+  });
+
+  for (let i = 0; i < keysArray.length; i += 1) {
+    outputArray.push({ [keysArray[i]]: valuesArray[i] });
+  }
+  return outputArray;
+};
