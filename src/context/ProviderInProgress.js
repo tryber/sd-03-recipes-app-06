@@ -7,17 +7,14 @@ const ProviderInProgress = ({ children }) => {
 
   const countIng = (type, id, obj) => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (inProgress) {
-      if (obj.length > 0) {
-        console.log('tamanho do objeto', obj.length);
-        let savedIng = [];
-        savedIng = [...inProgress[type][id]];
-        if (savedIng.length === obj.length) {
-          setShowButton(true);
-        } else {
-          setShowButton(false);
-        }
+    if (inProgress && obj.length > 0) {
+      console.log('tamanho do objeto', obj.length);
+      let savedIng = [];
+      savedIng = [...inProgress[type][id]];
+      if (savedIng.length === obj.length) {
+        return setShowButton(true);
       }
+      setShowButton(false);
     }
   };
 
