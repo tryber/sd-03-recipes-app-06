@@ -22,6 +22,7 @@ import NotFound from './pages/NotFound';
 import FilterDrinks from './pages/FilterDrinks';
 import FilterMeal from './pages/FilterMeal';
 import './App.css';
+
 function App() {
   return (
     <ProviderSearch>

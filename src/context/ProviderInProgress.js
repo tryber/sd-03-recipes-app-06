@@ -9,7 +9,7 @@ const compareObjects = (obj1, obj2) => {
     }
   }
   return false;
-}; 
+};
 
 const ProviderInProgress = ({ children }) => {
   const [showButton, setShowButton] = useState(false);
