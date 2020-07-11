@@ -7,7 +7,7 @@ const ProviderInProgress = ({ children }) => {
 
   const countIng = (type, id, obj) => {
     const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (inProgress && obj.length > 0) {
+    if (obj.length > 0) {
       console.log('tamanho do objeto', obj.length);
       let savedIng = [];
       savedIng = [...inProgress[type][id]];
@@ -16,6 +16,7 @@ const ProviderInProgress = ({ children }) => {
       }
       setShowButton(false);
     }
+    return null;
   };
 
   const contextValue = {
