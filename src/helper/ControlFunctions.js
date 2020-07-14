@@ -93,9 +93,8 @@ export const writeDoneRecipes = async (obj) => {
   const previousDoneRecipe = await JSON.parse(localStorage.getItem('doneRecipes'));
   if (previousDoneRecipe) {
     return verifyIsAlreadyRecipeDone(previousDoneRecipe, obj);
-  } else {
-    localStorage.setItem('doneRecipes', JSON.stringify([obj]));
   }
+  localStorage.setItem('doneRecipes', JSON.stringify([obj]));
   return null;
 };
 
