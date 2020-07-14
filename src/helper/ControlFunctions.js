@@ -72,3 +72,31 @@ export const getIngredients = (obj) => {
   }
   return outputArray;
 };
+
+const verifyIsAlreadyRecipeDone = (act, newer) => {
+  let actual = act;
+  let actualized = false;
+  actual.forEach((e, index) => {
+    if (e.id === newer.id) {
+      actual[index] = newer;
+      localStorage.setItem('doneRecipes', JSON.stringify([...actual]));
+      actualized = true;
+    }
+  });
+  if (!actualized) {
+    actual.push(newer);
+    localStorage.setItem('doneRecipes', JSON.stringify([...actual]));
+  }
+};
+
+export const writeDoneRecipes = async (obj) => {
+  let previousDoneRecipe = await JSON.parse(localStorage.getItem('doneRecipes'));
+  if (previousDoneRecipe) {
+    verifyIsAlreadyRecipeDone(previousDoneRecipe, obj);
+  }
+  else {
+    return localStorage.setItem('doneRecipes', JSON.stringify([obj]));
+  }
+};
+
+export const readDoneRecipes = () => JSON.parse(localStorage.getItem('doneRecipes'));
