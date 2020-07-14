@@ -4,6 +4,8 @@ import ProviderSearch from './context/ProviderSearch';
 import { Provider } from './context/getMeals';
 import Bebidas from './pages/Bebidas';
 import Comidas from './pages/Comidas';
+import BebidasInProgress from './pages/BebidasInProgress';
+import ComidasInProgress from './pages/ComidasInProgress';
 import DetalhesBebida from './pages/DetalhesBebida';
 import DetalhesComida from './pages/DetalhesComida';
 import Explorar from './pages/Explorar';
@@ -39,6 +41,9 @@ function App() {
           />
           <Route exact path="/bebidas" component={Bebidas} />
           <Route exact path="/comidas" component={Comidas} />
+          <Route exact path="/bebidas/:id/in-progress" component={BebidasInProgress} />
+          <Route exact path="/comidas/:id/in-progress" component={ComidasInProgress} />
+
           <Route
             exact
             path="/explorar/comidas/ingredientes"
@@ -66,5 +71,4 @@ function App() {
     </ProviderSearch>
   );
 }
-
 export default App;

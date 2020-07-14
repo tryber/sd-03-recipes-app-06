@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { cleanup, fireEvent } from '@testing-library/react';
+import { cleanup, fireEvent, getNodeText, waitForElementToBeRemoved } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
@@ -24,13 +24,17 @@ test('Test if correct icons are displayed drinks page', () => {
   expect(searchButton).toBeInTheDocument();
 });
 
-test('Test if correct icons are displayed food explorer page', () => {
-  const { getByTestId, history } = renderWithRouter(<App />);
+test('Test if correct icons are displayed food explorer page', async () => {
+  const { getByTestId, getByText, history } = renderWithRouter(<App />);
   history.push('/explorar/comidas/area');
-  const profileButton = getByTestId('profile-top-btn');
-  expect(profileButton).toBeInTheDocument();
-  const searchButton = getByTestId('search-top-btn');
-  expect(searchButton).toBeInTheDocument();
+  await waitForElementToBeRemoved(() => getByText('Carregando ...'))
+  .then(() => {
+    console.log('Element no longer in DOM')
+    const profileButton = getByTestId('profile-top-btn');
+    expect(profileButton).toBeInTheDocument();
+    const searchButton = getByTestId('search-top-btn');
+    expect(searchButton).toBeInTheDocument();
+  })
 });
 
 test('Test if correct icons are displayed in profile page', () => {
@@ -50,7 +54,7 @@ test('Test if correct icons are displayed in explorer page', () => {
   const { getByTestId, getAllByRole, history } = renderWithRouter(<App />);
   history.push('/explorar');
   const buttons = getAllByRole('button');
-  expect(buttons.length).toBe(1);
+  expect(buttons.length).toBe(3);
   const newProfileButton = getByTestId('profile-top-btn');
   expect(newProfileButton).toBeInTheDocument();
 });
@@ -59,7 +63,7 @@ test('Test if correct icons are displayed in food explorer page', () => {
   const { getByTestId, getAllByRole, history } = renderWithRouter(<App />);
   history.push('/explorar/comidas');
   const buttons = getAllByRole('button');
-  expect(buttons.length).toBe(1);
+  expect(buttons.length).toBe(4);
   const newProfileButton = getByTestId('profile-top-btn');
   expect(newProfileButton).toBeInTheDocument();
 });
@@ -68,27 +72,33 @@ test('Test if correct icons are displayed in drink explorer page', () => {
   const { getByTestId, getAllByRole, history } = renderWithRouter(<App />);
   history.push('/explorar/bebidas');
   const buttons = getAllByRole('button');
-  expect(buttons.length).toBe(1);
+  expect(buttons.length).toBe(3);
   const newProfileButton = getByTestId('profile-top-btn');
   expect(newProfileButton).toBeInTheDocument();
 });
 
-test('Test if correct icons are displayed in food ingredients explorer page', () => {
-  const { getByTestId, getAllByRole, history } = renderWithRouter(<App />);
+test('Test if correct icons are displayed in food ingredients explorer page', async () => {
+  const { getByTestId, getByText, getAllByRole, history } = renderWithRouter(<App />);
   history.push('/explorar/comidas/ingredientes');
-  const buttons = getAllByRole('button');
-  expect(buttons.length).toBe(1);
-  const newProfileButton = getByTestId('profile-top-btn');
-  expect(newProfileButton).toBeInTheDocument();
+  await waitForElementToBeRemoved(() => getByText('Loading...'))
+  .then(() => {
+    const buttons = getAllByRole('button');
+    expect(buttons.length).toBe(1);
+    const newProfileButton = getByTestId('profile-top-btn');
+    expect(newProfileButton).toBeInTheDocument();
+  })
 });
 
-test('Test if correct icons are displayed in drink ingredients explorer page', () => {
-  const { getByTestId, getAllByRole, history } = renderWithRouter(<App />);
+test('Test if correct icons are displayed in drink ingredients explorer page', async () => {
+  const { getByTestId, getByText, getAllByRole, history } = renderWithRouter(<App />);
   history.push('/explorar/bebidas/ingredientes');
-  const buttons = getAllByRole('button');
-  expect(buttons.length).toBe(1);
-  const newProfileButton = getByTestId('profile-top-btn');
-  expect(newProfileButton).toBeInTheDocument();
+  await waitForElementToBeRemoved(() => getByText('Loading...'))
+  .then(() => {
+    const buttons = getAllByRole('button');
+    expect(buttons.length).toBe(1);
+    const newProfileButton = getByTestId('profile-top-btn');
+    expect(newProfileButton).toBeInTheDocument();
+  })
 });
 
 test('Test if correct icons are displayed in done recipes page', () => {
@@ -101,70 +111,85 @@ test('Test if correct icons are displayed in done recipes page', () => {
 });
 
 test('Test if correct icons are displayed in favorite recipes page', () => {
-  const { getByTestId, getAllByRole, history } = renderWithRouter(<App />);
+  const { getByTestId, history } = renderWithRouter(<App />);
   history.push('/receitas-favoritas');
-  const buttons = getAllByRole('button');
-  expect(buttons.length).toBe(1);
   const newProfileButton = getByTestId('profile-top-btn');
   expect(newProfileButton).toBeInTheDocument();
 });
 
-test('Test if page titles are correct', () => {
-  const { getByText, history } = renderWithRouter(<App />);
+test('Test if page titles are correct', async () => {
+  const { getByText, getByTestId, history } = renderWithRouter(<App />);
   history.push('/comidas');
-  let title = getByText('Comidas');
+  let title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Comidas');
 
   history.push('/bebidas');
-  title = getByText('Bebidas');
+  title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Bebidas');
 
   history.push('/explorar');
-  title = getByText('Explorar');
+  title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Explorar');
 
   history.push('/perfil');
-  title = getByText('Perfil');
+  title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Perfil');
 
   history.push('/explorar/comidas');
-  title = getByText('Explorar Comidas');
+  title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Explorar Comidas');
 
   history.push('/explorar/bebidas');
-  title = getByText('Explorar Bebidas');
+  title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Explorar Bebidas');
 
   history.push('/explorar/comidas/ingredientes');
-  title = getByText('Explorar Ingredientes');
-  expect(title).toBeInTheDocument();
-  expect(title.tagName).toBe('H1');
-
+  await waitForElementToBeRemoved(() => getByText('Loading...'))
+  .then(() => {
+    title = getByTestId('page-title');
+    expect(title).toBeInTheDocument();
+    expect(title.tagName).toBe('H1');
+    expect(getNodeText(title)).toBe('Explorar Ingredientes');
+  })
+  
   history.push('/explorar/bebidas/ingredientes');
-  title = getByText('Explorar Ingredientes');
+  title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Explorar Ingredientes');
 
   history.push('/explorar/comidas/area');
-  title = getByText('Explorar Origem');
-  expect(title).toBeInTheDocument();
-  expect(title.tagName).toBe('H1');
+  await waitForElementToBeRemoved(() => getByText('Carregando ...'))
+  .then(() => {
+    title = getByTestId('page-title');
+    expect(title).toBeInTheDocument();
+    expect(title.tagName).toBe('H1');
+    expect(getNodeText(title)).toBe('Explorar Origem');
+  })
 
   history.push('/receitas-feitas');
-  title = getByText('Receitas Feitas');
+  title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Receitas Feitas');
 
   history.push('/receitas-favoritas');
-  title = getByText('Receitas Favoritas');
+  title = getByTestId('page-title');
   expect(title).toBeInTheDocument();
   expect(title.tagName).toBe('H1');
+  expect(getNodeText(title)).toBe('Receitas Favoritas');
 });
 
 test('Test if searchBar are working', () => {
@@ -177,6 +202,4 @@ test('Test if searchBar are working', () => {
   fireEvent.click(searchButton);
   const newSearchBar = queryByTestId('search-input');
   expect(newSearchBar).toBe(null);
-
 });
-

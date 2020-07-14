@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderWithRouter from './tests/renderWithRouter';
 import App from './App';
 
-test('Farewell, front-end', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/TRYBE/i);
-  expect(linkElement).toBeInTheDocument();
+test('Test if current path is "/"', () => {
+  const { history } = renderWithRouter(<App />);
+  const path = history.location.pathname;
+  expect(path).toBe('/');
 });

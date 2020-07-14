@@ -8,7 +8,7 @@ function MealCategories() {
   } = useContext(GetMealsContext);
 
   return (
-    <div id="mealsCategories">
+    <div className="mealsCategories">
       <ul>
         <li>
           <button

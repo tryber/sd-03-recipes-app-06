@@ -1,3 +1,9 @@
+.mealsCategories {
+  align-self: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .Principal {
   height: 640px;
   width: 360px;

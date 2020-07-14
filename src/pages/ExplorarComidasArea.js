@@ -24,11 +24,11 @@ const fetchMeals = async (setMeals, option) => {
 function cardReceitas(meals) {
   return (
     meals && meals.slice(0, 12).map((meal, index) => (
-      <div
-        data-testid={`${index}-recipe-card`}
-        key={`${meal}`}
-      >
-        <Link to={`/comidas/${meal.idMeal}`}>
+      <Link to={`/comidas/${meal.idMeal}`}>
+        <div
+          data-testid={`${index}-recipe-card`}
+          key={`${meal}`}
+        >
           <img
             src={`${meal.strMealThumb}`}
             alt={`${meal.strMeal}`}
@@ -41,12 +41,11 @@ function cardReceitas(meals) {
           >
             {`${meal.strMeal}`}
           </p>
-        </Link>
-      </div>
+        </div>
+      </Link>
     ))
   );
 }
-
 
 function ExplorarComidasArea() {
   const [areaList, setAreaList] = useState(undefined);

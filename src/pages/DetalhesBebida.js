@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import DetailsContext from '../context/DetailsContext';
-import ShareButton1 from '../components/ShareButton';
+import ShareButton from '../components/ShareButton';
 import FavButton from '../components/FavButton';
 import StartContinueButton from '../components/StartContinueButton';
 import './Detalhes.css';
@@ -69,28 +69,32 @@ const Detalhes = () => {
   return (
     <div className="Principal">
       { mealsOk && drinkOk &&
-      <div>
-        <img data-testid="recipe-photo" src={drink.strDrinkThumb} width="360px" alt="Recipe" />
-        <p data-testid="recipe-title">{drink.strDrink}</p>
-        <p data-testid="recipe-category">{drink.strAlcoholic}</p>
-        <div className="SFButtons"><ShareButton1 /><FavButton /></div>
-        {copyUrl && <span>Link copiado!</span>}
-        <p>{drink.strCategory}</p>
-        <div><span>Ingredients</span>
-          {
-          getIngredients(drink).map((e, index) =>
-            <p data-testid={`${index}-ingredient-name-and-measure`} key={`${Object.keys(e)}`}>
-              {`- ${Object.keys(e)} - ${Object.values(e)}`}
-            </p>)
-          }
+      <div className="content">
+        <div>
+          <img data-testid="recipe-photo" src={drink.strDrinkThumb} width="360px" alt="Recipe" />
+          <p data-testid="recipe-title">{drink.strDrink}</p>
+          <p data-testid="recipe-category">{drink.strAlcoholic}</p>
+          <div className="SFButtons"><ShareButton /><FavButton /></div>
+          {copyUrl && <span>Link copiado!</span>}
+          <p>{drink.strCategory}</p>
+          <div><span>Ingredients</span>
+            {
+            getIngredients(drink).map((e, index) =>
+              <p data-testid={`${index}-ingredient-name-and-measure`} key={`${Object.keys(e)}`}>
+                {`- ${Object.keys(e)} - ${Object.values(e)}`}
+              </p>)
+            }
+          </div>
+          <p>Instructions</p>
+          <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
         </div>
-        <p>Instructions</p>
-        <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
-        <p>Recommendation</p>
-        {recomendations(meals)}
-        <StartContinueButton />
+        <div>
+          <p>Recommendation</p>
+          {recomendations(meals)}
+        </div>
       </div>
       }
+      { mealsOk && drinkOk && <StartContinueButton /> }
     </div>
   );
 };
