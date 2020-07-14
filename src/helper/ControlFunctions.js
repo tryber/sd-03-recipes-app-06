@@ -74,7 +74,7 @@ export const getIngredients = (obj) => {
 };
 
 const verifyIsAlreadyRecipeDone = (act, newer) => {
-  let actual = act;
+  const actual = act;
   let actualized = false;
   actual.forEach((e, index) => {
     if (e.id === newer.id) {
@@ -90,13 +90,13 @@ const verifyIsAlreadyRecipeDone = (act, newer) => {
 };
 
 export const writeDoneRecipes = async (obj) => {
-  let previousDoneRecipe = await JSON.parse(localStorage.getItem('doneRecipes'));
+  const previousDoneRecipe = await JSON.parse(localStorage.getItem('doneRecipes'));
   if (previousDoneRecipe) {
-    verifyIsAlreadyRecipeDone(previousDoneRecipe, obj);
+    return verifyIsAlreadyRecipeDone(previousDoneRecipe, obj);
+  } else {
+    localStorage.setItem('doneRecipes', JSON.stringify([obj]));
   }
-  else {
-    return localStorage.setItem('doneRecipes', JSON.stringify([obj]));
-  }
+  return null;
 };
 
 export const readDoneRecipes = () => JSON.parse(localStorage.getItem('doneRecipes'));

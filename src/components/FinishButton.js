@@ -16,7 +16,7 @@ const alcoholicOrNot = (type, obj) => {
 
 const FinishButton = ({ activate, done = {}, tipo } = this.props) => {
   const history = useHistory();
-  const now = new Date;
+  const now = new Date();
   return (
     <div className="buttonDiv">
       {
