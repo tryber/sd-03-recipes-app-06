@@ -16,7 +16,7 @@ const alcoholicOrNot = (type, obj) => {
 
 const hasTagsOrNot = (str) => {
   if (str) {
-    return str.split(',') 
+    return str.split(',');
   }
   return '';
 };
