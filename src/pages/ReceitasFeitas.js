@@ -6,8 +6,6 @@ import ShareButtonOnList from '../components/ShareButtonOnList';
 import { readDoneRecipes } from '../helper/ControlFunctions';
 import './ReceitasFeitas.css'
 
-// atualizando o commit
-
 const handleClick = (name) => {
   if (name === 'Food') {
     return 'comida';
