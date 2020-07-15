@@ -14,6 +14,13 @@ const alcoholicOrNot = (type, obj) => {
   return obj.strAlcoholic;
 };
 
+const hasTagsOrNot = (str) => {
+  if (str) {
+    return str.split(',') 
+  }
+  return '';
+};
+
 const FinishButton = ({ activate, done = {}, tipo } = this.props) => {
   const history = useHistory();
   const now = new Date();
@@ -34,7 +41,7 @@ const FinishButton = ({ activate, done = {}, tipo } = this.props) => {
               name: done[`str${translate[tipo]}`],
               image: done[`str${translate[tipo]}Thumb`],
               doneDate: `${now.getDate()}/${now.getMonth()}/${now.getFullYear()}`,
-              tags: done.strTags.split(',') || '',
+              tags: hasTagsOrNot(done.strTags),
             };
             writeDoneRecipes(objToWrite);
             console.log(objToWrite);
