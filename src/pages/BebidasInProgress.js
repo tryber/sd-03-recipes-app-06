@@ -43,7 +43,7 @@ const BebidasInProgress = () => {
           <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
         </div><div>--------------</div>
       </div> }
-      { drink && <FinishButton activate={showButton} /> }
+      { drink && <FinishButton activate={showButton} done={drink} tipo="bebida" /> }
     </div>
   );
 };

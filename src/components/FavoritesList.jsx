@@ -51,7 +51,7 @@ const favoriteRecipes = (
         type="button"
         onClick={() => {
           setRecipes(recipes.filter((element) => element.id !== id));
-          localStorage.removeItem(favoriteRecipes(`${id}`));
+          // localStorage.removeItem(favoriteRecipes(`${id}`));
         }}
       >
         <img src={blackHeartIcon} alt="coração" recipe={recipe} />
