@@ -34,7 +34,7 @@ const FinishButton = ({ activate, done = {}, tipo } = this.props) => {
               name: done[`str${translate[tipo]}`],
               image: done[`str${translate[tipo]}Thumb`],
               doneDate: `${now.getDate()}/${now.getMonth()}/${now.getFullYear()}`,
-              tags: done.strTags || '',
+              tags: done.strTags.split(',') || '',
             };
             writeDoneRecipes(objToWrite);
             console.log(objToWrite);
