@@ -21,9 +21,11 @@ const ReceitasFeitas = () => {
     const setter = handleClick(buttonName);
     setShowType(setter);
   };
-  if (!doneRecipes) { return <div>Carregando ...</div>; }
-  if (showType !== 'All') { useRecipe = doneRecipes.filter((e) => e.type === showType); }
-  else if (showType === 'All') { useRecipe = doneRecipes; }
+  if (showType !== 'All') {
+    useRecipe = doneRecipes.filter((e) => e.type === showType);
+  } else if (showType === 'All') {
+    useRecipe = doneRecipes;
+  }
   return (
     <div>
       <Header />
@@ -51,7 +53,7 @@ const ReceitasFeitas = () => {
               </Link>
               <p data-testid={`${index}-horizontal-done-date`}>Feito em: {e.doneDate}</p>
               {e.area && e.tags.map((el) =>
-                <span data-testid={`${index}-${el}-horizontal-tag`}>{el}</span>)}
+                <span key={el} data-testid={`${index}-${el}-horizontal-tag`}>{el}</span>)}
             </div>
           </div>}
         </div>)}
