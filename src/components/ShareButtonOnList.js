@@ -9,7 +9,7 @@ const ShareButtonOnList = ({ location, testid } = this.props) => {
     <div className="ShareOnList">
       <button
         onClick={() => shareUrl(location)}
-      ><img data-testid={testid} src={shareIcon} alt="share" width="31px" />
+      ><img data-testid={testid} src={shareIcon} alt="share" width="10px" />
       </button>
     </div>
   );
