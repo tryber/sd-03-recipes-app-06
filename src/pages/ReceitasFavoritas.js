@@ -71,8 +71,7 @@ const ReceitasFavoritas = ({ title, page }) => {
     }
   }, [page]);
   useEffect(() => {
-    console.log('estou aqui');
-    localStorage.setItem(`favoriteRecipes`, JSON.stringify(recipes));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(recipes));
   }, [recipes]);
   return (
     <div>
